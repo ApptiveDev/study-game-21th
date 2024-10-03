@@ -9,23 +9,14 @@ public class Enemy : MonoBehaviour
     public float moveSpeed = 1f;
     private Transform player;
 
-    public int maxEnemies = 5;
 
-    private static bool enemiesSpawned = false;
+
+    public float health = 10f;
+
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-
-        if (!enemiesSpawned)
-        {
-            for (int i = 0; i < maxEnemies; i++)
-            {
-                Vector3 spawnPosition = new Vector3(Random.Range(-10f, 10f), 0, Random.Range(-10f, 10f));
-                Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-            }
-            enemiesSpawned = true;
-        }
     }
 
     void Update()
@@ -33,7 +24,7 @@ public class Enemy : MonoBehaviour
         if (player != null)
         {
             Vector3 direction = player.position - transform.position;
-            direction.Normalize();
+            direction.Normalize(); // 방향 사용하려고 Normalize
 
             transform.position += direction * moveSpeed * Time.deltaTime;
         }
