@@ -4,27 +4,28 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject Flower;
+    [SerializeField] private GameObject[] obstacle;
 
     // 현재시간 변수
     private float curTime = 0f;
 
     // 생성된 장애물들을 저장할 큐
-    private Queue<GameObject> flowerQueue = new Queue<GameObject>();
+    private Queue<GameObject> obstacleQueue = new Queue<GameObject>();
 
     // 장애물의 최대 개수
-    private int maxFlowerCount = 10;
+    private int maxObstacleCount = 10;
 
     void Start()
     {
         for (int i = 0; i < 10; i++)
         {
-            GameObject newFlower = Instantiate(Flower); // 물체(꽃)를 생성한다.
-            newFlower.transform.position = PickRandomPosition();
-            newFlower.GetComponent<SpriteRenderer>().color = PickRandomColor();
+            MakeRandomObstacle();
+            // GameObject newObstacle = Instantiate(obstacle[]); // 물체(꽃)를 생성한다.
+            // newObstacle.transform.position = PickRandomPosition();
+            // newObstacle.GetComponent<SpriteRenderer>().color = PickRandomColor();
 
-            // 큐에 생성된 장애물을 추가
-            flowerQueue.Enqueue(newFlower);
+            // // 큐에 생성된 장애물을 추가
+            // obstacleQueue.Enqueue(newObstacle);
         }
     }
 
@@ -33,26 +34,27 @@ public class ObstacleSpawner : MonoBehaviour
         curTime += Time.deltaTime;
         if (curTime >= 1) 
         {
-            MakeRandomFlower();
+            MakeRandomObstacle();
             curTime = 0;
         }
     }
 
-    void MakeRandomFlower()
+    void MakeRandomObstacle()
     {
-        // 새 장애물 생성
-        GameObject newFlower = Instantiate(Flower);
-        newFlower.transform.position = PickRandomPosition();
-        newFlower.GetComponent<SpriteRenderer>().color = PickRandomColor();
+        int index = UnityEngine.Random.Range(0, obstacle.Length);
+        
+        GameObject newObstacle = Instantiate(obstacle[index]); // 새 장애물 생성
+        newObstacle.transform.position = PickRandomPosition();
+        newObstacle.GetComponent<SpriteRenderer>().color = PickRandomColor();
 
         // 큐에 새로 생성된 장애물을 추가
-        flowerQueue.Enqueue(newFlower);
+        obstacleQueue.Enqueue(newObstacle);
 
         // 만약 장애물이 10개를 넘으면, 가장 오래된 장애물 제거
-        if (flowerQueue.Count > maxFlowerCount)
+        if (obstacleQueue.Count > maxObstacleCount)
         {
-            GameObject oldFlower = flowerQueue.Dequeue(); // 가장 오래된 장애물을 큐에서 제거
-            Destroy(oldFlower); // 제거된 장애물 삭제
+            GameObject oldObstacle = obstacleQueue.Dequeue(); // 가장 오래된 장애물을 큐에서 제거
+            Destroy(oldObstacle); // 제거된 장애물 삭제
         }
     }
 
