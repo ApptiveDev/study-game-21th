@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2055102311959635375}
   - component: {fileID: 2055102311959635368}
-  - component: {fileID: 7832423948080096074}
-  m_Layer: 20
+  - component: {fileID: 4757343954164907270}
+  m_Layer: 7
   m_Name: PF Props Bush T6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,8 +86,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!58 &7832423948080096074
-CircleCollider2D:
+--- !u!61 &4757343954164907270
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -118,9 +118,19 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.031612515, y: 0.5350201}
+  m_Offset: {x: 0, y: 0.546875}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1.25, y: 1.09375}
+    newSize: {x: 1.46875, y: 1.3125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5380641
+  m_Size: {x: 1.25, y: 1.09375}
+  m_EdgeRadius: 0
 --- !u!1 &2055102312182832482
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
    void FixedUpdate() 
    {
       StopToWall();
+      StopToObstacle();
    }
 
    void GetInput()
@@ -47,5 +48,10 @@ public class Player : MonoBehaviour
       isBorder = Physics2D.Raycast(transform.position, moveVec, 0.2f, LayerMask.GetMask("Wall")); // Ray를 쏘아 닿는 오브젝트를 감지하는 함수 
                                                                                                         // (시작위치, 방향, 길이, 충돌한 물체의 LayerMask가 'Wall'인가)    
                                                                                                         // 2D에서는 Physics.Raycast() 대신 Physics2D.Raycast() 사용                                                                
+   }
+
+   void StopToObstacle()
+   {
+      isBorder = Physics2D.Raycast(transform.position, moveVec, 0.2f, LayerMask.GetMask("Obstacle"));   
    }
 }

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2055102311959635375}
   - component: {fileID: 2055102311959635368}
-  - component: {fileID: 847555040829726054}
-  m_Layer: 20
+  - component: {fileID: 5046215593492496608}
+  m_Layer: 7
   m_Name: PF Props Bush T5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,8 +86,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!68 &847555040829726054
-EdgeCollider2D:
+--- !u!61 &5046215593492496608
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -118,24 +118,19 @@ EdgeCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.703125}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1.21875, y: 1.40625}
+    newSize: {x: 0.6875, y: 0.59375}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.21875, y: 1.40625}
   m_EdgeRadius: 0
-  m_Points:
-  - {x: 0.4256587, y: 0.03035295}
-  - {x: 0.3267672, y: 0.01839751}
-  - {x: -0.003426075, y: 0.19902658}
-  - {x: -0.42879176, y: 0.24837607}
-  - {x: -0.5842674, y: 0.39596945}
-  - {x: -0.45418715, y: 0.74651325}
-  - {x: -0.06957555, y: 0.81716835}
-  - {x: 0.23447609, y: 1.3586463}
-  - {x: 0.45368457, y: 1.0917003}
-  - {x: 0.5835502, y: 0.7321058}
-  - {x: 0.42393112, y: 0.00016450882}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!1 &2055102312182832482
 GameObject:
   m_ObjectHideFlags: 0
