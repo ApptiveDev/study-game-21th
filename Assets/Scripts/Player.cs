@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using system.collections;
+using system.collections.generic;
+using unityengine;
 
-public class Player : MonoBehaviour
+public class player : monobehaviour
 {
     private Rigidbody2D rb;
 
