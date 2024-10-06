@@ -45,7 +45,7 @@ public class ObstacleSpawner : MonoBehaviour
         
         GameObject newObstacle = Instantiate(obstacle[index]); // 새 장애물 생성
         newObstacle.transform.position = PickRandomPosition();
-        newObstacle.GetComponent<SpriteRenderer>().color = PickRandomColor();
+        // newObstacle.GetComponent<SpriteRenderer>().color = PickRandomColor();
 
         // 큐에 새로 생성된 장애물을 추가
         obstacleQueue.Enqueue(newObstacle);
@@ -60,8 +60,8 @@ public class ObstacleSpawner : MonoBehaviour
 
     Vector3 PickRandomPosition() // 랜덤한 위치(벡터3)을 반환한다.
     {
-        float x = Random.Range(-8f, 8f);
-        float y = Random.Range(-4f, 4f);
+        float x = Random.Range(-10f, 10f);
+        float y = Random.Range(-10f, 10f);
 
         return new Vector3(x, y, 0);
     }
