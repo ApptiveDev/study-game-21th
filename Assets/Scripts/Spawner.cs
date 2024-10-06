@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] GameObject enemyObject;
 
     float curTime = 0;
-
+    int count = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +16,11 @@ public class Spawner : MonoBehaviour
     private void Update()
     {
         curTime += Time.deltaTime;
-        if (curTime >=1)
+        if (curTime >=1&&count<=10)
         {
             Instantiate(enemyObject);
             enemyObject.transform.position = PickRandomPosition();
-
+            count++;
             curTime = 0;
         }
     }
