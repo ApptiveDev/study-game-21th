@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
    void FixedUpdate() 
    {
       StopToWall();
-      StopToObstacle();
+      // StopToObstacle();
    }
 
    void GetInput()

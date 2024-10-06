@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float enemyspeed = 1.0f; // 적의 이동 속도
+    
     private GameObject player;
 
     // Start is called before the first frame update
