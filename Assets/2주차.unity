@@ -273,7 +273,8 @@ MonoBehaviour:
   player: {fileID: 1320260354}
   distance: 2
   speed: 200
-  guardDamage: 3
+  guardDamage: 5
+  pushForce: 5
 --- !u!4 &1151744062 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 358021824568697882, guid: ba259018bbea93443898f3da196291c6, type: 3}

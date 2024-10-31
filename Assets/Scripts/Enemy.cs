@@ -38,14 +38,8 @@ public class Enemy : MonoBehaviour
             gameObject.SetActive(false); // 적 오브젝트 끄기
         }
 
-        Guard guard = collision.GetComponent<Guard>();
-        if (!collision.CompareTag("Guard"))
-            return;
-        enemyHealth -= collision.GetComponent<Guard>().guardDamage; // 방패에 부딪히면 데미지
-        if (enemyHealth <= 0) {
-            gameObject.SetActive(false);
-        }
     }
+
 
 
 }
