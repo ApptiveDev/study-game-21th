@@ -30,14 +30,23 @@ public class Enemy : MonoBehaviour
         }
     }
 
-     public void OnTriggerEnter2D(Collider2D collision) { // 적과 플레이어가 충돌 했을 때
-     Player player = collision.GetComponent<Player>(); // 충돌한 오브젝트에서 player 요소 가져옴
-     if (player != null ) { // 충돌한 오브젝트가 플레이어인지 확인
-         player.TakeDamage((int)enemyDamage);
-         Debug.Log("남은 체력: "+player.playerHealth);
-         gameObject.SetActive(false); // 적 오브젝트 끄기
-     }
- }
+     public void OnTriggerEnter2D(Collider2D collision) {
+        Player player = collision.GetComponent<Player>(); // 충돌한 오브젝트에서 player 요소 가져옴
+        if (player != null ) { // 충돌한 오브젝트가 플레이어인지 확인
+            player.TakeDamage((int)enemyDamage);
+            Debug.Log("남은 체력: "+player.playerHealth);
+            gameObject.SetActive(false); // 적 오브젝트 끄기
+        }
+
+        Guard guard = collision.GetComponent<Guard>();
+        if (!collision.CompareTag("Guard"))
+            return;
+        enemyHealth -= collision.GetComponent<Guard>().guardDamage; // 방패에 부딪히면 데미지
+        if (enemyHealth <= 0) {
+            gameObject.SetActive(false);
+        }
+    }
+
 
 }
 

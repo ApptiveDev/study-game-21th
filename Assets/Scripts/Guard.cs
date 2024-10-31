@@ -5,6 +5,7 @@ public class Guard : MonoBehaviour
     public Transform player; // 캐릭터의 Transform
     public float distance = 2.0f; // 캐릭터와의 거리
     public float speed = 50.0f; // 회전 속도
+    public float guardDamage = 3f;
 
     private float angle; // 현재 각도
 
@@ -29,5 +30,6 @@ public class Guard : MonoBehaviour
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleToPlayer));
         }
     }
-    
 }
+    
+

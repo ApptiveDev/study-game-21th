@@ -32,9 +32,9 @@ public class Player : MonoBehaviour
 
    public void TakeDamage(float enemyDamage) { // 적에게 부딪혔을 때 체력을 깎음
         playerHealth -= enemyDamage;
-        Debug.Log("체력: " + playerHealth);
         if (playerHealth <= 0) {
             Debug.Log("사망");
+            gameObject.SetActive(false); // 비활성화
         }
     }
 }
