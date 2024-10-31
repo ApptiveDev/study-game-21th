@@ -8,34 +8,53 @@ public class Enemy : MonoBehaviour
     private GameObject enemyPrefab;
     public float moveSpeed = 1f;
     private Transform player;
+    public float enemyDamage = 10; // 적이 주는 데미지
 
-    public int maxEnemies = 5;
 
-    private static bool enemiesSpawned = false;
+    public float enemyHealth = 10f; // 적 체력
+    private float frozenTime = 0f;
+
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-
-        if (!enemiesSpawned)
-        {
-            for (int i = 0; i < maxEnemies; i++)
-            {
-                Vector3 spawnPosition = new Vector3(Random.Range(-10f, 10f), 0, Random.Range(-10f, 10f));
-                Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-            }
-            enemiesSpawned = true;
-        }
     }
 
     void Update()
     {
-        if (player != null)
+        // 얼려진 상태가 아닐 경우에만 이동
+        if (frozenTime <= 0)
         {
-            Vector3 direction = player.position - transform.position;
-            direction.Normalize();
+            if (player != null)
+            {
+                Vector3 direction = player.position - transform.position;
+                direction.Normalize(); // 방향 사용하려고 Normalize
 
-            transform.position += direction * moveSpeed * Time.deltaTime;
+                transform.position += direction * moveSpeed * Time.deltaTime;
+            }
         }
+        else
+        {
+            frozenTime -= Time.deltaTime; // 얼려진 시간 감소
+        }
+
     }
+
+     public void OnTriggerEnter2D(Collider2D collision) {
+        Player player = collision.GetComponent<Player>(); // 충돌한 오브젝트에서 player 요소 가져옴
+        if (player != null ) { // 충돌한 오브젝트가 플레이어인지 확인
+            player.TakeDamage((int)enemyDamage);
+            Debug.Log("남은 체력: "+player.playerHealth);
+            gameObject.SetActive(false); // 적 오브젝트 끄기
+        }
+
+    }
+
+        // 적이 얼어있을 때 호출되는 메서드
+    public void FreezeForSeconds(float duration)
+    {
+        frozenTime = duration; // 얼려진 상태 시간 설정
+    }
+
 }
+

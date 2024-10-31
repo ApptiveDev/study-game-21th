@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -7,6 +8,7 @@ public class Player : MonoBehaviour
     Transform playerTransform;
     public GameObject player;
     private float speed = 3;
+    public float playerHealth = 100f; // 플레이어 체력 변수
     void Start()
     {
         playerTransform = GetComponent<Transform>();
@@ -27,4 +29,14 @@ public class Player : MonoBehaviour
             playerTransform.position += Vector3.right * speed * Time.deltaTime;
         }                        
     }
+
+   public void TakeDamage(float enemyDamage) { // 적에게 부딪혔을 때 체력을 깎음
+        playerHealth -= enemyDamage;
+        if (playerHealth <= 0) {
+            Debug.Log("사망");
+            gameObject.SetActive(false); // 비활성화
+        }
+    }
 }
+
+
