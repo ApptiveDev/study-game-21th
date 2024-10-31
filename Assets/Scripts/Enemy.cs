@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
 
 
     public float enemyHealth = 10f; // 적 체력
+    private float frozenTime = 0f;
 
 
     void Start()
@@ -21,13 +22,22 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (player != null)
+        // 얼려진 상태가 아닐 경우에만 이동
+        if (frozenTime <= 0)
         {
-            Vector3 direction = player.position - transform.position;
-            direction.Normalize(); // 방향 사용하려고 Normalize
+            if (player != null)
+            {
+                Vector3 direction = player.position - transform.position;
+                direction.Normalize(); // 방향 사용하려고 Normalize
 
-            transform.position += direction * moveSpeed * Time.deltaTime;
+                transform.position += direction * moveSpeed * Time.deltaTime;
+            }
         }
+        else
+        {
+            frozenTime -= Time.deltaTime; // 얼려진 시간 감소
+        }
+
     }
 
      public void OnTriggerEnter2D(Collider2D collision) {
@@ -40,7 +50,11 @@ public class Enemy : MonoBehaviour
 
     }
 
-
+        // 적이 얼어있을 때 호출되는 메서드
+    public void FreezeForSeconds(float duration)
+    {
+        frozenTime = duration; // 얼려진 상태 시간 설정
+    }
 
 }
 
