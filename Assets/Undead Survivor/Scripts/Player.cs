@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     Animator animator;
     public float speed;
     public Vector2 inputVector;
+    public int weapon = -1;
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
