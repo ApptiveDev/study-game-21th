@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-   public float moveSpeed = 2;
+   float moveSpeed = 3;
 
    private float hAxis;
    private float vAxis;
@@ -41,13 +41,19 @@ public class Player : MonoBehaviour
 
    void StopToWall()
    {
-      // Debug.DrawRay(transform.position, moveVec* 0.2f, Color.green); // DrawRay = Scene내에서 Ray를 보여주는 함수
+      Debug.DrawRay(transform.position, moveVec* 0.2f, Color.green); // DrawRay = Scene내에서 Ray를 보여주는 함수
                                                                         // DrawRay(시작위치, 쏘는방향 * 길이, 색깔)
                                                                         // Ray를 통해 플레이어 앞의 물체를 빠르게 감지할 수 있다
                                                                         // 2D에서 forward 대신 up 사용
       isBorder = Physics2D.Raycast(transform.position, moveVec, 0.2f, LayerMask.GetMask("Wall")); // Ray를 쏘아 닿는 오브젝트를 감지하는 함수 
                                                                                                         // (시작위치, 방향, 길이, 충돌한 물체의 LayerMask가 'Wall'인가)    
                                                                                                         // 2D에서는 Physics.Raycast() 대신 Physics2D.Raycast() 사용                                                                
+   }
+
+   void IgnoreRaycast() 
+   {
+      Debug.DrawRay(transform.position, moveVec* 0.2f, Color.green);
+      isBorder = Physics2D.Raycast(transform.position, moveVec, 0.2f, LayerMask.GetMask("Ignore Raycast"));
    }
 
    void StopToObstacle()
