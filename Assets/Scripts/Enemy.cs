@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
-{
-    public float enemyspeed = 1.0f; // 적의 이동 속도
+{   
+    public float health = 10f; // 적의 체력
 
+    float enemySpeed; // 적의 이동 속도
     private GameObject player;
+
+    public void SetMoveSpeed()
+    {
+        enemySpeed = Random.Range(1f, 3f);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +27,8 @@ public class Enemy : MonoBehaviour
         if (player != null) // 플레이어가 존재하는지 확인
         {
             Vector3 enemyVec = (player.transform.position - transform.position).normalized;
-            transform.position += enemyVec * enemyspeed * Time.deltaTime;
+            transform.position += enemyVec * enemySpeed * Time.deltaTime;
         }
     }
+
 }
