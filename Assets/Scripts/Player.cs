@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
                                                                                                         // 2D에서는 Physics.Raycast() 대신 Physics2D.Raycast() 사용                                                                
    }
 
-   void IgnoreRaycast() 
+   void IgnoreWall() 
    {
       Debug.DrawRay(transform.position, moveVec* 0.2f, Color.green);
       isBorder = Physics2D.Raycast(transform.position, moveVec, 0.2f, LayerMask.GetMask("Ignore Raycast"));
