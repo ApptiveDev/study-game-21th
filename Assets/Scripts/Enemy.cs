@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject enemyPrefab;
+    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject experienceOrbPrefab;
     public float moveSpeed = 1f;
     private Transform player;
     public float enemyDamage = 10; // 적이 주는 데미지
@@ -17,7 +17,8 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        //player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = Player.Instance.transform;
     }
 
     void Update()
@@ -29,7 +30,6 @@ public class Enemy : MonoBehaviour
             {
                 Vector3 direction = player.position - transform.position;
                 direction.Normalize(); // 방향 사용하려고 Normalize
-
                 transform.position += direction * moveSpeed * Time.deltaTime;
             }
         }
@@ -40,21 +40,57 @@ public class Enemy : MonoBehaviour
 
     }
 
-     public void OnTriggerEnter2D(Collider2D collision) {
-        Player player = collision.GetComponent<Player>(); // 충돌한 오브젝트에서 player 요소 가져옴
-        if (player != null ) { // 충돌한 오브젝트가 플레이어인지 확인
-            player.TakeDamage((int)enemyDamage);
-            Debug.Log("남은 체력: "+player.playerHealth);
-            gameObject.SetActive(false); // 적 오브젝트 끄기
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        // 플레이어와 충돌한 경우
+        if (collision.CompareTag("Player"))
+        {
+            Player playerScript = collision.GetComponent<Player>();
+            if (playerScript != null)
+            {
+                playerScript.TakeDamage((int)enemyDamage);
+                Debug.Log("남은 체력: " + playerScript.playerHealth);
+                Destroy(gameObject);
+            }
+            return; // 이후 코드를 실행하지 않음
         }
 
+        // 무기와 충돌한 경우
+        if (collision.CompareTag("Weapon"))
+        {
+            if (enemyHealth <= 0) {
+                Die(); // 첫번째 적은 되는데 왜 나머지는 안되는지 모르겠다
+            }
+        }
     }
+
 
         // 적이 얼어있을 때 호출되는 메서드
     public void FreezeForSeconds(float duration)
     {
         frozenTime = duration; // 얼려진 상태 시간 설정
     }
+
+    private void Die()
+    {
+        SpawnExperienceOrb();
+        Destroy(gameObject);
+    }
+
+    private void SpawnExperienceOrb()
+    {
+        if (experienceOrbPrefab != null)
+        {
+            Instantiate(experienceOrbPrefab, transform.position, Quaternion.identity);
+        }
+    }
+
+    public void IncreaseFrozenTime(float amount) // 얼리는 시간 증가 함수
+    {
+        frozenTime += amount;
+        Debug.Log("Frozen Time increased to: " + frozenTime);
+    }
+
 
 }
 

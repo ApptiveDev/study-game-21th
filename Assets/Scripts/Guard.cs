@@ -4,7 +4,7 @@ public class Guard : MonoBehaviour
 {
     public Transform player; // 캐릭터의 Transform
     public float distance = 2.0f; // 캐릭터와의 거리
-    public float speed = 50.0f; // 회전 속도
+    public float rotateSpeed = 50.0f; // 회전 속도
     public float guardDamage = 3f;
     public float pushForce = 5f;
 
@@ -16,7 +16,7 @@ public class Guard : MonoBehaviour
         if (player != null)
         {
             // 각도 증가
-            angle += speed * Time.deltaTime;
+            angle += rotateSpeed * Time.deltaTime;
 
             // 방패의 위치를 계산
             float x = Mathf.Cos(angle * Mathf.Deg2Rad) * distance;
@@ -45,6 +45,12 @@ public class Guard : MonoBehaviour
                 collision.gameObject.SetActive(false);
             }
         }
+    }
+
+    public void IncreaseSpeed(float amount) // 회전속도 증가시키는 함수
+    {
+        rotateSpeed += amount;
+        Debug.Log("Guard Speed increased to: " + rotateSpeed);
     }
 }
     

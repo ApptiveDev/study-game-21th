@@ -7,8 +7,8 @@ public class Arrow : MonoBehaviour
     GameObject target;
 
     Vector3 moveDir;
-    float moveSpeed = 3f;
-    float damage = 10f;
+    public float moveSpeed = 3f;
+    public float arrowDamage = 10f;
 
     private void Start() {
         Enemy foundEnemy = FindObjectOfType<Enemy>();
@@ -33,12 +33,18 @@ public class Arrow : MonoBehaviour
         Debug.Log("Hit!");
         Enemy enemy = collision.GetComponent<Enemy>(); // 적의 enemy 스크립트를 참조
         if (enemy != null && enemy.gameObject == target ) { // 
-            enemy.enemyHealth -= damage; // 충돌한 적의 체력을 데미지만큼 감소시키는 코드
+            enemy.enemyHealth -= arrowDamage; // 충돌한 적의 체력을 데미지만큼 감소시키는 코드
             if (enemy.enemyHealth <= 0) { // 적 체력이 0 이하인 경우
                 //collision.gameObject.SetActive(false); // 적 게임 오브젝트를 끔
                 gameObject.SetActive(false); // 본인 오브젝트도 끔
                 Destroy(collision.gameObject); // 적 게임 오브젝트를 지움
             }
         }
+    }
+
+    public void IncreaseDamage(float amount)
+    {
+        arrowDamage += amount;
+        Debug.Log("Arrow damage increased to: " + arrowDamage);
     }
 }
