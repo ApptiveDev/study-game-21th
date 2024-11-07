@@ -99,8 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 7387996073525038561}
+  experienceOrbPrefab: {fileID: 7902672657114721196, guid: 2148a7fbd8b63da4894d5419590c1fff, type: 3}
   moveSpeed: 1
-  maxEnemies: 5
+  enemyDamage: 10
+  enemyHealth: 10
 --- !u!58 &7172732314784959129
 CircleCollider2D:
   m_ObjectHideFlags: 0
