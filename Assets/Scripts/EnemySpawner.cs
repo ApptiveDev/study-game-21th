@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject enemy;
 
-    float spawnRate = 5f;
+    float spawnRate = 10f;
     int maxSpawnCount = 10;
 
     private int spawnCount = 0;

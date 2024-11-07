@@ -2,10 +2,10 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags:
-  - Wall
   - Enemy
+  - IgnoreWall
   layers:
   - Default
   - TransparentFX
@@ -15,7 +15,7 @@ TagManager:
   - UI
   - Wall
   - IgnoreWall
-  - 
+  - Obstacle
   - 
   - 
   - 
@@ -52,3 +52,5 @@ TagManager:
   - name: Layer 3
     uniqueID: 4189426099
     locked: 0
+  m_RenderingLayers:
+  - Default
