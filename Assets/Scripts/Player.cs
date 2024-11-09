@@ -1,21 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class Player : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    public Vector2 inputVec;
+    public float speed;
+    public Scanner scanner;
+    //public Hand[] hands;
 
-    [SerializeField] private float moveSpeed;
+    Rigidbody2D rigid;
+    SpriteRenderer spriter;
+    Animator anim;
 
-    private void Start()
+    void Awake()
     {
+        rigid = GetComponent<Rigidbody2D>();
+        spriter = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+        scanner = GetComponent<Scanner>();
+        //hands = GetComponent<Rigidbody2D>();
     }
     void Update()
     {
-        transform.position += Vector3.right * Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime;
-        transform.position += Vector3.up * Input.GetAxisRaw("Vertical") * moveSpeed * Time.deltaTime;
+        if(!GameManager.instance.isLive)
+            return;
 
+        inputVec.x = Input.GetAxisRaw("Horizontal");
+        inputVec.y = Input.GetAxisRaw("Vertical");
+    }
 
+    void FixedUpdate()
+    {
+        if(!GameManager.instance.isLive)
+            return;
+
+        Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;
+        rigid.MovePosition(rigid.position + nextVec);
+    }
+
+    void LateUpdate()
+    {
+        if(!GameManager.instance.isLive)
+            return;
+
+        anim.SetFloat("Speed", inputVec.magnitude); // ?
+    
+        if(inputVec.x != 0)
+        {
+            spriter.flipX = inputVec.x < 0; // 뒤집기!
+        }
     }
 }
+
