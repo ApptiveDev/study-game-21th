@@ -12,7 +12,7 @@ public class RangeEnemy : MonoBehaviour
     }
 
     private EnemyState state;
-    float ATTACK_RANGE = 10f;
+    float ATTACK_RANGE = 5f;
     float CHECK_DELAY = 1f;
     float moveSpeed = 2f;
     [SerializeField] GameObject bullet;

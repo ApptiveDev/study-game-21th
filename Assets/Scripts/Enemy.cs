@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
         if (collision.CompareTag("Weapon"))
         {
             if (enemyHealth <= 0) {
-                Die(); // 첫번째 적은 되는데 왜 나머지는 안되는지 모르겠다
+                Die(); 
             }
         }
     }
