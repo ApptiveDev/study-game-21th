@@ -11,19 +11,19 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             transform.position += Vector3.up * Time.deltaTime * speed;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += Vector3.right * Time.deltaTime * speed;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position += Vector3.left * Time.deltaTime * speed;
-        }
-        if (Input.GetKey(KeyCode.S))
+        } else if (Input.GetKey(KeyCode.S))
         {
             transform.position += Vector3.down * Time.deltaTime * speed;
         }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.position += Vector3.right * Time.deltaTime * speed;
+        } else if (Input.GetKey(KeyCode.A))
+        {
+            transform.position += Vector3.left * Time.deltaTime * speed;
+        }
+
     }
 
     void Update()
