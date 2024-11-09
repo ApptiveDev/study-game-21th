@@ -22,6 +22,6 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
-        Destroy(gameObject); // 적 오브젝트 삭제
+        Destroy(gameObject); 
     }
 }

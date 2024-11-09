@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
     void MakeRandomEnemy()
     {
         GameObject enemy = Instantiate(enemyPrefab, PickRandomPosition(), Quaternion.identity);
-        enemy.transform.SetParent(transform); // 생성된 적을 부모 오브젝트에 추가
+        enemy.transform.SetParent(transform); 
         enemy.GetComponent<SpriteRenderer>().color = PickRandomColor();
     }
 

@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    private Transform target; // 적 타겟
-    private float speed; // 화살 속도
-    public int damage = 10; // 데미지
+    private Transform target; 
+    private float speed; 
+    public int damage = 10; 
 
     public void SetTarget(Transform newTarget)
     {
@@ -20,15 +20,18 @@ public class Arrow : MonoBehaviour
     {
         if (target == null)
         {
-            Destroy(gameObject); // 타겟이 없으면 화살 삭제
+            Destroy(gameObject); 
             return;
         }
 
-        // 타겟 방향으로 이동
+       
         Vector3 direction = (target.position - transform.position).normalized;
         transform.position += direction * speed * Time.deltaTime;
 
-        // 적에게 매우 가까워지면 충돌 처리
+    
+        transform.LookAt(target);
+
+      
         if (Vector3.Distance(transform.position, target.position) < 0.2f)
         {
             HitTarget();
@@ -37,25 +40,25 @@ public class Arrow : MonoBehaviour
 
     void HitTarget()
     {
-        if (target != null) // 타겟이 null인지 확인
+        if (target != null) 
         {
             EnemyHealth enemyHealth = target.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
             {
-                enemyHealth.TakeDamage(damage); // 적의 체력 감소
+                enemyHealth.TakeDamage(damage); 
             }
         }
 
-        Destroy(gameObject); // 화살 삭제
+        Destroy(gameObject);
     }
 
     private void OnDestroy()
     {
-        // 화살이 파괴될 때 Spawner에게 알림
+       
         ArrowSpawner spawner = FindObjectOfType<ArrowSpawner>();
         if (spawner != null)
         {
-            spawner.currentArrow = null; // 화살이 파괴되면 Spawner가 새로운 화살을 생성할 수 있도록 null로 설정
+            spawner.currentArrow = null; 
         }
     }
 }
