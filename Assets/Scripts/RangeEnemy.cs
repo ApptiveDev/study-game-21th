@@ -12,12 +12,16 @@ public class RangeEnemy : MonoBehaviour
     }
 
     private EnemyState state;
-    float ATTACK_RANGE = 5f;
+    float ATTACK_RANGE = 4f;
     float CHECK_DELAY = 1f;
-    float moveSpeed = 2f;
+    float moveSpeed = 1.5f;
     [SerializeField] GameObject bullet;
     float spawnDelay = 2f;
     float currentDelay = 0f;
+    public float rangeEnemyHealth = 20f;
+    [SerializeField] private GameObject experienceOrbPrefab;
+    public float enemyDamage = 10; 
+    private float frozenTime = 0f;
 
     void Start()
     {
@@ -63,5 +67,47 @@ public class RangeEnemy : MonoBehaviour
         Act();
     }
 
-    
+        public void OnTriggerEnter2D(Collider2D collision)
+    {
+        // 플레이어와 충돌한 경우
+        if (collision.CompareTag("Player"))
+        {
+            Player playerScript = collision.GetComponent<Player>();
+            if (playerScript != null)
+            {
+                playerScript.TakeDamage((int)enemyDamage);
+                Debug.Log("남은 체력: " + playerScript.playerHealth);
+                Destroy(gameObject);
+            }
+            return;
+        }
+
+        // 무기와 충돌한 경우
+        if (collision.CompareTag("Weapon"))
+        {
+            if (rangeEnemyHealth <= 0) {
+                Die(); 
+            }
+        }
+    }
+
+        private void Die()
+    {
+        SpawnExperienceOrb();
+        Destroy(gameObject);
+    }
+
+        private void SpawnExperienceOrb()
+    {
+        if (experienceOrbPrefab != null)
+        {
+            Instantiate(experienceOrbPrefab, transform.position, Quaternion.identity);
+        }
+    }
+
+       public void FreezeForSeconds(float duration)
+    {
+        frozenTime = duration; 
+    }
+
 }

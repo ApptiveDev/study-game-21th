@@ -6,11 +6,11 @@ using UnityEngine.UIElements;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] float spawnDelay = 3f;
-    [SerializeField] int spawnAmount = 2;
+    [SerializeField] int spawnAmount; 
     [SerializeField] GameObject enemyObject;
     private void Start()
     {
-
+        spawnAmount = Random.Range(1,2);
     }
 
     float currentDelay = 0f;

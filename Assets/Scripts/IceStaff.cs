@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class IceStaff : MonoBehaviour
 {
@@ -11,15 +12,19 @@ public class IceStaff : MonoBehaviour
     float iceDamage = 2f; // 닿았을 때 줄 얼림 데미지
 
     private void Start() {
-        Enemy foundEnemy = FindObjectOfType<Enemy>();
-        if (foundEnemy != null) {
-            target = FindObjectOfType<Enemy>().gameObject;
-            moveDir = target.transform.position - transform.position; 
-            moveDir.Normalize(); 
-        } else {
-            Destroy(gameObject);
-        }
+        
+    List<GameObject> allEnemies = new List<GameObject>();
+    allEnemies.AddRange(FindObjectsOfType<Enemy>().Select(e => e.gameObject));
+    allEnemies.AddRange(FindObjectsOfType<RangeEnemy>().Select(re => re.gameObject));
+
+    if (allEnemies.Count > 0) {
+        target = allEnemies[Random.Range(0, allEnemies.Count)];
+        moveDir = target.transform.position - transform.position;
+        moveDir.Normalize(); 
+    } else {
+        Destroy(gameObject); 
     }
+}
 
     private void Update() {
         if (target == null) { 
@@ -31,12 +36,21 @@ public class IceStaff : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) { 
         Debug.Log("Ice Hit!");
-        Enemy enemy = collision.GetComponent<Enemy>(); 
-        if (enemy != null && enemy.gameObject == target ) { 
-            enemy.enemyHealth -= iceDamage; 
+        Enemy enemy = collision.GetComponent<Enemy>();
+        RangeEnemy rangeEnemy = collision.GetComponent<RangeEnemy>();
+
+        if (enemy != null && enemy.gameObject == target) {
+            enemy.enemyHealth -= iceDamage;
             enemy.FreezeForSeconds(1f); // 1초 동안 얼림
-                gameObject.SetActive(false); 
         }
-    }
+
+        if (rangeEnemy != null && rangeEnemy.gameObject == target) {
+            rangeEnemy.rangeEnemyHealth -= iceDamage;
+            rangeEnemy.FreezeForSeconds(1f); // 1초 동안 얼림
+        }
+        
+        gameObject.SetActive(false);
+        }
 
 }
+

@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4326489025186360947}
   - component: {fileID: 2753103166147867855}
+  - component: {fileID: 7406557848845885320}
+  - component: {fileID: 8942571937718709622}
   m_Layer: 0
   m_Name: RangeEnemy
   m_TagString: Untagged
@@ -84,3 +86,54 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &7406557848845885320
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7955268152107645438}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.032461047}
+  serializedVersion: 2
+  m_Radius: 0.46753895
+--- !u!114 &8942571937718709622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7955268152107645438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bb2e332d96de2542a06d6b40cb78127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 8228110057320531269, guid: f5c570e6ba0ff7541a8116a91b7a0372, type: 3}
+  rangeEnemyHealth: 20
+  experienceOrbPrefab: {fileID: 7902672657114721196, guid: 2148a7fbd8b63da4894d5419590c1fff, type: 3}
+  enemyDamage: 10

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Arrow : MonoBehaviour
 {
@@ -11,13 +12,18 @@ public class Arrow : MonoBehaviour
     public float arrowDamage = 10f;
 
     private void Start() {
-        Enemy foundEnemy = FindObjectOfType<Enemy>();
-        if (foundEnemy != null) {
-            target = FindObjectOfType<Enemy>().gameObject; // 타겟을 적의 오브젝트로 설정
-            moveDir = target.transform.position - transform.position; // 이동 방향 벡터를 계산
-            moveDir.Normalize(); // 이동 방향 벡터 정규화
+        // 적 종류가 많아지니까 리스트로 관리
+        List<GameObject> allEnemies = new List<GameObject>();
+        allEnemies.AddRange(FindObjectsOfType<Enemy>().Select(e => e.gameObject));
+        allEnemies.AddRange(FindObjectsOfType<RangeEnemy>().Select(re => re.gameObject));
+
+        // 무작위로 타겟 선택
+        if (allEnemies.Count > 0) {
+            target = allEnemies[Random.Range(0, allEnemies.Count)];
+            moveDir = target.transform.position - transform.position;
+            moveDir.Normalize(); 
         } else {
-            Destroy(gameObject);
+            Destroy(gameObject); 
         }
     }
 
@@ -30,15 +36,20 @@ public class Arrow : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) { // 충돌했을 때
-        Debug.Log("Hit!");
-        Enemy enemy = collision.GetComponent<Enemy>(); // 적의 enemy 스크립트를 참조
-        if (enemy != null && enemy.gameObject == target ) { // 
-            enemy.enemyHealth -= arrowDamage; // 충돌한 적의 체력을 데미지만큼 감소시키는 코드
-            if (enemy.enemyHealth <= 0) { // 적 체력이 0 이하인 경우
-                //collision.gameObject.SetActive(false); // 적 게임 오브젝트를 끔
-                gameObject.SetActive(false); // 본인 오브젝트도 끔
-                Destroy(collision.gameObject); // 적 게임 오브젝트를 지움
+        Enemy enemy = collision.GetComponent<Enemy>();
+        RangeEnemy rangeEnemy = collision.GetComponent<RangeEnemy>();
+        
+        if ((enemy != null || rangeEnemy != null) && collision.gameObject == target) {
+            // 적의 체력을 감소시킴
+            if (enemy != null) enemy.enemyHealth -= arrowDamage;
+            if (rangeEnemy != null) rangeEnemy.rangeEnemyHealth -= arrowDamage;
+            
+            if ((enemy != null && enemy.enemyHealth <= 0) || 
+                (rangeEnemy != null && rangeEnemy.rangeEnemyHealth <= 0)) {
+                Destroy(collision.gameObject); // 적 게임 오브젝트를 삭제
             }
+            
+            Destroy(gameObject); // 화살 오브젝트를 삭제
         }
     }
 
