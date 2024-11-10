@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 8597721506998994105}
   - component: {fileID: 6893948178776629020}
   - component: {fileID: 4156921099077590708}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 795450896674367604}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.8286848, y: 4.605438, z: 0}
+  m_LocalPosition: {x: -2.4364939, y: -0.8028574, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -185,6 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  health: 10
   target: {fileID: 0}
 --- !u!1 &2558179663191283658
 GameObject:
@@ -196,7 +197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3162540245519929198}
   - component: {fileID: 5936154733436908422}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

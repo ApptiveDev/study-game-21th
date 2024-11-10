@@ -9,15 +9,13 @@ public class Player : MonoBehaviour
     Animator animator;
     public float speed;
     public Vector2 inputVector;
-    public int weapon = -1;
-    public Bullet1 bullet1;
-    float spawnDelay = 0.5f;
-    float currentDelay = 0f;
+    public Scanner scanner;
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         renderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        scanner = GetComponent<Scanner>();
     }
 
     void Update()
@@ -30,7 +28,6 @@ public class Player : MonoBehaviour
     {
         Vector2 nextVector = inputVector.normalized * speed * Time.fixedDeltaTime;
         rigid.MovePosition(rigid.position + nextVector);
-        if (weapon > 0) attack();
     }
     private void LateUpdate()
     {
@@ -41,19 +38,4 @@ public class Player : MonoBehaviour
         }
     }
 
-    void attack()
-    {
-        if(weapon == 1)
-        {
-            currentDelay += Time.deltaTime;
-            if (currentDelay >= spawnDelay)
-            {
-                Instantiate(bullet1, transform.position, Quaternion.identity);
-                currentDelay = 0f;
-            }
-        } else if(weapon == 2)
-        {
-
-        }
-    }
 }

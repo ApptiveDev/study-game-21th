@@ -4,44 +4,19 @@ using UnityEngine;
 
 public class Bullet1 : MonoBehaviour
 {
+    // Start is called before the first frame update
+    public float damage;
+    public float per;
     Rigidbody2D rigid;
-    GameObject target;
-    Vector3 moveDir;
-    float moveSpeed = 3f;
-    float damage = 10f;
 
-    private void Start()
+    private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
-        Enemy enemy = FindObjectOfType<Enemy>();
-        if (enemy != null)
-        {
-            target = enemy.gameObject;
-            moveDir = target.transform.position - transform.position;
-            moveDir.Normalize();
-        }
-        rigid.velocity = moveDir * 10f;
-        transform.rotation = Quaternion.FromToRotation(Vector3.up, moveDir);
     }
-
-    private void Update()
+    public void Init(float damage, float per, Vector2 dir)
     {
-        if (target == null)
-        {
-            Destroy(gameObject);
-        }
-
-        transform.position += moveDir * moveSpeed * Time.deltaTime;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Enemy enemy = collision.GetComponent<Enemy>();
-        if (enemy.gameObject == target)
-        {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-        }
-
+        this.damage = damage;
+        this.per = per;
+        rigid.velocity = dir * 15f;
     }
 }
