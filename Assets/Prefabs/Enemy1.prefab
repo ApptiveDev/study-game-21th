@@ -184,3 +184,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  expPrefab: {fileID: 8659862705580753371, guid: 33e83d3cb885fd74c83edbd4d2cb1668, type: 3}

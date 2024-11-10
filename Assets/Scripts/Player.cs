@@ -6,7 +6,7 @@ using UnityEngine.XR;
 public class Player : MonoBehaviour
 {
     public Vector2 inputVec;
-    public float speed;
+    public float speed = 3f;
     public Scanner scanner;
     //public Hand[] hands;
 

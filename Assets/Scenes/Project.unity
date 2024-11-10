@@ -2177,7 +2177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputVec: {x: 0, y: 0}
-  speed: 0
+  speed: 1
   scanner: {fileID: 0}
 --- !u!114 &879286645
 MonoBehaviour:
@@ -4157,7 +4157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b6db5a5848f4240b4d55d526ef53e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLive: 0
+  isLive: 1
   gameTime: 0
   maxGameTime: 20
   health: 0

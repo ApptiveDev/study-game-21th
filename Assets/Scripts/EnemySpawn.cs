@@ -19,7 +19,7 @@ public class EnemySpawn : MonoBehaviour
     {
         while(GameManager.instance.isLive)
         {
-            Vector3 spawnPosition = player.position + (Vector3)(Random.insideUnitCircle * spawnRadius);
+            Vector3 spawnPosition = new Vector3(player.position.x + Random.Range(-spawnRadius, spawnRadius), player.position.y + Random.Range(-spawnRadius, spawnRadius), 0);
             Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
             yield return new WaitForSeconds(spawnInterval);
         }
