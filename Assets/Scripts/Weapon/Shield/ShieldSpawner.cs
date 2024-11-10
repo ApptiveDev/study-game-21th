@@ -1,46 +1,43 @@
 using UnityEngine;
 
-public class ArrowSpawner : MonoBehaviour
+public class ShieldSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject arrowPrefab;           
-    [SerializeField] private Transform playerTransform;      
-    [SerializeField] private Transform enemyContainer;          
-    [SerializeField] private float arrowSpeed = 10f;           
+    [SerializeField] private GameObject shieldPrefab;          
+    [SerializeField] private Transform playerTransform;        
+    [SerializeField] private Transform enemyContainer;        
+    [SerializeField] private float shieldSpeed = 10f;          
 
-    public GameObject currentArrow = null;             
-    private bool isSpawningAllowed = true;              
+    public GameObject currentShield = null;                  
+    private bool isSpawningAllowed = true;                   
 
     private void Update()
     {
+ 
         if (!IsEnemyAlive())
         {
             return;
         }
 
-        if (currentArrow == null && isSpawningAllowed)
+        if (currentShield == null && isSpawningAllowed)
         {
-            SpawnArrow();
+            SpawnShield();
         }
     }
 
-    void SpawnArrow()
+    void SpawnShield()
     {
         Transform target = FindClosestEnemy(); 
 
         if (target != null) 
         {
-       
-            if (arrowPrefab != null)
+            if (shieldPrefab != null)
             {
-                currentArrow = Instantiate(arrowPrefab, playerTransform.position, Quaternion.identity); 
-                Arrow arrowScript = currentArrow.GetComponent<Arrow>(); 
-                arrowScript.SetTarget(target); 
-                arrowScript.SetSpeed(arrowSpeed); 
+                currentShield = Instantiate(shieldPrefab, playerTransform.position, Quaternion.identity); 
+                Shield shieldScript = currentShield.GetComponent<Shield>(); 
+                shieldScript.SetTarget(target); 
+                shieldScript.SetSpeed(shieldSpeed); 
             }
-            else
-            {
-                Debug.LogError("Arrow Prefab is missing! Please assign it in the Inspector.");
-            }
+          
         }
     }
 
@@ -61,7 +58,7 @@ public class ArrowSpawner : MonoBehaviour
                 }
             }
         }
-        
+
         return closestEnemy;
     }
 
