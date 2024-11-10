@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject enemyPrefab;
-    float curTime = 0f;
-    float spawnPeriod = 1f;
-
+    private float curTime = 0f;
+    private float spawnPeriod = 1f;
     private void Start()
     {
 
