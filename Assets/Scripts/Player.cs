@@ -1,27 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-   float moveSpeed = 3;
+   public Vector2 inputVec;
+   public float moveSpeed;
+   public Scanner scanner; // 플레이어 스크립트에서 Scanner클래스 타입 변수 선언 및 초기화
 
-   private float hAxis;
-   private float vAxis;
-   
    bool isWall; // 플레이어 앞의 벽을 감지하기 위한 변수
    bool isIgnoreWall; // 벽을 통과하는 물체에 닿아있는지를 확인
    bool isObstacle; // 장애물이 있는지를 확인
 
    Vector3 moveVec;
 
+   void Awake()
+   {
+      scanner = GetComponent<Scanner>();
+   }
    void Update() // 매 프레임마다 동작을 한다. 컴퓨터나 동작하는 환경의 성능에 따라서 1초당 몇 프레임인지가 달라짐.
    {
       GetInput();
       Move();
    }
    
-   void FixedUpdate() 
+   void FixedUpdate() // 물리연산 프레임마다 호출되는 생명주기 함수
    {
       StopToWall();
       IgnoreWall();
@@ -30,13 +31,16 @@ public class Player : MonoBehaviour
 
    void GetInput()
    {
-      hAxis = Input.GetAxisRaw("Horizontal"); // GetAxisRaw() = Axis값을 정수로 반환하는 함수, Horizontal = left/ right, Unity의 Input Manager에서 수정가능
-      vAxis = Input.GetAxisRaw("Vertical"); // Vertical = up/ down
+      inputVec.x = Input.GetAxisRaw("Horizontal"); 
+      // input = 유니티에서 받는 모든 입력을 관리하는 클래스
+      // Unity의 Inpuy Manager에서 Horizontal로 저장되있는 키가 눌렸는지를 확인 
+      // GetAxis가 아닌 GetAxisRaw로 더욱 명확한 컨트롤 구현 가능
+      inputVec.y = Input.GetAxisRaw("Vertical");
    }
 
    void Move()
    {
-      moveVec = new Vector3(hAxis, vAxis, 0).normalized;
+      moveVec = new Vector3(inputVec.x, inputVec.y, 0).normalized;
 
       if (!isWall && !isObstacle)
          transform.position += moveVec * moveSpeed * Time.deltaTime;

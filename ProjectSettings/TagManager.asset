@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - IgnoreWall
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - UI
   - Wall
   - IgnoreWall
-  - Obstacle
+  - Enemy
   - 
   - 
   - 
