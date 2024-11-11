@@ -10,11 +10,9 @@ public class IceStaff : MonoBehaviour
     Vector3 moveDir;
     float moveSpeed = 4f;
     float iceDamage = 2f; // 닿았을 때 줄 얼림 데미지
-    public SoundManager.WeaponType weaponType = SoundManager.WeaponType.IceStaff; 
-    private SoundManager soundManager;
+    private AudioSource audioSource;
 
     private void Start() {
-    soundManager = FindObjectOfType<SoundManager>();    
     List<GameObject> allEnemies = new List<GameObject>();
     allEnemies.AddRange(FindObjectsOfType<Enemy>().Select(e => e.gameObject));
     allEnemies.AddRange(FindObjectsOfType<RangeEnemy>().Select(re => re.gameObject));
@@ -26,7 +24,7 @@ public class IceStaff : MonoBehaviour
     } else {
         Destroy(gameObject); 
     }
-
+    audioSource = GetComponent<AudioSource>();
 
 }
 
@@ -43,21 +41,25 @@ public class IceStaff : MonoBehaviour
         Enemy enemy = collision.GetComponent<Enemy>();
         RangeEnemy rangeEnemy = collision.GetComponent<RangeEnemy>();
 
-        if (soundManager != null) {
-            soundManager.PlayWeaponSound(weaponType);
-        }
-
+        
         if (enemy != null && enemy.gameObject == target) {
+            if (audioSource != null) {
+                audioSource.Play(); 
+            }
             enemy.enemyHealth -= iceDamage;
             enemy.FreezeForSeconds(1f); // 1초 동안 얼림
+            gameObject.SetActive(false);
         }
 
         if (rangeEnemy != null && rangeEnemy.gameObject == target) {
+            if (audioSource != null) {
+                audioSource.Play(); 
+            }
             rangeEnemy.rangeEnemyHealth -= iceDamage;
             rangeEnemy.FreezeForSeconds(1f); // 1초 동안 얼림
+            gameObject.SetActive(false);
         }
         
-        gameObject.SetActive(false);
         }
 
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Guard : MonoBehaviour
@@ -9,12 +10,11 @@ public class Guard : MonoBehaviour
     public float pushForce = 5f;
 
     private float angle; // 현재 각도
-    public SoundManager.WeaponType weaponType = SoundManager.WeaponType.Guard; 
-    private SoundManager soundManager;
-    private bool soundPlayed = false; // 소리 재생 여부를 추적하는 변수
+    
+    private AudioSource audioSource;
 
     private void Start() {
-        soundManager = FindObjectOfType<SoundManager>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -46,38 +46,41 @@ public class Guard : MonoBehaviour
 
     }
 
-    private void OnTriggerStay2D(Collider2D collision) { // OnTriggerStay2D는 트리거 내부에 오브젝트가 계속 머무르고 있는 동안 로직 반복
-        Enemy enemy = collision.GetComponent<Enemy>();
-        if (enemy != null) {
-            enemy.enemyHealth -= guardDamage * Time.deltaTime; // 적에게 데미지 주기
-        
-            Vector3 pushDirection = collision.transform.position - transform.position; // 적을 밀어내기
-            pushDirection.Normalize(); //pushDirection은 두 오브젝트 간의 방향을 나타내는 벡터, 충돌 시 밀어내는 방향 정의
-            collision.transform.position += pushDirection * pushForce * Time.deltaTime;
-
-        if (!soundPlayed && soundManager != null) { // 소리가 아직 재생되지 않았다면
-                soundManager.PlayWeaponSound(weaponType); // 소리 재생
-                soundPlayed = true; // 소리가 재생되었음을 추적
+    private void OnTriggerStay2D(Collider2D collision) {
+    Enemy enemy = collision.GetComponent<Enemy>();
+    RangeEnemy rangeEnemy = collision.GetComponent<RangeEnemy>();
+    ExperienceOrb experienceOrb = collision.GetComponent<ExperienceOrb>();
+    if (audioSource != null) {
+        audioSource.Play();
         }
 
-            if (enemy.enemyHealth <= 0) {
-                collision.gameObject.SetActive(false);
-            }
-        }
+    if (enemy != null) {
+        enemy.enemyHealth -= guardDamage * Time.deltaTime; // 근접 적에게 데미지 주기
     }
+
+    if (rangeEnemy != null) {
+        rangeEnemy.rangeEnemyHealth -= guardDamage * Time.deltaTime; // 원거리 적에게 데미지 주기
+    }
+
+    Vector3 pushDirection = collision.transform.position - transform.position;
+    pushDirection.Normalize();
+    collision.transform.position += pushDirection * pushForce * Time.deltaTime;
+
+    if (enemy != null && enemy.enemyHealth <= 0) {
+        collision.gameObject.SetActive(false);
+    }
+
+    if (rangeEnemy != null && rangeEnemy.rangeEnemyHealth <= 0) {
+        collision.gameObject.SetActive(false);
+    }
+
+}
 
     public void IncreaseSpeed(float amount) // 회전속도 증가시키는 함수
     {
         rotateSpeed += amount;
         Debug.Log("Guard Speed increased to: " + rotateSpeed);
     }
-
-    // 적이 트리거를 벗어나면 소리 재생 상태 리셋
-    private void OnTriggerExit2D(Collider2D collision) {
-        soundPlayed = false; // 적이 벗어나면 소리 재생 상태 리셋
-    }
-
-    
     
 }
     

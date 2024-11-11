@@ -9,12 +9,10 @@ public class Arrow : MonoBehaviour
 
     Vector3 moveDir;
     public float moveSpeed = 3f;
-    public float arrowDamage = 10f;
-    public SoundManager.WeaponType weaponType = SoundManager.WeaponType.Arrow; 
-    private SoundManager soundManager;
+    public float arrowDamage = 10f; 
+    private AudioSource audioSource;
 
     private void Start() {
-        soundManager = FindObjectOfType<SoundManager>();
         // 적 종류가 많아지니까 리스트로 관리
         List<GameObject> allEnemies = new List<GameObject>();
         allEnemies.AddRange(FindObjectsOfType<Enemy>().Select(e => e.gameObject));
@@ -29,8 +27,11 @@ public class Arrow : MonoBehaviour
             Destroy(gameObject); 
         }
 
-        soundManager = FindObjectOfType<SoundManager>();  // SoundManager 객체 찾기
-        PlayWeaponSound();
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource != null) {
+            audioSource.Play(); // 생성될 때 소리 재생
+        }
+
     }
 
     private void Update() {
@@ -65,9 +66,4 @@ public class Arrow : MonoBehaviour
         Debug.Log("Arrow damage increased to: " + arrowDamage);
     }
 
-    private void PlayWeaponSound() {
-        if (soundManager != null) {
-            soundManager.PlayWeaponSound(weaponType);  // 지정된 무기 소리 재생
-        }
-    }
 }
