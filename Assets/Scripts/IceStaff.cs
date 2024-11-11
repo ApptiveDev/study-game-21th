@@ -10,9 +10,11 @@ public class IceStaff : MonoBehaviour
     Vector3 moveDir;
     float moveSpeed = 4f;
     float iceDamage = 2f; // 닿았을 때 줄 얼림 데미지
+    public SoundManager.WeaponType weaponType = SoundManager.WeaponType.IceStaff; 
+    private SoundManager soundManager;
 
     private void Start() {
-        
+    soundManager = FindObjectOfType<SoundManager>();    
     List<GameObject> allEnemies = new List<GameObject>();
     allEnemies.AddRange(FindObjectsOfType<Enemy>().Select(e => e.gameObject));
     allEnemies.AddRange(FindObjectsOfType<RangeEnemy>().Select(re => re.gameObject));
@@ -24,6 +26,8 @@ public class IceStaff : MonoBehaviour
     } else {
         Destroy(gameObject); 
     }
+
+
 }
 
     private void Update() {
@@ -38,6 +42,10 @@ public class IceStaff : MonoBehaviour
         Debug.Log("Ice Hit!");
         Enemy enemy = collision.GetComponent<Enemy>();
         RangeEnemy rangeEnemy = collision.GetComponent<RangeEnemy>();
+
+        if (soundManager != null) {
+            soundManager.PlayWeaponSound(weaponType);
+        }
 
         if (enemy != null && enemy.gameObject == target) {
             enemy.enemyHealth -= iceDamage;

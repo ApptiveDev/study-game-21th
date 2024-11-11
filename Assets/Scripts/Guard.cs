@@ -9,6 +9,13 @@ public class Guard : MonoBehaviour
     public float pushForce = 5f;
 
     private float angle; // 현재 각도
+    public SoundManager.WeaponType weaponType = SoundManager.WeaponType.Guard; 
+    private SoundManager soundManager;
+    private bool soundPlayed = false; // 소리 재생 여부를 추적하는 변수
+
+    private void Start() {
+        soundManager = FindObjectOfType<SoundManager>();
+    }
 
     private void Update()
     {
@@ -30,6 +37,13 @@ public class Guard : MonoBehaviour
             float angleToPlayer = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f; // 방패가 바라볼 방향 계산
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleToPlayer)); // Quaternion.Euler로 오브젝트의 회전을 특정한 각도로 지정
         }
+
+        if (Player.Instance != null && Player.Instance.playerHealth <= 0)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
     }
 
     private void OnTriggerStay2D(Collider2D collision) { // OnTriggerStay2D는 트리거 내부에 오브젝트가 계속 머무르고 있는 동안 로직 반복
@@ -40,6 +54,11 @@ public class Guard : MonoBehaviour
             Vector3 pushDirection = collision.transform.position - transform.position; // 적을 밀어내기
             pushDirection.Normalize(); //pushDirection은 두 오브젝트 간의 방향을 나타내는 벡터, 충돌 시 밀어내는 방향 정의
             collision.transform.position += pushDirection * pushForce * Time.deltaTime;
+
+        if (!soundPlayed && soundManager != null) { // 소리가 아직 재생되지 않았다면
+                soundManager.PlayWeaponSound(weaponType); // 소리 재생
+                soundPlayed = true; // 소리가 재생되었음을 추적
+        }
 
             if (enemy.enemyHealth <= 0) {
                 collision.gameObject.SetActive(false);
@@ -52,6 +71,14 @@ public class Guard : MonoBehaviour
         rotateSpeed += amount;
         Debug.Log("Guard Speed increased to: " + rotateSpeed);
     }
+
+    // 적이 트리거를 벗어나면 소리 재생 상태 리셋
+    private void OnTriggerExit2D(Collider2D collision) {
+        soundPlayed = false; // 적이 벗어나면 소리 재생 상태 리셋
+    }
+
+    
+    
 }
     
 

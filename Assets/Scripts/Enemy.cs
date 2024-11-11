@@ -71,7 +71,7 @@ public class Enemy : MonoBehaviour
         frozenTime = duration; // 얼려진 상태 시간 설정
     }
 
-    public void Die()
+    private void Die()
     {
         SpawnExperienceOrb();
         Destroy(gameObject);
