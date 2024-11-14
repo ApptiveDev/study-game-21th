@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    const float MAX_HP = 30f;
+
     private float moveSpeed = 2;
+    private float hp = 30f;
     private int level = 1;
     private float currExp = 0f;
     private float totalExp = 100f;
 
     // property
+    public float Hp
+    {
+        get { return hp; }
+        set { hp = value; }
+    }
     public int Level
     {
         get { return level; }
@@ -72,8 +80,21 @@ public class Player : MonoBehaviour
     }
     void UpdateLevelAndExpCanvas()
     {
-        GameManager.Instance.UpdateLevelText(Level);
-        GameManager.Instance.UpdateExpSlider(CurrExp / TotalExp);
+        UIManager.Instance.UpdateLevelText(Level);
+        UIManager.Instance.UpdateExpSlider(CurrExp / TotalExp);
+    }
+
+    void CheckDie()
+    {
+        if (Hp > 0) return;
+
+        GameManager.Instance.GameOver();
+    }
+    public void BeAttacked(float damage)
+    {
+        this.hp -= damage;
+        UIManager.Instance.UpdateHpSlider(Hp / MAX_HP);
+        CheckDie(); 
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -81,6 +102,10 @@ public class Player : MonoBehaviour
         {
             CurrExp += 10;
             Destroy(collision.gameObject);
+        }
+        else if (collision.CompareTag("Enemy"))
+        {
+            BeAttacked(collision.gameObject.GetComponent<Enemy>().Damage);
         }
     }
 }

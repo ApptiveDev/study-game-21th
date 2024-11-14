@@ -4,37 +4,48 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] GameObject enemyPrefab;
-    private float curTime = 0f;
-    private float spawnPeriod = 1f;
+    private GameObject chasingEnemyPrefab;
+    private GameObject rangeEnemyPrefab;
+    private GameObject slimeBossPrefab;
+
+    private float chasingSpawnPeriod = 1f;
+    private float rangeSpawnPeriod = 1.5f;
+
     private void Start()
     {
+        chasingEnemyPrefab = GameManager.Instance.GetChasingEnemyPrefab();
+        rangeEnemyPrefab = GameManager.Instance.GetRangeEnemyPrefab();
+        slimeBossPrefab = GameManager.Instance.GetSlimeBossPrefab();
 
+        StartCoroutine(SpawnChasingEnemyPeriodically());
+        StartCoroutine(SpawnRangeEnemyPeriodically());
     }
 
-    private void Update()
+    IEnumerator SpawnChasingEnemyPeriodically()
     {
-        SpawnEnemyPeriodically();
-    }
-
-    void SpawnEnemyPeriodically()
-    {
-        curTime += Time.deltaTime;
-        if (curTime >= spawnPeriod)
+        while (true)
         {
-            MakeRandomEnemy();
-            curTime = 0;
+            yield return new WaitForSeconds(chasingSpawnPeriod);
+            MakeEnemy(chasingEnemyPrefab);
         }
     }
 
-    void MakeRandomEnemy()
+    IEnumerator SpawnRangeEnemyPeriodically()
     {
-        Instantiate(enemyPrefab);
-        enemyPrefab.transform.position = PickRandomPosition();
-        enemyPrefab.GetComponent<SpriteRenderer>().color = PickRandomColor();
+        while (true)
+        {
+            yield return new WaitForSeconds(rangeSpawnPeriod);
+            MakeEnemy(rangeEnemyPrefab);
+        }
+    }
+    private void MakeEnemy(GameObject enemyPrefab)
+    {
+        GameObject enemy = Instantiate(enemyPrefab);
+        enemy.transform.position = PickRandomPosition();
+        enemy.GetComponent<SpriteRenderer>().color = PickRandomColor();
     }
 
-    Vector3 PickRandomPosition() // 랜덤한 위치(벡터3)을 반환한다.
+    private Vector3 PickRandomPosition() // 랜덤한 위치(벡터3)을 반환한다.
     {
         float x = Random.Range(-3f, 3f);
         float y = Random.Range(-3f, 3f);
@@ -42,12 +53,17 @@ public class EnemySpawner : MonoBehaviour
         return new Vector3(x, y, 0);
     }
 
-    Color PickRandomColor() // 랜덤한 색깔을 반환한다.
+    private Color PickRandomColor() // 랜덤한 색깔을 반환한다.
     {
         float r = Random.Range(0, 1f);
         float g = Random.Range(0, 1f);
         float b = Random.Range(0, 1f);
 
         return new Color(r, g, b);
+    }
+
+    public void SpawnSlimeBoss()
+    {
+        MakeEnemy(slimeBossPrefab);
     }
 }
