@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BossEnemy : MonoBehaviour
 {
     private BossPattern nextPattern = BossPattern.None;
@@ -9,6 +10,9 @@ public class BossEnemy : MonoBehaviour
     public float rushSpeed = 5f;
     public float idleTime = 2f; // 대기 시간
     private float idleTimer; // 대기 시간 타이머 
+    public float bossHealth = 30f; // 보스 체력
+    public float rushDamage = 15f; // 돌진 데미지
+
     
     public enum BossPattern {
         None,
@@ -56,9 +60,19 @@ public class BossEnemy : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
+    private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("RangeEnemy"))
         {
+            return;
+        }
+        if (collision.CompareTag("Player"))
+        {
+            Player playerScript = collision.GetComponent<Player>();
+                        if (playerScript != null)
+            {
+                playerScript.TakeDamage((int)rushDamage);
+                Debug.Log("남은 체력: " + playerScript.playerHealth);
+            }
             return;
         }
     }

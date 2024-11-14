@@ -16,6 +16,7 @@ public class IceStaff : MonoBehaviour
     List<GameObject> allEnemies = new List<GameObject>();
     allEnemies.AddRange(FindObjectsOfType<Enemy>().Select(e => e.gameObject));
     allEnemies.AddRange(FindObjectsOfType<RangeEnemy>().Select(re => re.gameObject));
+    // 보스 추가 필요
 
     if (allEnemies.Count > 0) {
         target = allEnemies[Random.Range(0, allEnemies.Count)];
@@ -40,6 +41,7 @@ public class IceStaff : MonoBehaviour
         Debug.Log("Ice Hit!");
         Enemy enemy = collision.GetComponent<Enemy>();
         RangeEnemy rangeEnemy = collision.GetComponent<RangeEnemy>();
+        BossEnemy bossEnemy = collision.GetComponent<BossEnemy>();
 
         
         if (enemy != null && enemy.gameObject == target) {
@@ -60,6 +62,15 @@ public class IceStaff : MonoBehaviour
             gameObject.SetActive(false);
         }
         
+        if (bossEnemy != null && bossEnemy.gameObject == target) {
+            if (audioSource != null) {
+                audioSource.Play(); 
+            }
+            bossEnemy.bossHealth -= iceDamage;
+            enemy.FreezeForSeconds(1f); // 1초 동안 얼림
+            gameObject.SetActive(false);
+        }
+
         }
 
 }

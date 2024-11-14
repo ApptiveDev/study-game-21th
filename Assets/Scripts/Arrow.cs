@@ -45,14 +45,17 @@ public class Arrow : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) { // 충돌했을 때
         Enemy enemy = collision.GetComponent<Enemy>();
         RangeEnemy rangeEnemy = collision.GetComponent<RangeEnemy>();
+        BossEnemy bossEnemy = collision.GetComponent<BossEnemy>();
         
-        if ((enemy != null || rangeEnemy != null) && collision.gameObject == target) {
+        if ((enemy != null || rangeEnemy != null || bossEnemy != null) && collision.gameObject == target) {
             // 적의 체력을 감소시킴
             if (enemy != null) enemy.enemyHealth -= arrowDamage;
             if (rangeEnemy != null) rangeEnemy.rangeEnemyHealth -= arrowDamage;
+            if (bossEnemy != null) bossEnemy.bossHealth -= arrowDamage;
             
             if ((enemy != null && enemy.enemyHealth <= 0) || 
-                (rangeEnemy != null && rangeEnemy.rangeEnemyHealth <= 0)) {
+                (rangeEnemy != null && rangeEnemy.rangeEnemyHealth <= 0) ||
+                (bossEnemy != null && bossEnemy.bossHealth <= 0)) {
                 Destroy(collision.gameObject); // 적 게임 오브젝트를 삭제
             }
             

@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
     public int endLevel = 10; // 끝 레벨
     public int experienceCapIncrease = 50; // 레벨별 경험치 요구량 증가량
 
-    private int currentLevel;
+    public int currentLevel;
     private int currentExperience;
     private int experienceCap; // 현재 레벨에서의 경험치 최대값
     void Start()
