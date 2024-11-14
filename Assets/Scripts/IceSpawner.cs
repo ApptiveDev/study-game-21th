@@ -5,7 +5,7 @@ using UnityEngine;
 public class IceMaker : MonoBehaviour
 {   
     [SerializeField] GameObject iceObject;
-    float spawnDelay = 3f;
+    [SerializeField] float spawnDelay = 2.5f;
     float currentDelay = 0f;
 
     void Update()

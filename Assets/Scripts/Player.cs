@@ -2,9 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    private static Player _instance;
+
+    public static Player Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+    
+    protected virtual void Awake()
+    {
+        if (_instance == null)
+        {
+	        _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (_instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+    
     Transform playerTransform;
     public GameObject player;
     private float speed = 3;
@@ -34,8 +58,15 @@ public class Player : MonoBehaviour
         playerHealth -= enemyDamage;
         if (playerHealth <= 0) {
             Debug.Log("사망");
-            gameObject.SetActive(false); // 비활성화
+            gameObject.SetActive(false);
+            GameOver();
         }
+    }
+
+    private void GameOver() 
+    {
+        Time.timeScale = 0f;
+        SceneManager.LoadScene("GameOver");
     }
 }
 

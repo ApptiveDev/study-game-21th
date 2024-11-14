@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Weapon
   - Guard
+  - EnemyWeapon
+  - RangeEnemy
   layers:
   - Default
   - TransparentFX
