@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7228976313133818104}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.831237, y: 15.491309, z: 0}
+  m_LocalPosition: {x: 6.57495, y: -8.538931, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067a3c91e41f32847ab810d2aff5089d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Exp: {fileID: 869533093724755440, guid: 5c355c3602f34dc4d98cade33faac3ed, type: 3}
+  Bullet: {fileID: 1716320025647819843, guid: be48575deba92454ea47b06f0003d91d, type: 3}
 --- !u!70 &7229044340651344374
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

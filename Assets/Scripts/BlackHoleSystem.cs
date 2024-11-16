@@ -31,7 +31,7 @@ public class BlackHoleSystem : MonoBehaviour
     {
         curTimeBlackHole += Time.deltaTime;
 
-        if (curTimeBlackHole <= 1)
+        if (curTimeBlackHole <= 0.5f)
         {
             transform.position += direction * Speed * Time.deltaTime;
         }

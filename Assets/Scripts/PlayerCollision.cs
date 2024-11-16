@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCollision : MonoBehaviour
 {
-
+    [SerializeField] TMP_Text hpText;
+    int PlayerHP = 100;
     void Start()
     {
-        
+        UpdateHp();
     }
 
-    int PlayerHP = 3;
     void Update()
     {
-        Debug.Log("Player HP : " + PlayerHP);
         if (PlayerHP <= 0) Destroy(gameObject);
     }
 
@@ -25,5 +26,11 @@ public class PlayerCollision : MonoBehaviour
     void TakeDamage (int damage)
     {
         PlayerHP -= damage;
+        UpdateHp();
+    }
+
+    void UpdateHp()
+    {
+        hpText.text = "HP : " + PlayerHP.ToString();
     }
 }

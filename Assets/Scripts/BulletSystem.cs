@@ -8,11 +8,6 @@ public class BulletSystem : MonoBehaviour
     Vector3 direction;
     float Speed = 15f;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         BulletMove();

@@ -6,8 +6,10 @@ public class SpawnEnemy : MonoBehaviour
 {
     [SerializeField] GameObject EnemyMob;
     [SerializeField] GameObject EnemyBoss;
+    [SerializeField] GameObject RealBoss;
     float curTimeMob = 0;
     float curTimeBoss = 0;
+    float curTimeRealBoss = 0;
     GameObject player;
     void Start()
     {
@@ -17,18 +19,22 @@ public class SpawnEnemy : MonoBehaviour
             Instantiate(EnemyMob);
             EnemyMob.transform.position = RandomPosition();
         }
+
+        StartCoroutine(SpawnRealBoss());
     }
 
     void Update()
     {
         curTimeMob += Time.deltaTime;
         curTimeBoss += Time.deltaTime;
-        if (curTimeMob >= 2)
+        curTimeRealBoss += Time.deltaTime;
+
+        if (curTimeMob >= 1)
         {
             SpawnMob();
             curTimeMob = 0;
         }
-        if (curTimeBoss >= 6) 
+        if (curTimeBoss >= 4) 
         {
             SpawnBoss();
             curTimeBoss = 0;
@@ -44,6 +50,16 @@ public class SpawnEnemy : MonoBehaviour
     {
         Instantiate(EnemyBoss);
         EnemyBoss.transform.position = RandomPosition();
+    }
+  
+    public IEnumerator SpawnRealBoss()
+    {
+        while(curTimeRealBoss <= 40)
+        {
+            yield return new WaitForSeconds(40);
+            Instantiate(RealBoss);
+            RealBoss.transform.position = RandomPosition();
+        }
     }
     Vector3 RandomPosition()
     {

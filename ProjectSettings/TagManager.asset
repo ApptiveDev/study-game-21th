@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - Weapon
   - Stop
+  - LastingWeapon
+  - smallExp
+  - largeExp
   layers:
   - Default
   - TransparentFX

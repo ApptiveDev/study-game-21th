@@ -3,12 +3,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     float speed = 6f;
     float BoundaryX = 19.5f;
     float BoundaryY = 19.5f;
