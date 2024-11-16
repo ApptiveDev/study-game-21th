@@ -1,14 +1,11 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    float speed = 4f;
+    float speed = 6f;
+    float BoundaryX = 19.5f;
+    float BoundaryY = 19.5f;
     void Update()
     {
         transform.position += Vector3.right * Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
@@ -28,5 +25,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetAxisRaw("Vertical") == 1) transform.rotation = Quaternion.Euler(0, 0, 0);
         else if (Input.GetAxisRaw("Vertical") == -1) transform.rotation = Quaternion.Euler(0, 0, 180);
+
+        if (transform.position.x >= BoundaryX || transform.position.x <= -BoundaryX) transform.position += Vector3.right * Input.GetAxisRaw("Horizontal") * -speed * Time.deltaTime;
+        if (transform.position.y >= BoundaryY || transform.position.y <= -BoundaryY) transform.position += Vector3.up * Input.GetAxisRaw("Vertical") * -speed * Time.deltaTime;
     }
 }
