@@ -776,6 +776,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: RangeEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8942571937718709622, guid: 1802bfea0430d3347b654707982283ff, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

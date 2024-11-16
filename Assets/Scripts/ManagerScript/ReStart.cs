@@ -5,18 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class ReStart : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void onClickRestart()
     {
+        Time.timeScale = 1f;
+        Player.Instance.gameObject.SetActive(true); // 초기화 필요할듯
         SceneManager.LoadScene("앱티브스터디");
     }
 }

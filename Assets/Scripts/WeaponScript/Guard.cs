@@ -64,7 +64,7 @@ public class Guard : MonoBehaviour
     }
 
      if (bossEnemy != null) {
-        bossEnemy.bossHealth -= guardDamage * Time.deltaTime; // 원거리 적에게 데미지 주기
+        bossEnemy.bossHealth -= guardDamage * Time.deltaTime; // 보스에게 데미지 주기
     }
 
     Vector3 pushDirection = collision.transform.position - transform.position;
