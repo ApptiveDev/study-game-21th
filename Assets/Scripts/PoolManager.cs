@@ -34,10 +34,10 @@ public class PoolManager : MonoBehaviour
         // .. 못찾았으면? = 풀의 모든 게임오브젝트가 게임에 배치됨
         if (select == null) { // 미리 선언한 변수가 계속 비어있으면 생성로직으로 진입
             // .. 새롭게 생성하고 select 변수에 할당
-              select = Instantiate(prefabs[index], transform); 
-              // Instantiate = 원본 오브젝트를 복제하여 장면에 생성하는 함수
-              // 생성한 오브젝트를 깔끔하게 정리하기위해 select안에 넣겠다
-              pools[index].Add(select); // 생성된 오브젝트는 해당 오브젝트 풀 리스트에 Add함수로 추가
+            select = Instantiate(prefabs[index], transform); 
+            // Instantiate = 원본 오브젝트를 복제하여 장면에 생성하는 함수
+            // 생성한 오브젝트를 깔끔하게 정리하기위해 select안에 넣겠다
+            pools[index].Add(select); // 생성된 오브젝트는 해당 오브젝트 풀 리스트에 Add함수로 추가
         }    
             
 

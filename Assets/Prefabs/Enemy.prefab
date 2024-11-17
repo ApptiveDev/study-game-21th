@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8879905229884280880}
   - component: {fileID: 1095559856694508372}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,8 +99,9 @@ GameObject:
   - component: {fileID: 6063780631677129125}
   - component: {fileID: 9013339093183292209}
   - component: {fileID: -7213481401416243801}
+  - component: {fileID: 6831985921687844683}
   - component: {fileID: 193015507677568029}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -252,6 +253,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &6831985921687844683
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314494650970650706}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 07eef847afa7ed7449b23ab683f8bdf9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &193015507677568029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,8 +290,6 @@ MonoBehaviour:
   speed: 0
   health: 0
   maxHealth: 0
-  animCon:
-  - {fileID: 0}
   target: {fileID: 0}
 --- !u!1 &3492686026012414912
 GameObject:
@@ -280,7 +301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7775078555657746965}
   - component: {fileID: 7398060512397168912}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

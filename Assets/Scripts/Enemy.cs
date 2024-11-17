@@ -8,13 +8,13 @@ public class Enemy : MonoBehaviour
     public float speed;
     public float health;
     public float maxHealth;
-    public RuntimeAnimatorController[] animCon; // 몬스터의 애니매이션을 받을 변수
     public Rigidbody2D target;
 
     bool isLive; // 살아있는지를 확인
 
     Rigidbody2D rigid; // 위치이동을 위해 rigid 변수 생성
     Collider2D coll; // 죽었을때 비활성화 되도록 하기 위한 Collider2D 변수
+    Animator anim; // 받은 애니매이션들을 저장할 변수
     SpriteRenderer spriter; // 
     WaitForFixedUpdate wait;
 
@@ -23,12 +23,17 @@ public class Enemy : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
+        anim = GetComponent<Animator>();
         spriter = GetComponent<SpriteRenderer>();
         wait = new WaitForFixedUpdate();
     }
 
     void Update()
     {
+        if (!GameManager.instance.isLive) {
+            return; // isLive가 false이면(시간이 멈추면) 동작하지 못하도록 조건 추가
+        }
+
         if (!isLive) // 살아있지 않다면 아래의 코드를 실행하지 않는다
             return;
 
@@ -47,12 +52,13 @@ public class Enemy : MonoBehaviour
         isLive = true; // 처음 생성될때는 살아있도록 설정
         coll.enabled = true; // 컴포넌트의 비활성화는 .enabled = false
         rigid.simulated = true; // 리지드바디의 물리적 비활성화는 .simulated = false
+        spriter.sortingOrder = 3; // 스프라이트 렌더러의 Sorting Order 감소
+        anim.SetBool("Dead", false);
         health = maxHealth; // 처음 생성될때는 최대체력으로 생성되도록 해야한다   
     }
     
     public void Init(SpawnData data) // 레벨링에 따른 몬스터 상태 변경
     {
-        // anim.runtimeAnimatorController = animCon[data.spriteType]; // 매개변수의 속성을 몬스터 속성변경에 활용하기
         speed = Random.Range(data.speed, data.speed * 2f);
         maxHealth = data.health;
         health = data.health;
@@ -74,8 +80,9 @@ public class Enemy : MonoBehaviour
             isLive = false; // 여러로직을 제어하는 isLive변수를 false로 변경
             coll.enabled = false; // 컴포넌트의 비활성화는 .enabled = false
             rigid.simulated = false; // 리지드바디의 물리적 비활성화는 .simulated = false
-            spriter.sortingOrder = 1; // 스프라이트 렌더러의 Sorting Order 감소
-            Dead();
+            spriter.sortingOrder = 2; // 스프라이트 렌더러의 Sorting Order 감소
+            anim.SetBool("Dead", true); // SetBool 함수를 통해 죽는 애니메이션 상태로 전환
+            // Dead()를 여기서 실행시키지 않고 유니티내의 애니메이션에서 실행되도록 한다
 
             GameManager.instance.kill++; // 몬스터 사망시 킬수 증가와 함께 경험치 함수 호출
             GameManager.instance.GetExp();

@@ -16,6 +16,10 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.instance.isLive) {
+            return; // isLive가 false이면(시간이 멈추면) 동작하지 못하도록 조건 추가
+        }
+
         timer += Time.deltaTime;
         level = Mathf.Min(Mathf.FloorToInt(GameManager.instance.gameTime / 10f), spawnData.Length - 1); // 적절한 숫자로 나누에 시간에 맞춰 레벨이 올라가도록 작성
         // FloorToInt = 소수점 아래는 버리고 int형으로 바꾸는 함수 
