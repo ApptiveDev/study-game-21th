@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
         this.per = per;
 
         if (per > -1) { // 관통이 -1 (무한)보다 큰것에 대해서는 속도 적용
-            rigid.linearVelocity = dir * 15f; // velocity = 속도, 속력을 곱해주어 총알이 날아가는 속도 증가시키기
+            rigid.velocity = dir * 15f; // velocity = 속도, 속력을 곱해주어 총알이 날아가는 속도 증가시키기
         }
     }
 
@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
         per--;
 
         if (per == -1) { // 관통 값이 하나씩 줄어들면서 -1이 되면 비활성화
-            rigid.linearVelocity = Vector2.zero; // 나중에 재사용할것이므로 비활성화 이전에 미리 물리속도를 초기화한다
+            rigid.velocity = Vector2.zero; // 나중에 재사용할것이므로 비활성화 이전에 미리 물리속도를 초기화한다
             gameObject.SetActive(false); // 총알도 오브젝트 풀링으로 관리되고 있기 때문에 Destroy를 사용하면 안된다
 
         }    

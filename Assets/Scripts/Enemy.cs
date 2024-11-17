@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public float speed;
     public float health;
     public float maxHealth;
+     public RuntimeAnimatorController[] animCon; // 몬스터의 애니매이션을 받을 변수
     public Rigidbody2D target;
 
     bool isLive; // 살아있는지를 확인
@@ -34,7 +35,7 @@ public class Enemy : MonoBehaviour
             return; // isLive가 false이면(시간이 멈추면) 동작하지 못하도록 조건 추가
         }
 
-        if (!isLive) // 살아있지 않다면 아래의 코드를 실행하지 않는다
+        if (!isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit")) // 살아있지 않다면 아래의 코드를 실행하지 않는다
             return;
 
         if (target != null) // 플레이어가 존재하는지 확인
@@ -59,6 +60,7 @@ public class Enemy : MonoBehaviour
     
     public void Init(SpawnData data) // 레벨링에 따른 몬스터 상태 변경
     {
+        anim.runtimeAnimatorController = animCon[data.spriteType]; // 매개변수의 속성을 몬스터 속성변경에 활용하기
         speed = Random.Range(data.speed, data.speed * 2f);
         maxHealth = data.health;
         health = data.health;
@@ -73,7 +75,8 @@ public class Enemy : MonoBehaviour
         
         if (health > 0) {
             // .. Live, Hit Action
-            StartCoroutine(KnockBack()); // StartCoroutine == 코루틴을 실행하는 키워드, StartCoroutine("KnockBack") 도 가능           
+            StartCoroutine(KnockBack()); // StartCoroutine == 코루틴을 실행하는 키워드, StartCoroutine("KnockBack") 도 가능   
+            anim.SetTrigger("Hit"); // 몬스터 애니메이터의 피격 상태는 Hit Trigger로 제어되고있음        
         }
         else {
             // .. Die, Die이후 OnEnable 함수에서 되돌려줘야한다(재활용사용)

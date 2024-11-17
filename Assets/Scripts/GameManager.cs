@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     
     [Header("# Game Control")] // Header = 인스펙터의 속성들을 이쁘게 구분시켜주는 타이틀
     public float gameTime; // 게임시간
-    public float maxGametime = 2 * 60f; // 최대게임시간
+    public float maxGametime = 2 * 10f; // 최대게임시간
     
     [Header("# Player Info")]
     public bool isLive; // 시간 정지 여부를 알려주는 bool 변수 선언
