@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    public enum InforType { Exp, Level }
+    public enum InforType { Exp, Level, Health }
     public InforType type;
 
     Text myText;
@@ -28,6 +28,11 @@ public class HUD : MonoBehaviour
                 break;
             case InforType.Level:
                 myText.text = string.Format("Lv.{0:F0}", GameManager.instance.level);
+                break;
+            case InforType.Health:
+                float curHp = GameManager.instance.curHp;
+                float maxHp = GameManager.instance.maxHp;
+                mySlider.value = curHp / maxHp;
                 break;
             default:
                 break;

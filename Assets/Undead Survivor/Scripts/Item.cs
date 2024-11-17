@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public void OnClick(int itemId)
+    public int itemId;
+
+    public void LevelUpItem()
     {
+        GameManager.instance.weaponManager0.LevelUp(itemId);
     }
 }

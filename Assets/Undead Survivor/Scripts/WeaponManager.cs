@@ -58,13 +58,13 @@ public class WeaponManager : MonoBehaviour
                 break;
         }
     }
-    public void LevelUp(string s)
+    public void LevelUp(int item)
     {
-        switch(s)
+        switch (item)
         {
-            case "1":
-                count += 1;
-                PutWeapon();
+            case 1:
+                count++;
+                Init();
                 break;
             default:
                 break;
@@ -108,5 +108,6 @@ public class WeaponManager : MonoBehaviour
         bullet.position = transform.position;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         bullet.GetComponent<Bullet>().Init(damage, count, dir);
+        GetComponent<AudioSource>().Play();
     }
 }

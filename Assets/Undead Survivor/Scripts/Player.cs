@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    SpriteRenderer renderer;
+    SpriteRenderer render;
     Rigidbody2D rigid;
     Animator animator;
     public float speed;
@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
-        renderer = GetComponent<SpriteRenderer>();
+        render = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         scanner = GetComponent<Scanner>();
     }
@@ -34,7 +34,18 @@ public class Player : MonoBehaviour
         animator.SetFloat("Speed", inputVector.magnitude);
         if(inputVector.x != 0)
         {
-            renderer.flipX = inputVector.x < 0;
+            render.flipX = inputVector.x < 0;
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        GameManager.instance.curHp -= Time.deltaTime * 20;
+
+        if(GameManager.instance.curHp < 0)
+        {
+            animator.SetTrigger("Dead");
+            GameManager.instance.GameOver();
         }
     }
 
