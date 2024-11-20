@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class EnemyAi : MonoBehaviour
 {
-    [SerializeField] private Transform player;
-    [SerializeField] private float moveSpeed; 
+    private Transform player;
+    [SerializeField] private float moveSpeed;
+
+    private void Start()
+    {
+        player = GameObject.Find("Player").transform;
+    }
 
     void Update()
     {
