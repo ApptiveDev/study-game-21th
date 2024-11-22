@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer spriter;
     Animator anim;
+    Transform position;
 
     void Awake()
     {
@@ -52,5 +53,21 @@ public class Player : MonoBehaviour
             spriter.flipX = inputVec.x < 0; // 뒤집기!
         }
     }
-}
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!GameManager.instance.isLive)
+            return;
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            GameManager.instance.health -= 10f;
+
+            if (GameManager.instance.health <= 0)
+            {
+                GameManager.instance.health = 0;
+                GameManager.instance.GameOver();
+            }
+        }
+    }
+}

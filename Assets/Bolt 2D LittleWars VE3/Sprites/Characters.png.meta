@@ -1,0 +1,1890 @@
+fileFormatVersion: 2
+guid: 4d701fb8bab94204e92af20e3e7b6a8a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3154150011874791226
+    second: BS Idle
+  - first:
+      213: -3387478527075654864
+    second: BS Attack
+  - first:
+      213: 4837840602407752856
+    second: BS Hit Red
+  - first:
+      213: -7808734593389313954
+    second: BS Hit
+  - first:
+      213: -5877259873991932285
+    second: BS Die
+  - first:
+      213: 8759150981705163766
+    second: RS Idle
+  - first:
+      213: -8816038613044792324
+    second: RS Attack
+  - first:
+      213: 8319982639285221730
+    second: RS Hit Red
+  - first:
+      213: 9132216423428076053
+    second: RS Hit
+  - first:
+      213: -6145295764767102903
+    second: RS Die
+  - first:
+      213: 4749904528282777558
+    second: BA Idle
+  - first:
+      213: 9018646923762226945
+    second: BA Attack
+  - first:
+      213: 8777974672713614842
+    second: BA Hit Red
+  - first:
+      213: 5835498782827802035
+    second: BA Hit
+  - first:
+      213: -1539689639676168921
+    second: BA Die
+  - first:
+      213: 7110494968479972978
+    second: RA Idle
+  - first:
+      213: 5026972546934958715
+    second: RA Attack
+  - first:
+      213: -6978555727864421618
+    second: RA Hit Red
+  - first:
+      213: 8439226999888801368
+    second: RA Hit
+  - first:
+      213: 842016502522805355
+    second: RA Die
+  - first:
+      213: -5908743213997753785
+    second: BG Idle
+  - first:
+      213: 2473687490876715158
+    second: BG Attack
+  - first:
+      213: -598267159285503414
+    second: BG Hit Red
+  - first:
+      213: 2222463801079782474
+    second: BG Hit
+  - first:
+      213: 8678331415430427435
+    second: BG Die
+  - first:
+      213: 6196606555088352618
+    second: RG Idle
+  - first:
+      213: 5136357203674067128
+    second: RG Attack
+  - first:
+      213: 3751373364110516562
+    second: RG Hit Red
+  - first:
+      213: -6025379319900620545
+    second: RG Hit
+  - first:
+      213: -6220024457818614411
+    second: RG Die
+  - first:
+      213: 3805063247507766641
+    second: BW Idle
+  - first:
+      213: 163955602261942339
+    second: BW Attack
+  - first:
+      213: -4667628145153450467
+    second: RW Idle
+  - first:
+      213: -4068256151103285213
+    second: RW Attack
+  - first:
+      213: -8364913047766280116
+    second: BSU Idle
+  - first:
+      213: 7893245450136125235
+    second: BSU Attack
+  - first:
+      213: 7339906270656204948
+    second: BSU Hit Red
+  - first:
+      213: 631651796801477924
+    second: BSU Hit
+  - first:
+      213: 5145048823938965306
+    second: BSU Die
+  - first:
+      213: -5325714947843674390
+    second: RSU Idle
+  - first:
+      213: -1620700546512529360
+    second: RSU Attack
+  - first:
+      213: -504634504403816024
+    second: RSU Hit Red
+  - first:
+      213: 6053436177387001487
+    second: RSU Hit
+  - first:
+      213: 973039004434376389
+    second: RSU Die
+  - first:
+      213: -3875180428987827631
+    second: BAU Idle
+  - first:
+      213: -3813782614545376446
+    second: BAU Attack
+  - first:
+      213: -5256083238790965588
+    second: BAU Hit Red
+  - first:
+      213: 3690784489133827997
+    second: BAU Hit
+  - first:
+      213: -2559619762054003050
+    second: BAU Die
+  - first:
+      213: 2055389008599032140
+    second: RAU Idle
+  - first:
+      213: -4587385282965195550
+    second: RAU Attack
+  - first:
+      213: 75332205279178075
+    second: RAU Hit Red
+  - first:
+      213: 4934799652423699161
+    second: RAU Hit
+  - first:
+      213: -1213746384843948844
+    second: RAU Die
+  - first:
+      213: 661860490801623818
+    second: BGU Idle
+  - first:
+      213: 207178968290740852
+    second: BGU Attack
+  - first:
+      213: -8110590899558308026
+    second: BGU Hit Red
+  - first:
+      213: -6180721501070938765
+    second: BGU Hit
+  - first:
+      213: -797345288293334197
+    second: BGU Die
+  - first:
+      213: -3385372371976808063
+    second: RGU Idle
+  - first:
+      213: 8338569888481040020
+    second: RGU Attack
+  - first:
+      213: -8176412890931608422
+    second: RGU Hit Red
+  - first:
+      213: 2334716070153093768
+    second: RGU Hit
+  - first:
+      213: 5699590749204039412
+    second: RGU Die
+  - first:
+      213: 1145669499519311739
+    second: BWU Idle
+  - first:
+      213: 1814896009074319080
+    second: BWU Attack
+  - first:
+      213: -5937618121108508431
+    second: BAA
+  - first:
+      213: 1552125296048368602
+    second: RWU Idle
+  - first:
+      213: -3296969412554215656
+    second: RWU Attack
+  - first:
+      213: 7476128397175872570
+    second: RAA
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 20
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BS Idle
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 147
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c0b8ed86453a34d0800000000000000
+      internalID: -3154150011874791226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BS Attack
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 147
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 033646d2a324df0d0800000000000000
+      internalID: -3387478527075654864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BS Hit Red
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 147
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 894d97a5566732340800000000000000
+      internalID: 4837840602407752856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BS Hit
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 147
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e50c9bf724dc1a390800000000000000
+      internalID: -7808734593389313954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BS Die
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 147
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 386cd0e9847cf6ea0800000000000000
+      internalID: -5877259873991932285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RS Idle
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 147
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f3ec8ee861ce8970800000000000000
+      internalID: 8759150981705163766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RS Attack
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 147
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf3765f379327a580800000000000000
+      internalID: -8816038613044792324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RS Hit Red
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 147
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26933081124867370800000000000000
+      internalID: 8319982639285221730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RS Hit
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 147
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5123b6ad3762cbe70800000000000000
+      internalID: 9132216423428076053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RS Die
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 147
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9482855af0687baa0800000000000000
+      internalID: -6145295764767102903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BA Idle
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 126
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d7705d900d0be140800000000000000
+      internalID: 4749904528282777558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BA Attack
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 126
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1075485289ba82d70800000000000000
+      internalID: 9018646923762226945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BA Hit Red
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 126
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af588760571a1d970800000000000000
+      internalID: 8777974672713614842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BA Hit
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 126
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bdeca5a93bdbf050800000000000000
+      internalID: 5835498782827802035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BA Die
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 126
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 725b0ca2e6ce1aae0800000000000000
+      internalID: -1539689639676168921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RA Idle
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 126
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27e7375308d8da260800000000000000
+      internalID: 7110494968479972978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RA Attack
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 126
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7ae2bbb5e463c540800000000000000
+      internalID: 5026972546934958715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RA Hit Red
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 126
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e03af5b1a80372f90800000000000000
+      internalID: -6978555727864421618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RA Hit
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 126
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85ee1435e382e1570800000000000000
+      internalID: 8439226999888801368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RA Die
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 126
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6c73ef3c817fab00800000000000000
+      internalID: 842016502522805355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG Idle
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 105
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74af9ac4a5deffda0800000000000000
+      internalID: -5908743213997753785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG Attack
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 105
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 690b803baad445220800000000000000
+      internalID: 2473687490876715158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG Hit Red
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 105
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4a610a303782b7f0800000000000000
+      internalID: -598267159285503414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG Hit
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 105
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4c568d4d07c7de10800000000000000
+      internalID: 2222463801079782474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG Die
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 105
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b23f7db4170af6870800000000000000
+      internalID: 8678331415430427435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG Idle
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 105
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a65f5e0b4d4cef550800000000000000
+      internalID: 6196606555088352618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG Attack
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 105
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b0f284c9a1084740800000000000000
+      internalID: 5136357203674067128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG Hit Red
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 105
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2516ba3f23e8f0430800000000000000
+      internalID: 3751373364110516562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG Hit
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 105
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff8b650be6d816ca0800000000000000
+      internalID: -6025379319900620545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG Die
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 105
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 575da71f5b80ea9a0800000000000000
+      internalID: -6220024457818614411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BW Idle
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 84
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17d389f0ddc4ec430800000000000000
+      internalID: 3805063247507766641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BW Attack
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 84
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34022c760cc764200800000000000000
+      internalID: 163955602261942339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RW Idle
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 84
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1e5380aee0493fb0800000000000000
+      internalID: -4667628145153450467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RW Attack
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 84
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 328d03ac596aa87c0800000000000000
+      internalID: -4068256151103285213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BSU Idle
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 63
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c485cdaf6ebd9eb80800000000000000
+      internalID: -8364913047766280116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BSU Attack
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 63
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33ff45caae07a8d60800000000000000
+      internalID: 7893245450136125235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BSU Hit Red
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 63
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 490102b5dd59cd560800000000000000
+      internalID: 7339906270656204948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BSU Hit
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 63
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42dd61a66f314c800800000000000000
+      internalID: 631651796801477924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BSU Die
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 63
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3f5cee45a2e66740800000000000000
+      internalID: 5145048823938965306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RSU Idle
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 63
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aee2ac6c8724716b0800000000000000
+      internalID: -5325714947843674390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RSU Attack
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 63
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 038d6d5907d1289e0800000000000000
+      internalID: -1620700546512529360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RSU Hit Red
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 63
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a1fa97879d2ff8f0800000000000000
+      internalID: -504634504403816024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RSU Hit
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 63
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8696af7120220450800000000000000
+      internalID: 6053436177387001487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RSU Die
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 63
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c629e3b1dde08d00800000000000000
+      internalID: 973039004434376389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BAU Idle
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 42
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15a72a17ee7983ac0800000000000000
+      internalID: -3875180428987827631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BAU Attack
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 42
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24b56791be8b21bc0800000000000000
+      internalID: -3813782614545376446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BAU Hit Red
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 42
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca6daf96424ae07b0800000000000000
+      internalID: -5256083238790965588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BAU Hit
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 42
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d97e75130fc483330800000000000000
+      internalID: 3690784489133827997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BAU Die
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 42
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69683ba43676a7cd0800000000000000
+      internalID: -2559619762054003050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RAU Idle
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 42
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c41a9c4d965368c10800000000000000
+      internalID: 2055389008599032140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RAU Attack
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 42
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e43101e3655650c0800000000000000
+      internalID: -4587385282965195550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RAU Hit Red
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 42
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5defc7dd32ab0100800000000000000
+      internalID: 75332205279178075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RAU Hit
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 42
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9da8f60632eeb7440800000000000000
+      internalID: 4934799652423699161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RAU Die
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 42
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dc36fbf718e72fe0800000000000000
+      internalID: -1213746384843948844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BGU Idle
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 21
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a03b8151c966f2900800000000000000
+      internalID: 661860490801623818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BGU Attack
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 21
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47ac6e98c2c00e200800000000000000
+      internalID: 207178968290740852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BGU Hit Red
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 21
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 647af417c84617f80800000000000000
+      internalID: -8110590899558308026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BGU Hit
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 21
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37d2c09aa8aa93aa0800000000000000
+      internalID: -6180721501070938765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BGU Die
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 21
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b43c1ff4fa24fe4f0800000000000000
+      internalID: -797345288293334197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RGU Idle
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 21
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18996ef93cdb401d0800000000000000
+      internalID: -3385372371976808063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RGU Attack
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 21
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4965ea9422d88b370800000000000000
+      internalID: 8338569888481040020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RGU Hit Red
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 21
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a94c813dbcb878e80800000000000000
+      internalID: -8176412890931608422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RGU Hit
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 21
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8820fdc55e3966020800000000000000
+      internalID: 2334716070153093768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RGU Die
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 21
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f6c863b693091f40800000000000000
+      internalID: 5699590749204039412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BWU Idle
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7f19dcf65c36ef00800000000000000
+      internalID: 1145669499519311739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BWU Attack
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 0
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ee1625fd4ecf2910800000000000000
+      internalID: 1814896009074319080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BAA
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 0
+        width: 16
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f0b76717c7599da0800000000000000
+      internalID: -5937618121108508431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RWU Idle
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 0
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adb6cd5bbb14a8510800000000000000
+      internalID: 1552125296048368602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RWU Attack
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 0
+        width: 30
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81fa06199cfce32d0800000000000000
+      internalID: -3296969412554215656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RAA
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 0
+        width: 16
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3cd0e0ca2b80c760800000000000000
+      internalID: 7476128397175872570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      BA Attack: 9018646923762226945
+      BA Die: -1539689639676168921
+      BA Hit: 5835498782827802035
+      BA Hit Red: 8777974672713614842
+      BA Idle: 4749904528282777558
+      BAA: -5937618121108508431
+      BAU Attack: -3813782614545376446
+      BAU Die: -2559619762054003050
+      BAU Hit: 3690784489133827997
+      BAU Hit Red: -5256083238790965588
+      BAU Idle: -3875180428987827631
+      BG Attack: 2473687490876715158
+      BG Die: 8678331415430427435
+      BG Hit: 2222463801079782474
+      BG Hit Red: -598267159285503414
+      BG Idle: -5908743213997753785
+      BGU Attack: 207178968290740852
+      BGU Die: -797345288293334197
+      BGU Hit: -6180721501070938765
+      BGU Hit Red: -8110590899558308026
+      BGU Idle: 661860490801623818
+      BS Attack: -3387478527075654864
+      BS Die: -5877259873991932285
+      BS Hit: -7808734593389313954
+      BS Hit Red: 4837840602407752856
+      BS Idle: -3154150011874791226
+      BSU Attack: 7893245450136125235
+      BSU Die: 5145048823938965306
+      BSU Hit: 631651796801477924
+      BSU Hit Red: 7339906270656204948
+      BSU Idle: -8364913047766280116
+      BW Attack: 163955602261942339
+      BW Idle: 3805063247507766641
+      BWU Attack: 1814896009074319080
+      BWU Idle: 1145669499519311739
+      RA Attack: 5026972546934958715
+      RA Die: 842016502522805355
+      RA Hit: 8439226999888801368
+      RA Hit Red: -6978555727864421618
+      RA Idle: 7110494968479972978
+      RAA: 7476128397175872570
+      RAU Attack: -4587385282965195550
+      RAU Die: -1213746384843948844
+      RAU Hit: 4934799652423699161
+      RAU Hit Red: 75332205279178075
+      RAU Idle: 2055389008599032140
+      RG Attack: 5136357203674067128
+      RG Die: -6220024457818614411
+      RG Hit: -6025379319900620545
+      RG Hit Red: 3751373364110516562
+      RG Idle: 6196606555088352618
+      RGU Attack: 8338569888481040020
+      RGU Die: 5699590749204039412
+      RGU Hit: 2334716070153093768
+      RGU Hit Red: -8176412890931608422
+      RGU Idle: -3385372371976808063
+      RS Attack: -8816038613044792324
+      RS Die: -6145295764767102903
+      RS Hit: 9132216423428076053
+      RS Hit Red: 8319982639285221730
+      RS Idle: 8759150981705163766
+      RSU Attack: -1620700546512529360
+      RSU Die: 973039004434376389
+      RSU Hit: 6053436177387001487
+      RSU Hit Red: -504634504403816024
+      RSU Idle: -5325714947843674390
+      RW Attack: -4068256151103285213
+      RW Idle: -4667628145153450467
+      RWU Attack: -3296969412554215656
+      RWU Idle: 1552125296048368602
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

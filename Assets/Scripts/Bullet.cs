@@ -1,41 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float damage;
-    public int per;
-
-    Rigidbody2D rigid;
-
-    void Awake()
+    
+    public float speed = 3f;
+    public float damage = 1f;
+    public Vector3 dir;
+    GameObject target;
+    void Start()
     {
-        rigid = GetComponent<Rigidbody2D>();
+       
     }
 
-    public void Init(float damage, int per, Vector3 dir)
+    void Update()
     {
-        this.damage = damage;
-        this.per = per; // 흑흑 관통.. 벽돌은 1로 구현할거
-
-        if (per > -1)
+        if(dir != Vector3.zero)
         {
-            rigid.velocity = dir * 15f;;
+            transform.position += dir * speed * Time.deltaTime;
         }
+    }
+
+    public void SetDirection(Vector3 direction)
+    {
+        dir = direction;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!collision.CompareTag("Enemy") || per == -1)
-            return;
-
-        per--;
-
-        if(per == -1)
+        if(collision.CompareTag("Enemy"))
         {
-            rigid.velocity = Vector2.zero;
-            gameObject.SetActive(false); // 풀링은 destroy 사용 x..
+            EnemyBase enemy = collision.GetComponent<EnemyBase>();
+            if(enemy != null)
+            {
+                enemy.health -= damage;
+                if(enemy.health <= 0)
+                {
+                    Destroy(collision.gameObject);
+                }
+                Destroy(gameObject);
+            }
         }
     }
+
 }

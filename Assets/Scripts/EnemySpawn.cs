@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public GameObject meleeEnemyPrefab;
+    public GameObject rangerEnemyPrefab;
     public float spawnInterval = 3f;
     public float spawnRadius = 10f;
     
+    [Range(0f, 1f)] public float rangerSpawnChance = 0.3f;
     private Transform player;
     void Start()
     {
@@ -20,7 +22,10 @@ public class EnemySpawn : MonoBehaviour
         while(GameManager.instance.isLive)
         {
             Vector3 spawnPosition = new Vector3(player.position.x + Random.Range(-spawnRadius, spawnRadius), player.position.y + Random.Range(-spawnRadius, spawnRadius), 0);
+            
+            GameObject enemyPrefab = Random.value > 0.5f ? meleeEnemyPrefab : rangerEnemyPrefab;
             Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            
             yield return new WaitForSeconds(spawnInterval);
         }
     }

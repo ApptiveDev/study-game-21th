@@ -16,7 +16,7 @@ public class Scanner : MonoBehaviour
         nearestTarget = GetNearest();    
     }
 
-    Transform GetNearest()
+    public Transform GetNearest()
     {
         Transform result = null;
         float diff = 100;

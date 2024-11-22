@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "study-game-21th.sln"
+    "dotnet.defaultSolution": "study-game-21th.sln",
+    
 }

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b56cf03bc8105f4a8aaf21263b568b3, type: 3}
+  m_Name: Readme
+  m_EditorClassIdentifier: 
+  icon: {fileID: 2800000, guid: 90028b86610f4534fbf16fbfb8209762, type: 3}
+  title: Bolt Casual Defense LittleWars
+  sections:
+  - heading: 캐주얼 디펜스 게임 (Casual Defense Game)
+    text: '재화를 효율적으로 사용해서 유닛을 생산하고 적을 막아내는 장르입니다.'
+    linkText: 
+    url: 	
+  - heading: 
+    text: '골드메탈 기초 강좌 VE3 진행에 필요한 에셋 팩으로 스프라이트, 애니메이션, 파티클, 사운드와 오픈폰트를 포함하고 있습니다.'
+    linkText: VE3 강좌 재생목록
+    url: https://www.youtube.com/playlist?list=PLO-mt5Iu5TebYBC5jE3u5LyP2D7np0jJf
+  - heading: 
+    text: '골드메탈 출저만 표기하는 전제 하에 자유롭게 사용 가능합니다. (상용 가능)'
+    linkText: 골드메탈 스튜디오
+    url: https://www.goldmetal.co.kr
+  - heading: 
+    text: 'Copyright ⓒ 2021 Goldmetal'
+    linkText:
+    url:
+  loadedLayout: 1

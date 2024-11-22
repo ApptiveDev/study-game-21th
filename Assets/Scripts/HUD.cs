@@ -36,6 +36,10 @@ public class HUD : MonoBehaviour
                 break;    
 
             case InfoType.Time:
+
+                if(!GameManager.instance.isLive)
+                    return;
+                    
                 float remainTime = GameManager.instance.maxGameTime - GameManager.instance.gameTime;
                 int min = Mathf.FloorToInt(remainTime / 60);
                 int sec = Mathf.FloorToInt(remainTime % 60);
