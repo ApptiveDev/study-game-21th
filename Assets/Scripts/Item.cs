@@ -7,7 +7,6 @@ public class Item : MonoBehaviour
 {
     public ItemData data;
     public int level;
-    public Weapon weapon;
 
     Image icon;
     Text textLevel;
@@ -31,38 +30,29 @@ public class Item : MonoBehaviour
         textLevel.text = "Lv." + (level + 1);
 
         switch(data.itemType){
-            case ItemData.ItemType.Melee:
-            case ItemData.ItemType.Range:
-                textDesc.text = string.Format(data.itemDesc, data.damages[level] * 100, data.counts[level]);
-                break;
-            case ItemData.ItemType.Glove:
-            case ItemData.ItemType.Shoe:
-                textDesc.text = string.Format(data.itemDesc, data.damages[level] * 100);
-                break;
-            default:
+            case ItemData.ItemType.Pet:
                 textDesc.text = string.Format(data.itemDesc);
                 break;
+            case ItemData.ItemType.Equipment:
+                textDesc.text = string.Format(data.itemDesc, data.damages[level] * 100);
+                break;
+            case ItemData.ItemType.Etc:
+                textDesc.text = string.Format(data.itemDesc);
+                break;
+            default:
+                break;
         }
-       
     }
-    void LateUpdate()
-    {
-        
-    }
-
+  
     public void OnClick()
     {
         switch(data.itemType)
         {
-            case ItemData.ItemType.Melee:
+            case ItemData.ItemType.Pet:
                 break;
-            case ItemData.ItemType.Range:
+            case ItemData.ItemType.Equipment:
                 break;
-            case ItemData.ItemType.Glove:
-                break;
-            case ItemData.ItemType.Shoe:
-                break;
-            case ItemData.ItemType.Heal:
+            case ItemData.ItemType.Etc:
                 break;
         }
 
