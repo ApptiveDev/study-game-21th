@@ -5,10 +5,6 @@ using UnityEngine;
 public class BlackHole2System : MonoBehaviour
 {
     float curTimeBlackHole2;
-    void Start()
-    {
-        
-    }
 
     void Update()
     {

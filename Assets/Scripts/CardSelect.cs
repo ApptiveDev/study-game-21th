@@ -10,12 +10,17 @@ public class CardSelect : MonoBehaviour
     [SerializeField] GameObject cardPanel;
     [SerializeField] GameObject cardPrefab;
     [SerializeField] GameObject BlackHole;
-    [SerializeField] GameObject StopGas;
+    [SerializeField] GameObject Gas1;
+    [SerializeField] GameObject Gas2;
 
     GameObject player;
+    float timeBlackHole = 5f;
+    float timeGas = 6f;
     public bool isSelecting = false;
+    public bool isbigBlackHole = false;
+    bool isStopgas = false;
 
-    private List<string> cardPool = new List<string> { "Bullet", "BlackHole", "StopGas" };
+    private List<string> cardPool = new List<string> {"Bullet Speed", "BlackHole", "Gas"};
     private List<GameObject> displayedCards = new List<GameObject>();
 
     void Start()
@@ -60,7 +65,7 @@ public class CardSelect : MonoBehaviour
             card.GetComponentInChildren<TMP_Text>().text = selectedCards[i];
 
             RectTransform rectTransform = card.GetComponent<RectTransform>();
-            rectTransform.anchoredPosition = new Vector2(-300 + 300 * i, 0);
+            rectTransform.anchoredPosition = new Vector2(-250 + 250 * i, 0);
 
             string cardName = selectedCards[i];
             card.GetComponent<Button>().onClick.AddListener(() =>
@@ -76,18 +81,41 @@ public class CardSelect : MonoBehaviour
     {
         SpawnWeapon spawnWeapon = player.GetComponent<SpawnWeapon>();
 
-        if (cardName == "Bullet")
+        if (cardName == "Bullet Speed")
         {
-            if (spawnWeapon.BulletDelay == 0.5f) spawnWeapon.BulletDelay = 0.25f;
-            else if (spawnWeapon.BulletDelay == 0.25f) spawnWeapon.BulletDelay = 0.1f;
+            if (spawnWeapon.BulletDelay == 0.5f)
+            {
+                spawnWeapon.BulletDelay = 0.35f;
+                cardPool.Insert(0, "Bullet Speed");
+            }
+            else if (spawnWeapon.BulletDelay == 0.35f) spawnWeapon.BulletDelay = 0.2f;
         }
         else if (cardName == "BlackHole")
         {
-            StartCoroutine(SpawnBlackHole());
+                StartCoroutine(SpawnBlackHole());
+                cardPool.Insert(0, "BlackHole Scale");
+                cardPool.Insert(0, "BlackHole Speed");
         }
-        else if (cardName == "StopGas")
+
+        else if (cardName == "BlackHole Scale")
         {
-            StartCoroutine(SpawnStopGas());
+            isbigBlackHole = true;
+        }
+
+        else if (cardName == "BlackHole Speed")
+        {
+            timeBlackHole = 3f;
+        }
+
+        else if (cardName == "Gas")
+        {
+            StartCoroutine(SpawnGas());
+            cardPool.Insert(0, "Gas Speed");
+        }
+
+        else if (cardName == "Gas Speed")
+        {
+            timeGas = 4f;
         }
 
         Time.timeScale = 1f;
@@ -99,7 +127,7 @@ public class CardSelect : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(timeBlackHole);
             GameObject blackholeInstance = Instantiate(BlackHole);
             blackholeInstance.transform.position = player.transform.position;
 
@@ -108,13 +136,16 @@ public class CardSelect : MonoBehaviour
         }
     }
 
-    public IEnumerator SpawnStopGas()
+
+    public IEnumerator SpawnGas()
     {
         while (true)
         {
-            yield return new WaitForSeconds(10f);
-            GameObject stopgasInstance = Instantiate(StopGas);
-            stopgasInstance.transform.position = player.transform.position;
+            yield return new WaitForSeconds(timeGas);
+            GameObject gas1Instance = Instantiate(Gas1);
+            GameObject gas2Instance = Instantiate(Gas2);
+            gas1Instance.transform.position = player.transform.position;
+            gas2Instance.transform.position = player.transform.position;
         }
     }
 }

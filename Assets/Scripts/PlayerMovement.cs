@@ -6,6 +6,18 @@ public class PlayerMovement : MonoBehaviour
     float speed = 6f;
     float BoundaryX = 19.5f;
     float BoundaryY = 19.5f;
+    int speedLevel;
+
+    private void Awake()
+    {
+        speedLevel = StoreSystem.Instance.speedLevel;
+    }
+
+    private void Start()
+    {
+        speed += speedLevel * 0.5f;
+    }
+
     void Update()
     {
         transform.position += Vector3.right * Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;

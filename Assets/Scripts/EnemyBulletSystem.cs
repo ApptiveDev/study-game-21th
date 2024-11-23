@@ -7,6 +7,12 @@ public class EnemyBulletSystem : MonoBehaviour
 {
     Vector3 direction;
     float Speed = 10f;
+    GameObject player;
+
+    private void Start()
+    {
+        player = GameObject.Find("Player");
+    }
 
     void Update()
     {
@@ -25,6 +31,11 @@ public class EnemyBulletSystem : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player")) Destroy(gameObject);
+        if (collision.gameObject.CompareTag("Player")) 
+        {
+            PlayerCollision playerCollision = player.GetComponent<PlayerCollision>();
+            playerCollision.TakeDamage(1);
+            Destroy(gameObject);
+        }
     }
 }

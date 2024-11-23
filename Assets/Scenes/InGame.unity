@@ -286,7 +286,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 15
   m_TargetDisplay: 0
 --- !u!224 &293389733
 RectTransform:
@@ -345,8 +345,10 @@ MonoBehaviour:
   cardPanel: {fileID: 1197315906}
   cardPrefab: {fileID: 3187188410771785506, guid: 06aa4edbe38563d45aca0bed927b8fad, type: 3}
   BlackHole: {fileID: 7048783330713642786, guid: faa85efd68d6cab459cf97603ff4e320, type: 3}
-  StopGas: {fileID: 2735267409953051131, guid: ea762cd68902d0d46af4f20611e010a0, type: 3}
+  Gas1: {fileID: 1207312586706034830, guid: 5a600d481944bb143b0d88aa2179c06b, type: 3}
+  Gas2: {fileID: 9090865375881649014, guid: 28e856d136b14fe43a69f0334404730e, type: 3}
   isSelecting: 0
+  isbigBlackHole: 0
 --- !u!4 &411488633
 Transform:
   m_ObjectHideFlags: 0
@@ -1516,6 +1518,10 @@ PrefabInstance:
       propertyPath: Bullet
       value: 
       objectReference: {fileID: 253875558539645377, guid: a3495f6ad325bd5429e570cac58248a2, type: 3}
+    - target: {fileID: 2460285437542080366, guid: d20fcfd340d57794c86277423c0db6a6, type: 3}
+      propertyPath: m_SortingOrder
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4366904815607754439, guid: d20fcfd340d57794c86277423c0db6a6, type: 3}
       propertyPath: m_IsTrigger
       value: 1

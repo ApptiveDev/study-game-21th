@@ -7,13 +7,16 @@ using UnityEngine.UIElements;
 public class BlackHoleSystem : MonoBehaviour
 {
     [SerializeField] GameObject BlackHole2;
+    [SerializeField] GameObject bigBlackHole2;
     GameObject player;
+    GameObject cardSystem;
     Vector3 direction;
     float curTimeBlackHole;
     float Speed = 10f;
     void Start()
     {
         player = GameObject.Find("Player");
+        cardSystem = GameObject.Find("CardSystem");
     }
 
  
@@ -29,16 +32,23 @@ public class BlackHoleSystem : MonoBehaviour
 
     void BlackHoleMove()
     {
+        CardSelect cardSelect = cardSystem.GetComponent<CardSelect>();
         curTimeBlackHole += Time.deltaTime;
 
         if (curTimeBlackHole <= 0.5f)
         {
             transform.position += direction * Speed * Time.deltaTime;
         }
-        else
+        else if (cardSelect.isbigBlackHole == false)
         {
             GameObject blackhole2Instance = Instantiate(BlackHole2);
             blackhole2Instance.transform.position = BlackHolePosition();
+            Destroy(gameObject);
+        }
+        else if (cardSelect.isbigBlackHole == true)
+        {
+            GameObject bigblackhole2Instance = Instantiate(bigBlackHole2);
+            bigblackhole2Instance.transform.position = BlackHolePosition();
             Destroy(gameObject);
         }
     }

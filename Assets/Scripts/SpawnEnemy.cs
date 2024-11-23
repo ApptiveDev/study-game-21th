@@ -54,9 +54,9 @@ public class SpawnEnemy : MonoBehaviour
   
     public IEnumerator SpawnRealBoss()
     {
-        while(curTimeRealBoss <= 40)
+        while(curTimeRealBoss <= 60)
         {
-            yield return new WaitForSeconds(40);
+            yield return new WaitForSeconds(60);
             Instantiate(RealBoss);
             RealBoss.transform.position = RandomPosition();
         }

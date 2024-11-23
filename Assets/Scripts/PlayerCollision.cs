@@ -7,9 +7,17 @@ using UnityEngine.UI;
 public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] TMP_Text hpText;
-    int PlayerHP = 100;
+    public int PlayerHP = 100;
+    int hpLevel;
+
+    private void Awake()
+    {
+        hpLevel = StoreSystem.Instance.hpLevel;
+    }
+
     void Start()
     {
+        PlayerHP += hpLevel * 5;
         UpdateHp();
     }
 
@@ -23,7 +31,7 @@ public class PlayerCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy")) TakeDamage(1);
     }
 
-    void TakeDamage (int damage)
+    public void TakeDamage (int damage)
     {
         PlayerHP -= damage;
         UpdateHp();

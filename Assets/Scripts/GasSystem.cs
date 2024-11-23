@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StopGasSystem : MonoBehaviour
+public class GasSystem : MonoBehaviour
 {
     float curTimeStopGas;
     void Update()
