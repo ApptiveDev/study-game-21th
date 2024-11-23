@@ -27,10 +27,16 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        instance = this;
-        Time.timeScale = 0;
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
-
     public void GameStart()
     {
         health = maxHealth; // 시작할 때 현재 체력 초기화
@@ -56,8 +62,6 @@ public class GameManager : MonoBehaviour
     public void GameRetry()
     {
         SceneManager.LoadScene(0);
-
-
     }
     void Update()
     {

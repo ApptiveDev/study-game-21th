@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Scripting.APIUpdating;
 using UnityEngine.XR;
 
 public class Player : MonoBehaviour
 {
-    public Vector2 inputVec;
-    public float speed = 3f;
+    public float moveSpeed = 3f;
+    private Vector2 moveDirection = Vector2.zero;
+    private float x = 0f;
+    private float y = 0f;
     public Scanner scanner;
     //public Hand[] hands;
 
@@ -23,34 +28,28 @@ public class Player : MonoBehaviour
         scanner = GetComponent<Scanner>();
         //hands = GetComponent<Rigidbody2D>();
     }
-    void Update()
-    {
-        if(!GameManager.instance.isLive)
-            return;
-
-        inputVec.x = Input.GetAxisRaw("Horizontal");
-        inputVec.y = Input.GetAxisRaw("Vertical");
-    }
-
     void FixedUpdate()
     {
         if(!GameManager.instance.isLive)
             return;
 
-        Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;
-        rigid.MovePosition(rigid.position + nextVec);
-    }
+        x = Input.GetAxisRaw("Horizontal");
+        y = Input.GetAxisRaw("Vertical");
 
+        moveDirection = new Vector2(x, y);
+
+        rigid.position += moveDirection * moveSpeed * Time.deltaTime;
+    
+        
+    }
     void LateUpdate()
     {
         if(!GameManager.instance.isLive)
             return;
-
-        anim.SetFloat("Speed", inputVec.magnitude); // ?
     
-        if(inputVec.x != 0)
+        if(x != 0)
         {
-            spriter.flipX = inputVec.x < 0; // 뒤집기!
+            spriter.flipX = x < 0; // 뒤집기!
         }
     }
 
@@ -58,6 +57,15 @@ public class Player : MonoBehaviour
     {
         if (!GameManager.instance.isLive)
             return;
+
+        // string tag = collision.collider.tag;
+
+        if (collision.collider.CompareTag("Coin"))
+        {
+            GameDataManager.AddCoins(1);
+
+            Destroy(collision.gameObject);
+        }
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
