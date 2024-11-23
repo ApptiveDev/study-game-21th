@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.WSA;
 
 public class GameManager : MonoBehaviour
 {
@@ -35,10 +36,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // 코인 추가 메서드
     public void AddCoins(int amount)
     {
         totalCoins += amount;
         Debug.Log("코인 추가: " + amount + ", 총 코인: " + totalCoins);
+    }
+
+    public bool SpendCoins(int amount)
+    {
+        if (totalCoins >= amount)
+        {
+            totalCoins -= amount;
+            Debug.Log("코인 사용: " + amount + ", 남은 코인: " + totalCoins);
+            return true;
+        }
+        Debug.Log("코인이 부족합니다.");
+        return false;
     }
 }

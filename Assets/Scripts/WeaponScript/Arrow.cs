@@ -17,6 +17,7 @@ public class Arrow : MonoBehaviour
         List<GameObject> allEnemies = new List<GameObject>();
         allEnemies.AddRange(FindObjectsOfType<Enemy>().Select(e => e.gameObject));
         allEnemies.AddRange(FindObjectsOfType<RangeEnemy>().Select(re => re.gameObject));
+        //allEnemies.AddRange(FindAnyObjectByType<BossEnemy>().Select(be => be.gameObject));
 
         // 무작위로 타겟 선택
         if (allEnemies.Count > 0) {

@@ -32,7 +32,8 @@ public class Player : MonoBehaviour
     Transform playerTransform;
     public GameObject player;
     private float speed = 3;
-    public float playerHealth = 100f; // 플레이어 체력 변수
+    public float playerInitialHealth = 100f; // 플레이어 체력 변수
+    public float playerHealth;
     void Start()
     {
         playerTransform = GetComponent<Transform>();
@@ -65,8 +66,21 @@ public class Player : MonoBehaviour
 
     private void GameOver() 
     {
+        gameObject.SetActive(false);
         Time.timeScale = 0f;
         SceneManager.LoadScene("GameOver");
+    }
+
+    public void IncreaseHealth(float amount)
+    {
+        playerInitialHealth += 2f;
+        Debug.Log("플레이어 체력 업그레이드: " + playerInitialHealth);
+    }
+
+    public void StartNewGame()
+    {
+        playerHealth = playerInitialHealth;
+        Debug.Log("게임 시작, 시작 체력: " + playerInitialHealth);
     }
 }
 
