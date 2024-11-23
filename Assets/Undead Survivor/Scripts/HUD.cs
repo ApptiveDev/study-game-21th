@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    public enum InforType { Exp, Level, Health }
+    public enum InforType { Exp, Level, Health, Money }
     public InforType type;
 
     Text myText;
@@ -33,6 +33,9 @@ public class HUD : MonoBehaviour
                 float curHp = GameManager.instance.curHp;
                 float maxHp = GameManager.instance.maxHp;
                 mySlider.value = curHp / maxHp;
+                break;
+            case InforType.Money:
+                myText.text = string.Format("{0:F0} Gold", GameManager.instance.myMoney);
                 break;
             default:
                 break;

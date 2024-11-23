@@ -11,25 +11,27 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D target;
     public Collider2D coll;
     public int enemyId;
-    private bool isAttacking;
+    public float attackSpeed;
+    float timer;
     void Awake()
     {
         //animator = GetComponent<Animator>();
         render = GetComponent<SpriteRenderer>();
         rigid = GetComponent<Rigidbody2D>();
-        isAttacking = false;
     }
     private void FixedUpdate()
     {
         Vector2 targetVector = target.position - rigid.position;
         Vector2 nextVector = targetVector.normalized * speed * Time.fixedDeltaTime;
         rigid.MovePosition(rigid.position + nextVector);
+        timer += Time.deltaTime;
         if (enemyId == 1)
         {
             float distance = Vector2.Distance(target.position, rigid.position);
-            if(distance < 5 && !isAttacking)
+            if(distance < 15f && attackSpeed < timer)
             {
-                StartCoroutine("AttackRoutine");
+                timer = 0;
+                Attack();
             }
         }
     }
@@ -41,6 +43,8 @@ public class Enemy : MonoBehaviour
     private void OnEnable()
     {
         target = GameManager.instance.player.GetComponent<Rigidbody2D>();
+        health = 10f;
+        speed = 2f;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -55,28 +59,35 @@ public class Enemy : MonoBehaviour
             exp.position = transform.position;
         }
     }
-    IEnumerable AttackRoutine()
+    void Attack()
     {
-        isAttacking = true;
-        Transform bullet = GameManager.instance.pool.Get(2).transform;
+        Transform bullet = GameManager.instance.pool.Get(6).transform;
         Vector3 targetPos = target.position;
         Vector3 dir = targetPos - transform.position;
         dir = dir.normalized;
 
         bullet.position = transform.position;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
-        bullet.GetComponent<Bullet>().Init(0, 1, dir);
-        yield return new WaitForSeconds(1f);
-
-        isAttacking = false;
+        bullet.GetComponent<Arrow>().Init(1, dir);
     }
     void Dead()
     {
         gameObject.SetActive(false);
         GameManager.instance.KillEnemy();
-        if(enemyId == 3)
-        {
+    }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Aura"))
+        {
+            speed = 4f;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Aura"))
+        {
+            speed = 2f;
         }
     }
 }

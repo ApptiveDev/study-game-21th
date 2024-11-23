@@ -41,15 +41,15 @@ public class Spawner : MonoBehaviour
     }
     public void SpawnBoss()
     {
-        bossText.localScale = Vector3.one;
+        StartCoroutine(ShowBossText());
         GameObject enemy = GameManager.instance.pool.Get(5);
         enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
     }
 
-    IEnumerable ShowBossText()
+    IEnumerator ShowBossText()
     {
         bossText.localScale = Vector3.one;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         bossText.localScale = Vector3.zero;
     }
 }

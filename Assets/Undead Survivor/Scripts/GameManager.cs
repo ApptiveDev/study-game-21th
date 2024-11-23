@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public int exp;
     public float maxHp = 100;
     public float curHp;
+    public int myMoney;
     public int[] nextExp = { 5, 10, 15, 20, 25, 30};
 
     [Header("#Game Object")]
@@ -23,28 +24,25 @@ public class GameManager : MonoBehaviour
     public GameObject HUD;
     public WeaponManager weaponManager0;
     public WeaponManager weaponManager1;
+    public int money;
 
 
     private void Awake()
     {
         instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
         curHp = maxHp;
+        money = 0;
         Time.timeScale = 0;
     }
 
-    public void GetExp()
+    public void GetMoney()
     {
-        exp++;
-        if(exp == nextExp[level])
-        {
-            exp = 0;
-            level++;
-            uiLevelUp.Show();
-        }
+        myMoney += 100;
     }
     public void Stop()
     {
@@ -57,7 +55,14 @@ public class GameManager : MonoBehaviour
     public void KillEnemy()
     {
         kill++;
-        if(kill == 10)
+        exp++;
+        if (exp == nextExp[level])
+        {
+            exp = 0;
+            level++;
+            uiLevelUp.Show();
+        }
+        if (kill == 10)
         {
             spawner.SpawnBoss();
         }
@@ -70,21 +75,26 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        uiGameOver.SetActive(true);
-        HUD.SetActive(false);
-        Stop();
-        //StartCoroutine("GameOverRoutine");
+        StartCoroutine("GameOverRoutine");
     }
 
-    IEnumerable GameOverRoutine()
+    IEnumerator GameOverRoutine()
     {
-        yield return new WaitForSeconds(0.5f);
-        
+        yield return new WaitForSeconds(0.2f);
+        uiGameOver.SetActive(true);
+        HUD.SetActive(false);
+        money += myMoney;
+        Stop();
     }
 
     public void Retry()
     {
         SceneManager.LoadScene(0);
         Time.timeScale = 1;
+    }
+
+    public void GoLobby()
+    {
+        SceneManager.LoadScene("Lobby");
     }
 }

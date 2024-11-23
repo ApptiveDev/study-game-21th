@@ -44,9 +44,13 @@ public class Player : MonoBehaviour
 
         if(GameManager.instance.curHp < 0)
         {
-            animator.SetTrigger("Dead");
-            GameManager.instance.GameOver();
+            Dead();
         }
     }
 
+    public void Dead()
+    {
+        animator.SetTrigger("Dead");
+        GameManager.instance.GameOver();
+    }
 }

@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - Enemy
   - Exp
+  - Aura
   layers:
   - Default
   - TransparentFX

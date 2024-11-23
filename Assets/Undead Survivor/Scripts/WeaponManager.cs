@@ -36,7 +36,7 @@ public class WeaponManager : MonoBehaviour
                 if (timer > speed)
                 {
                     timer = 0f;
-                    fire();
+                    Fire();
                 }
                 break;
             default:
@@ -96,7 +96,7 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    void fire()
+    void Fire()
     {
         if (!player.scanner.nearesttarget) return;
 
