@@ -31,8 +31,8 @@ public class Collection : MonoBehaviour
     GameObject g;
     int newSelectedIndex, previousSelectedIndex;
 
-    [SerializeField] Color ActiveAvatarColor;
-	[SerializeField] Color DefaultAvatarColor;
+    [SerializeField] Sprite ActiveState;
+	[SerializeField] Sprite DefaultState;
 
     [SerializeField] Image CurrentAvatar;
     
@@ -79,9 +79,22 @@ public class Collection : MonoBehaviour
 	{
 		previousSelectedIndex = newSelectedIndex;
 		newSelectedIndex = AvatarIndex;
-		AvatarsScrollView.GetChild (previousSelectedIndex).GetComponent <Image> ().color = DefaultAvatarColor;
-		AvatarsScrollView.GetChild (newSelectedIndex).GetComponent <Image> ().color = ActiveAvatarColor;
+		AvatarsScrollView.GetChild (previousSelectedIndex).GetComponent <Image> ().sprite = DefaultState;
+		AvatarsScrollView.GetChild (newSelectedIndex).GetComponent <Image> ().sprite = ActiveState;
 
 		CurrentAvatar.sprite = AvatarsList [newSelectedIndex].Image;
 	}
+
+	// public void OpenCollection ()
+	// {
+	// 	ShopPanel.SetActive (true);
+	// }
+
+	// public void CloseCollection ()
+	// {
+	// 	ShopPanel.SetActive (false);
+	// }
+
+
+
 }

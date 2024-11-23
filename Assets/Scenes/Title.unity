@@ -587,7 +587,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: shop
+  m_Text: collection
 --- !u!222 &309777758
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1005,7 +1005,7 @@ GameObject:
   - component: {fileID: 2085415070}
   - component: {fileID: 2085415069}
   m_Layer: 5
-  m_Name: Shop Btn
+  m_Name: Collection Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

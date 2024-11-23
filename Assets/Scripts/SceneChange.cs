@@ -13,6 +13,12 @@ public class Change : MonoBehaviour
 
     public void ShowCollectionScene()
     {
-        SceneManager.LoadScene("Shop");
+        SceneManager.LoadScene("__Shop");
     }
+
+    public void ShowTitleScene()
+    {
+        SceneManager.LoadScene("Title");
+    }
+
 }
