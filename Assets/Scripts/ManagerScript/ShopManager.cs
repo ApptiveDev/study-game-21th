@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class ReStart : MonoBehaviour
+public class ShopManager : MonoBehaviour
 {
+    // Start is called before the first frame update
     void Start()
     {
         
@@ -14,9 +14,5 @@ public class ReStart : MonoBehaviour
     void Update()
     {
         
-    }
-    public void onClickRestart()
-    {
-        SceneManager.LoadScene("앱티브스터디");
     }
 }

@@ -49,6 +49,7 @@ public class Guard : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision) {
     Enemy enemy = collision.GetComponent<Enemy>();
     RangeEnemy rangeEnemy = collision.GetComponent<RangeEnemy>();
+    BossEnemy bossEnemy = collision.GetComponent<BossEnemy>();
     ExperienceOrb experienceOrb = collision.GetComponent<ExperienceOrb>();
     if (audioSource != null) {
         audioSource.Play();
@@ -62,6 +63,10 @@ public class Guard : MonoBehaviour
         rangeEnemy.rangeEnemyHealth -= guardDamage * Time.deltaTime; // 원거리 적에게 데미지 주기
     }
 
+     if (bossEnemy != null) {
+        bossEnemy.bossHealth -= guardDamage * Time.deltaTime; // 보스에게 데미지 주기
+    }
+
     Vector3 pushDirection = collision.transform.position - transform.position;
     pushDirection.Normalize();
     collision.transform.position += pushDirection * pushForce * Time.deltaTime;
@@ -71,6 +76,10 @@ public class Guard : MonoBehaviour
     }
 
     if (rangeEnemy != null && rangeEnemy.rangeEnemyHealth <= 0) {
+        collision.gameObject.SetActive(false);
+    }
+
+    if (bossEnemy != null && bossEnemy.bossHealth <= 0) {
         collision.gameObject.SetActive(false);
     }
 
