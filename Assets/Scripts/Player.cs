@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
 
    void OnTriggerStay2D(Collider2D collision) 
    {
-      if (!GameManager.instance.isLive) {
+      if (!GameManager.instance.isLive || !collision.CompareTag("Enemy")) {
          return;
       }
 

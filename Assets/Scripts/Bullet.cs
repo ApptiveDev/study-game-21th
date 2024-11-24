@@ -4,6 +4,7 @@ public class Bullet : MonoBehaviour
 { // 근접무기 프리펩의 Order in Layer를 몬스터보다 높이기
     public float damage;
     public int per; // 관통
+    public int id;
 
     Rigidbody2D rigid; // 총탄은 속도가 필요하므로 RigidBody2D 추가
 
@@ -12,12 +13,13 @@ public class Bullet : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
     }
 
-    public void Init(float damage, int per, Vector3 dir)
+    public void Init(float damage, int per, int id, Vector3 dir)
     {
         this.damage = damage;
         this.per = per;
+        this.id = id;
 
-        if (per > -1) { // 관통이 -1 (무한)보다 큰것에 대해서는 속도 적용
+        if (per > -1) { // 관통이 -1 (플레이어의 근접무기)이외의 것에 대해서는 속도 적용
             rigid.velocity = dir * 15f; // velocity = 속도, 속력을 곱해주어 총알이 날아가는 속도 증가시키기
         }
     }
@@ -35,4 +37,5 @@ public class Bullet : MonoBehaviour
 
         }    
     }
+
 }

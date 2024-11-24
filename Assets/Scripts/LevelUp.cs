@@ -55,7 +55,7 @@ public class LevelUp : MonoBehaviour
             // 3. 만렙 아이템의 경우는 소비 아이템으로 대체 
             // 현재 활성화하려는 아이템의 레벨이 최대레벨(Item.data.damages배열의 길이와 같다)이라면 소비아이템으로 대체
             if (ranItem.level == ranItem.data.damages.Length) { 
-                items[4].gameObject.SetActive(true); // 소비아이템이 하나라면 지정하여 SetActive해주면 됨
+                items[ran.Length-1].gameObject.SetActive(true); // 소비아이템이 하나라면 지정하여 SetActive해주면 됨
                 // items[Random.Range(4, items.Length)].gameObject.SetActive(true) // 만약 소비아이템이 여러개라면 Random.Range활용
             } 
             else { 

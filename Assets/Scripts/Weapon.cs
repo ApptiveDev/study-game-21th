@@ -122,7 +122,7 @@ public class Weapon : MonoBehaviour
             // 회전 이휴의 자신의 위쪽방향으로 이동하는 것이 포인트
             // Space.World대신 Space.Self를 쓰게되면 회전방향에 따라 이동방향이 바뀌게 된다
             
-            bullet.GetComponent<Bullet>().Init(damage, -1, Vector3.zero); // -1 is Infinity Per, per은 관통 계수이지만 근접무기의 경우 의미가 없으므로 -1로 지정, 속도도 0으로 지정
+            bullet.GetComponent<Bullet>().Init(damage, -1, id, Vector3.zero); // -1 is Infinity Per, per은 관통 계수이지만 근접무기의 경우 의미가 없으므로 -1로 지정, 속도도 0으로 지정
             // Bullet 컴포넌트 접근하여 미리 만들어놓은 Init 속성 초기화 함수 호출
         }
     }
@@ -143,7 +143,7 @@ public class Weapon : MonoBehaviour
         bullet.rotation *= Quaternion.FromToRotation(Vector3.up, dir); // FromToRatation = 지정된 축을 중심으로 목표를 향해 회전하는 함수
 
 
-        bullet.GetComponent<Bullet>().Init(damage, count, dir); // 원거리 공격에 맞게 초기화 함수 호출하기, 원거리 공격에서는 Count가 관통변수이고 dir이 속도이다
+        bullet.GetComponent<Bullet>().Init(damage, count, id, dir); // 원거리 공격에 맞게 초기화 함수 호출하기, 원거리 공격에서는 Count가 관통변수이고 dir이 속도이다
 
     }
 }
