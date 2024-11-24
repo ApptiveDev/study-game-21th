@@ -28,13 +28,12 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
             DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else if (_instance != this)
         {
             Destroy(gameObject);  // 중복된 인스턴스는 삭제
         }
-        Init();
-        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Update()
@@ -51,30 +50,25 @@ public class GameManager : MonoBehaviour
     private PrefabManager prefabManager;
 
     // game system related
+    private int money = 0;
     private GameObject player;
     private WeaponSpawner weaponSpawner;
     private EnemySpawner enemySpawner;
 
-    private void Init()
-    {
-        prefabManager = transform.Find("PrefabManager").GetComponent<PrefabManager>();
-        if (prefabManager == null) { Debug.LogError("Can't find prefabManager"); }
-
-        player = GameObject.FindWithTag("Player");
-        if (player == null) { Debug.LogError("Can't find player"); }
-
-        weaponSpawner = GameObject.Find("WeaponSpawner").GetComponent<WeaponSpawner>();
-        if (weaponSpawner == null) { Debug.LogError("Can't find weaponSpawner"); }
-
-        enemySpawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
-        if (enemySpawner == null) { Debug.LogError("Can't find enemySpawner"); }
-    }
-    
     // getters related-game progress
     public int NumOfKilledEnemies
     {
         get { return numOfKilledEnemies; }
         set { numOfKilledEnemies = value; }
+    }
+
+    public int Money
+    {
+        get { return money; }
+        set 
+        {   money = value;
+            UIManager.Instance.UpdateMoneyText(money);
+        }
     }
 
     // getters related-player
@@ -100,8 +94,36 @@ public class GameManager : MonoBehaviour
     // functions related-game system
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Init();
+        if (scene.name == "Main")
+        {
+            InitMainScene();
+        }
+        else if (scene.name == "Title")
+        {
+            InitTitleScene();
+        }
     }
+
+    private void InitMainScene()
+    {
+        prefabManager = transform.Find("PrefabManager").GetComponent<PrefabManager>();
+        if (prefabManager == null) { Debug.LogError("Can't find prefabManager"); }
+
+        player = GameObject.FindWithTag("Player");
+        if (player == null) { Debug.LogError("Can't find player"); }
+
+        weaponSpawner = GameObject.Find("WeaponSpawner").GetComponent<WeaponSpawner>();
+        if (weaponSpawner == null) { Debug.LogError("Can't find weaponSpawner"); }
+
+        enemySpawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
+        if (enemySpawner == null) { Debug.LogError("Can't find enemySpawner"); }
+    }
+
+    private void InitTitleScene()
+    {
+        // 타이틀 씬에서 필요한 초기화 코드 작성
+    }
+
 
     // functions related-game progress
     private void CheckPhase()
@@ -133,6 +155,15 @@ public class GameManager : MonoBehaviour
     {
         GameResume();
         SceneManager.LoadScene("Main");
+    }
+
+    public void LoadTitleScene()
+    {
+        SceneManager.LoadScene("Title");
+    }
+    public void LoadShopScene()
+    {
+        SceneManager.LoadScene("Shop");
     }
 
     public void EnemyKilled()

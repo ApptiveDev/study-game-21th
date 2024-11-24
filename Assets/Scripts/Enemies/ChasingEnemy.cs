@@ -19,9 +19,9 @@ public class ChasingEnemy : Enemy
     protected override void Update()
     {
         base.Update();
-        Chase();
+        ChasePlayer();
     }
-    protected void Chase()
+    protected void ChasePlayer()
     {
         // Player 위치 가져오기
         playerPosition = GameManager.Instance.GetPlayer().transform.position;

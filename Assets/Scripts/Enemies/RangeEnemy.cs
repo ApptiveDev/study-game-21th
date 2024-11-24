@@ -5,19 +5,60 @@ using UnityEngine;
 public class RangeEnemy : ChasingEnemy
 {
     private GameObject player;
+    private GameObject bullet;
+    private IEnemyState currentState;
+
+    private bool isShooting = false;
     const float ATTACK_RANGE = 4f;
     const float CHECK_DELAY = 0.5f;
-    public enum EnemyState
+
+    public interface IEnemyState
     {
-        MOVE,
-        ATTACK,
+        public void EnterState(RangeEnemy enemy); // 상태 진입할 때 수행하는 행동
+        public void ExecuteAction(); // 각 상태일 때 수행하는 행동
+        public void ExitState(); // 상태 빠져나갈 때 수행하는 행동
     }
 
-    private EnemyState state = EnemyState.MOVE;
-    private GameObject bullet;
-    private bool isShooting = false; // 공격 중인지 체크하는 플래그
+    public class MoveState : IEnemyState
+    {
+        private RangeEnemy enemy;
 
-    // Start is called before the first frame update
+        public void EnterState(RangeEnemy enemy)
+        {
+            this.enemy = enemy;
+        }
+
+        public void ExecuteAction()
+        {
+            enemy.ChasePlayer();
+        }
+
+        public void ExitState() { }
+    }
+
+    public class AttackState : IEnemyState
+    {
+        private RangeEnemy enemy;
+
+        public void EnterState(RangeEnemy enemy)
+        {
+            this.enemy = enemy;
+        }
+
+        public void ExecuteAction()
+        {
+            if (!enemy.isShooting)
+            {
+                enemy.StartCoroutine(enemy.Shot());
+            }
+        }
+
+        public void ExitState() 
+        {
+            enemy.StopCoroutine(enemy.Shot());
+        }
+    }
+
     void Start()
     {
         Hp = 10f;
@@ -26,56 +67,43 @@ public class RangeEnemy : ChasingEnemy
         bullet = GameManager.Instance.GetRangeEnemyBulletPrefab();
         player = GameManager.Instance.GetPlayer();
 
-        StartCoroutine(CheckState());
+        currentState = new MoveState(); // 초기 상태는 Move
+        currentState.EnterState(this);
+
+        StartCoroutine(CheckAndChangeState());
     }
 
-    // Update is called once per frame
     protected override void Update()
     {
         if (Hp <= 0)
         {
             Die();
         }
-        ActAccordingToState();
+        currentState.ExecuteAction();
     }
 
-    public IEnumerator CheckState()
+    protected IEnumerator CheckAndChangeState()
     {
         while (true)
         {
-            if (Vector3.Distance(player.transform.position, transform.position) <= ATTACK_RANGE)
+            IEnemyState newState = (Vector3.Distance(player.transform.position, transform.position) <= ATTACK_RANGE)
+                ? new AttackState() : new MoveState();
+
+            if (newState.GetType() != currentState.GetType())
             {
-                state = EnemyState.ATTACK;
-            }
-            else
-            {
-                state = EnemyState.MOVE;
+                currentState.ExitState();
+                currentState = newState;
+                currentState.EnterState(this);
             }
             yield return new WaitForSeconds(CHECK_DELAY);
         }
     }
 
-    public IEnumerator Shot()
+    protected IEnumerator Shot()
     {
-        isShooting = true; // 공격 중으로 설정
+        isShooting = true;
         Instantiate(bullet, this.transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(1f); // 1초 대기
-        isShooting = false; // 공격 완료 후 다시 공격 가능하게 설정
-    }
-
-    void ActAccordingToState()
-    {
-        switch (state)
-        {
-            case EnemyState.MOVE:
-                Chase();
-                break;
-            case EnemyState.ATTACK:
-                if (!isShooting) // 공격 중이 아닐 때만 Shot 호출
-                {
-                    StartCoroutine(Shot());
-                }
-                break;
-        }
+        yield return new WaitForSeconds(1f);
+        isShooting = false;
     }
 }

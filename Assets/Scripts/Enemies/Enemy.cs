@@ -69,6 +69,7 @@ public class Enemy : MonoBehaviour
     {
         Instantiate(GameManager.Instance.GetExpPrefab(), transform.position, Quaternion.identity);
         GameManager.Instance.EnemyKilled();
+        GameManager.Instance.Money += 500;
         Destroy(this.gameObject);
     }
 }
