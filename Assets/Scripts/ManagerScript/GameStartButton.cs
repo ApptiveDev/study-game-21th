@@ -8,5 +8,6 @@ public class GameStartButton : MonoBehaviour
     public void onClickGameStart()
     {
         SceneManager.LoadScene("InGame");
+        Player.Instance.StartNewGame();
     }
 }

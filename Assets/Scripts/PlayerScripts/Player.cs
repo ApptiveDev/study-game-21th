@@ -80,8 +80,32 @@ public class Player : MonoBehaviour
     public void StartNewGame()
     {
         playerHealth = playerInitialHealth;
+        gameObject.SetActive(true);
         Debug.Log("게임 시작, 시작 체력: " + playerInitialHealth);
     }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+{
+    if (scene.name == "Lobby" || scene.name == "Shop")
+    {
+        gameObject.SetActive(false); // 로비/상점에서 비활성화
+    }
+    else
+    {
+        gameObject.SetActive(true); // 게임 씬에서는 활성화
+    }
+}
+
+void OnEnable()
+{
+    SceneManager.sceneLoaded += OnSceneLoaded;
+}
+
+void OnDisable()
+{
+    SceneManager.sceneLoaded -= OnSceneLoaded;
+}
+
 }
 
 
