@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: 5c066bdc4412e524dbfe03666ecc8fc1
+guid: c1a7b58dde9b06043b610495d5d9ab05
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - meleeEnemyPrefab: {instanceID: 0}
-  - rangerEnemyPrefab: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

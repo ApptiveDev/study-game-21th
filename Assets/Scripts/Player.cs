@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
 
         moveDirection = new Vector2(x, y);
 
-        rigid.position += moveDirection * moveSpeed * Time.deltaTime;
+        rigid.position += moveDirection * moveSpeed * Time.fixedDeltaTime;
     
         
     }

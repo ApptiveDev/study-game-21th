@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public PoolManager pool;
     [Header("# Game Control")]
     public bool isLive;
     public float gameTime;

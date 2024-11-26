@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3673907485386977547}
   - component: {fileID: 6372309330273966027}
   - component: {fileID: 4464257332553871160}
-  - component: {fileID: -5478576713942549772}
+  - component: {fileID: 6966069534565130676}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Enemy
@@ -171,7 +171,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.7, y: 1}
   m_Direction: 0
---- !u!114 &-5478576713942549772
+--- !u!114 &6966069534565130676
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,13 +180,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1655230790131248900}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 684d3c207717907438e9312dcea41a47, type: 3}
+  m_Script: {fileID: 11500000, guid: b73d6a7406b5565409c08fcc320874f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
-  speed: 1
-  expPrefab: {fileID: 8659862705580753371, guid: 5dfc82f79e8a74e40afa31010028c003, type: 3}
-  attackPrefab: {fileID: 351991329546188418, guid: a21bda9f56d583f44af372129b26540e, type: 3}
-  attackRange: 10
-  attackDelay: 2
-  checkDelay: 0.5
+  speed: 3
