@@ -41,6 +41,7 @@ public class PlayerExperience : MonoBehaviour
             // 신호 보내기
             GameMgr.Instance.SetIsLevelUp(true);
             GameMgr.Instance.ManageLevel();
+            CoinManager.Instance.Add20();
         }
     }
     void Start()

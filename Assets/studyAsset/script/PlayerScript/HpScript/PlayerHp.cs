@@ -6,8 +6,8 @@ public class PlayerHp : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
-    private float Hp;
-    private float MaxHp;
+    private float Hp = 100;
+    private float MaxHp = 100;
 
     public void SubtractHp(float operand)
     {
@@ -45,8 +45,8 @@ public class PlayerHp : MonoBehaviour
     }
     void Start()
     {
-        Hp = 100;
-        MaxHp = 100;
+        MaxHp += CoinManager.Instance.ShopPlusHp;
+        Hp = MaxHp;
     }
 
     // Update is called once per frame

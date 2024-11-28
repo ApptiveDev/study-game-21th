@@ -21,6 +21,7 @@ public class BossScript : EnemyMovement
 
     private bool isDash = false;
     private bool isAttack = false;
+
     public enum BossEnemyState
     {
         MOVE,
@@ -29,6 +30,53 @@ public class BossScript : EnemyMovement
     }
 
     public BossEnemyState state;
+    public IEnemyState curState;
+    
+    // 과제 중
+    private class MoveState : IEnemyState
+    {
+        public void EnterState(EnemyMovement enemy)
+        {
+        }
+
+        public void ExecuteAction(EnemyMovement enemy)
+        {
+        }
+
+        public void ExitState(EnemyMovement enemy)
+        {
+        }
+    }
+    private class AttackState : IEnemyState
+    {
+        public void EnterState(EnemyMovement enemy)
+        {
+            enemy.StartCoroutine(((BossScript)enemy).KnockBackAttack());
+        }
+
+        public void ExecuteAction(EnemyMovement enemy)
+        {
+        }
+
+        public void ExitState(EnemyMovement enemy)
+        {
+        }
+    }
+    private class DashState : IEnemyState
+    {
+        public void EnterState(EnemyMovement enemy)
+        {
+            enemy.StartCoroutine(((BossScript)enemy).DashAttack());
+        }
+
+        public void ExecuteAction(EnemyMovement enemy)
+        {
+        }
+
+        public void ExitState(EnemyMovement enemy)
+        {
+        }
+    }
 
     public IEnumerator CheckState()
     {
@@ -50,6 +98,13 @@ public class BossScript : EnemyMovement
             yield return new WaitForSeconds(CHECK_DELAY);
         }
     }
+
+    public void ChangeState(IEnemyState newState)
+    {
+        curState?.ExitState(this);
+        newState.EnterState(this);
+        curState = newState;
+    }
     void Start()
     {
         hp = 5000;
@@ -60,6 +115,7 @@ public class BossScript : EnemyMovement
 
         StartCoroutine(CheckState());
 
+        ChangeState(new MoveState());
     }
 
     public IEnumerator DashAttack()
@@ -124,8 +180,8 @@ public class BossScript : EnemyMovement
     // Update is called once per frame
     void Update()
     {
-
         DeleteEnemy();
+        curState.ExecuteAction(this);
 
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
 
@@ -134,14 +190,16 @@ public class BossScript : EnemyMovement
             case BossEnemyState.DASH:
                 if (!isDash && !isAttack)
                 {
-                    StartCoroutine(DashAttack());
+                    ChangeState(new DashState());
+                    //StartCoroutine(DashAttack());
                 }
                 break;
 
             case BossEnemyState.ATTACK:
                 if (!isAttack && !isDash)
                 {
-                    StartCoroutine(KnockBackAttack());
+                    ChangeState(new AttackState());
+                    //StartCoroutine(KnockBackAttack());
                 }
                 break;
             case BossEnemyState.MOVE:

@@ -139,6 +139,7 @@ public class PlayerMovement : MonoBehaviour
         transform.position = new Vector3(0, 0, 0);
         timer = 0.0f;
         waitingtime = 1.0f;
+        speed += CoinManager.Instance.ShopPlusSpeed;
         animator_ = GetComponent<Animator>();
     }
 

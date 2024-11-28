@@ -54,7 +54,7 @@ public class GameMgr : MonoBehaviour
 
     public void Retry()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("TitleScene");
     }
     public GameObject GetPlayer()
     {

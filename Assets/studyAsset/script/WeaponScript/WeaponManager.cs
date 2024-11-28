@@ -55,6 +55,7 @@ public class WeaponManager : MonoBehaviour
 
     private float AttackRange = 3.0f; // 사정거리
     private float AttackSpeed = 0.5f; // 몇초마다 발사 할 건지
+    private float AttackFlySpeed = 1.0f;
     public enum Direction
     {
         UP,
@@ -95,7 +96,7 @@ public class WeaponManager : MonoBehaviour
             yield return new WaitForSeconds(AttackSpeed);
             Vector3 MyPosition = player.transform.position;
             GameObject weaponCreate = Instantiate(BasicWeapon, new Vector3(MyPosition.x, MyPosition.y, MyPosition.z), Quaternion.identity);
-            weaponCreate.GetComponent<WeaponMovement>().SetDefault(AttackSpeed, AttackRange, currentDir.ToString());
+            weaponCreate.GetComponent<WeaponMovement>().SetDefault(AttackFlySpeed, AttackRange, currentDir.ToString());
 
         }  
     }
@@ -165,25 +166,33 @@ public class WeaponManager : MonoBehaviour
     /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
     // Bomb Weapon 관련 변수
     public GameObject Bomb;
+    private bool isBombActive = false;
 
     private float BombSpeed = 2.0f; // Bomb 폭발 주기
-    private float BombTimer = 0f; // Bomb 폭발을 위한 시간 타이머
 
     // Bomb Weapon 관련 함수
+    [ContextMenu("BombCall")]
     public void BombCall()
     {
-       StartCoroutine(BombUpdate()); 
+        if (!isBombActive)
+        {
+            Debug.Log("BombCall method called");
+            StartCoroutine(BombUpdate());
+            isBombActive = true;
+        }
     }
+
+
     public IEnumerator BombUpdate()
     {
         while (true)
         {
+            Debug.Log("Bomb Active");
             yield return new WaitForSeconds(BombSpeed);
             try
             {
                 Vector3 MyPosition = transform.position;
                 GameObject weaponCreate = Instantiate(Bomb, new Vector3(MyPosition.x, MyPosition.y, MyPosition.z), Quaternion.identity);
-                BombTimer = 0.0f;
             }
             catch (UnassignedReferenceException)
             {
@@ -196,6 +205,7 @@ public class WeaponManager : MonoBehaviour
     void Start()
     {
         // 모든 무기는 사용자 중심으로 나가니까 하나 받아오기
+        AttackFlySpeed += CoinManager.Instance.ShopPlusAttackSpeed;
         player = GameMgr.Instance.GetPlayer();
         if (player == null)
         {
