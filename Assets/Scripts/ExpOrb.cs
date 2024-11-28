@@ -10,7 +10,8 @@ public class ExpOrb : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            GameManager.instance.GetExp(expValue);
+            GameManager.instance.GetExp();
+            // GameManager.instance.GetExp(expValue); 잇어봐일단 exp 다시구현중
             Destroy(gameObject);
         }
     }

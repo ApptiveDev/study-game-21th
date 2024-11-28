@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   itemId: 1
-  itemName: "\uB3CC"
-  itemDesc: "\uB3CC \uC0DD\uC131"
-  itemIcon: {fileID: -1786786079, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
+  itemName: "\uC5FD\uCD1D"
+  itemDesc: "\uC5FD\uCD1D \uC0DD\uC131"
+  itemIcon: {fileID: -205726582, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
   baseDamage: 3
   baseCount: 0
   damages:
+  - 0.25
+  - 7
   - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  counts: 0100000001000000010000000100000001000000
-  projectile: {fileID: 6182049469409428078, guid: a55dbd9c64af7164c95fbd6915089393, type: 3}
+  - 1.4
+  - 2
+  counts: 0100000001000000020000000300000004000000
+  projectile: {fileID: 3239894354454554982, guid: cc018599928791f49bec9bb00a052b57, type: 3}

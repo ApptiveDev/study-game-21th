@@ -8,11 +8,11 @@ using UnityEngine.XR;
 
 public class Player : MonoBehaviour
 {
-    public float moveSpeed = 3f;
+    public float speed = 3f;
     private Vector2 moveDirection = Vector2.zero;
     private float x = 0f;
     private float y = 0f;
-    public Scanner scanner;
+    public Scanner scanner; // 스크립트도 컴포넌트로 가질 수 있어
     //public Hand[] hands;
 
     Rigidbody2D rigid;
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         spriter = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        scanner = GetComponent<Scanner>();
+        scanner = GetComponent<Scanner>(); // Weapon -> Scanner 바로 접근 못하니 플레이어에 Scanner 속성 추가
         //hands = GetComponent<Rigidbody2D>();
     }
     void FixedUpdate()
@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
 
         moveDirection = new Vector2(x, y);
 
-        rigid.position += moveDirection * moveSpeed * Time.fixedDeltaTime;
+        rigid.position += moveDirection * speed * Time.fixedDeltaTime;
     
         
     }

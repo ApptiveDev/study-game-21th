@@ -8,7 +8,7 @@ public class Change : MonoBehaviour
     public void ShowInGameScene()
     {
         SceneManager.LoadScene("InGame");
-        GameManager.instance.GameStart();
+        //GameManager.instance.GameStart();
     }
 
     public void ShowCollectionScene()

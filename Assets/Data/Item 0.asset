@@ -17,13 +17,13 @@ MonoBehaviour:
   itemName: "\uCD1D\uC54C"
   itemDesc: "\uCD1D\uC54C \uC5F0\uC0AC \uC18D\uB3C4 \uC99D\uAC00"
   itemIcon: {fileID: -181907988, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
-  baseDamage: 1
-  baseCount: 1
+  baseDamage: 4.5
+  baseCount: 3
   damages:
+  - 0.5
   - 1
   - 1.5
   - 2
   - 2.5
-  - 3
   counts: 0100000001000000010000000100000001000000
-  projectile: {fileID: 2113119757817858353, guid: cc018599928791f49bec9bb00a052b57, type: 3}
+  projectile: {fileID: 351991329546188418, guid: a21bda9f56d583f44af372129b26540e, type: 3}

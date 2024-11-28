@@ -27,28 +27,28 @@ public class HUD : MonoBehaviour
                 mySlider.value = curExp / maxExp;
                 break;
 
-            case InfoType.Level:
+            case InfoType.Level: // Format 함수: 0번째 인자값, 들어갈 변수 / F0: 소숫점 0 의미 
                 myText.text = string.Format("Lv.{0:F0}", GameManager.instance.level);
                 break;
 
             case InfoType.Kill:
-                myText.text = string.Format("Lv.{0:F0}", GameManager.instance.kill);
+                myText.text = string.Format("{0:F0}", GameManager.instance.kill);
                 break;    
 
             case InfoType.Time:
-
+                
                 if(!GameManager.instance.isLive)
                     return;
                     
                 float remainTime = GameManager.instance.maxGameTime - GameManager.instance.gameTime;
                 int min = Mathf.FloorToInt(remainTime / 60);
                 int sec = Mathf.FloorToInt(remainTime % 60);
-                myText.text = string.Format("{0:D2}:{1:D2}", min, sec);
+                myText.text = string.Format("{0:D2}:{1:D2}", min, sec); // 자릿수 지정은 D ! 
                 break;   
 
             case InfoType.Health:
-                float curHealth = GameManager.instance.exp;
-                float maxHealth = GameManager.instance.nextExp[GameManager.instance.level];
+                float curHealth = GameManager.instance.health;
+                float maxHealth = GameManager.instance.maxHealth;
                 mySlider.value = curHealth / maxHealth;
                 break;           
         }

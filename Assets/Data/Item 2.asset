@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 2
   itemId: 2
-  itemName: "\uD22C\uCC99\uC6A9 \uC0BC\uC9C0\uCC3D"
-  itemDesc: "\uB79C\uB364 \uC601\uC5ED \uD55C \uACF3\uC5D0 \uC0BC\uC9C0\uCC3D\uC744
-    \uD22C\uCC99\n\uC8FC\uBCC0 \uC801\uB4E4\uC5D0\uAC8C \uD53C\uD574\uB97C \uC90C"
-  itemIcon: {fileID: -181907988, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
+  itemName: "\uD14C\uD06C\uB2C8\uCEEC \uC7A5\uAC11"
+  itemDesc: 
+  itemIcon: {fileID: -201829820, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
   baseDamage: 0
   baseCount: 0
   damages:

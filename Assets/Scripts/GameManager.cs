@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public PoolManager pool;
+    
     [Header("# Game Control")]
     public bool isLive;
     public float gameTime;
@@ -21,8 +21,9 @@ public class GameManager : MonoBehaviour
     public int exp;
     public int[] nextExp = {3, 5, 10, 100, 150, 210, 280, 360, 450}; // 각 레벨의 필요경험치를 보관
     [Header("# Game Object")]
+    public PoolManager pool;
     public Player player;
-    public LevelUp uiLevelUp;
+    public LevelUp uiLevelUp; // 레벨업 무기창 
     public GameObject uiResult;
 
 
@@ -38,6 +39,12 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    void Start()
+    {
+        health = maxHealth;
+        uiLevelUp.Select(1);
+    }
+    /*
     public void GameStart()
     {
         health = maxHealth; // 시작할 때 현재 체력 초기화
@@ -46,7 +53,7 @@ public class GameManager : MonoBehaviour
         gameTime = 0;
         // uiLevelUp.Select(0);
     }
-
+    */
     public void GameOver()
     {
         StartCoroutine(GameOverRoutine());
@@ -66,7 +73,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        if(!isLive)
+        if(!isLive) // 죽었을 때 
             return;
 
         gameTime += Time.deltaTime;
@@ -76,6 +83,22 @@ public class GameManager : MonoBehaviour
             gameTime = maxGameTime;
         }
     }
+
+    public void GetExp()
+    {
+        exp++;
+
+        // 최대 레벨 초과 시 인덱스 넘치는 오류 방지 레벨 10 12 일케되도 최대 레벨만 적용
+        if(exp == nextExp[Mathf.Min(level, nextExp.Length-1)]){
+            level++;
+            exp = 0;
+            uiLevelUp.Show();
+        }
+    }
+
+
+
+    /*
     public void GetExp(int amount)
     {
         exp += amount;
@@ -87,14 +110,14 @@ public class GameManager : MonoBehaviour
             uiLevelUp.Show();
         }
     }
-
-    public void Stop()
+    */
+    public void Stop() // 게임 시간 관련 함수 -> 멈춤
     {
         isLive = false;
         Time.timeScale = 0;
     }
 
-    public void Resume()
+    public void Resume() // 게임 시간 관련 함수 -> 지속
     {
         isLive = true;
         Time.timeScale = 1;
