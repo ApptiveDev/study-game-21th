@@ -31,8 +31,14 @@ public class Item : MonoBehaviour
 
     void OnEnable()
     {
-        textLevel.text = "Lv." + (level + 1); // 레벨 1부터 시작 : +1
-        
+        // 원거리 공격은 기본으로 제공 -> UI 처음부터 Lv 2 표시 수정
+        if (data.itemType == ItemData.ItemType.Range){
+            textLevel.text = "Lv. " + level;
+        }
+        else{
+            textLevel.text = "Lv. " + (level + 1);
+        }
+
         switch(data.itemType){
             // 무기는 매개변수를 2개 받음 -> damages, counts
             // * 100 : 백분율로 수치 지정했으니 설명란엔 *100

@@ -22,7 +22,7 @@ public class Scanner : MonoBehaviour
     {
         Transform result = null;
         
-        float diff = 100; // 거리 100
+        float diff = 70; // 거리 100
 
         // foreach 로 targets 배열에 담긴 캐스팅 결과 오브젝트 하나씩 접근
         foreach(RaycastHit2D target in targets)

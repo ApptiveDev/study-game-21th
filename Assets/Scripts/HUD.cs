@@ -17,6 +17,7 @@ public class HUD : MonoBehaviour
         mySlider = GetComponent<Slider>();
     }
 
+
     void LateUpdate() // Update에서 처리되고 난 후 갱신
     {
         switch(type)

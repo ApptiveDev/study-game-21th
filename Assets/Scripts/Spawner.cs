@@ -39,15 +39,18 @@ public class Spawner : MonoBehaviour
 
     void Spawn() // 수정
     {
-        if (spawnPoint.Length <= 1)
+        if (spawnPoint.Length <= 1) 
         {
             Debug.LogError("No valid spawn points! Add child objects to Spawner.");
             return;
         }
 
         // 부모 객체(0번)를 제외한 랜덤 인덱스
-        int randomIndex = Random.Range(1, spawnPoint.Length);
-        GameObject enemy = GameManager.instance.pool.Get(0);
+        // 스폰 위치 랜덤 선택
+        int randomIndex = Random.Range(1, spawnPoint.Length); 
+
+        int enemyIndex = spawnData[level].spriteType; // 추가코드
+        GameObject enemy = GameManager.instance.pool.Get(enemyIndex); // Get(0)에서 변경 -> 0번째 이너미만 있었을때
 
         if (enemy == null)
         {
@@ -68,7 +71,7 @@ public class Spawner : MonoBehaviour
 // 인스펙터에서 지정 필요 (초기화 x)
 [System.Serializable] public class SpawnData{
 
-    public int spriteType; // 소환 캐릭터
+    public int spriteType; // 소환 캐릭터 -> 풀매니저의 인덱스 (0: enemy. 1:rangerenemy)
     public float spawnTime;
     public int health;
     public float speed;

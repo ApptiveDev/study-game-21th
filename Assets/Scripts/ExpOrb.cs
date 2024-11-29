@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class ExpOrb : MonoBehaviour
 {
-    public int expValue = 2;
+    public int expValue;
+    public void Init(int value)
+    {
+        expValue = value;
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
         {
-            GameManager.instance.GetExp();
-            // GameManager.instance.GetExp(expValue); 잇어봐일단 exp 다시구현중
+            if(GameManager.instance != null){
+                GameManager.instance.GetExp(expValue);
+            }
             Destroy(gameObject);
         }
     }

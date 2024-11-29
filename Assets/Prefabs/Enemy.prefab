@@ -165,7 +165,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -186,4 +186,6 @@ MonoBehaviour:
   speed: 0
   health: 0
   maxHealth: 0
+  expPrefab: {fileID: 4227267903825594233, guid: 368f50aaaee626748866bb1bd9a0f20b, type: 3}
+  expValue: 1
   target: {fileID: 0}

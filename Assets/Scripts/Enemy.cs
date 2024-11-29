@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour // 적 하나에 적용, 애니메이터 추가 -> 움직이지 않는 에러 발생 / 일단 주석 처리
 {
-    public float speed = 1f;
+    public float speed = 2f;
     public float health;
     public float maxHealth;
     //public RuntimeAnimatorController[] animCon;
-    
-    
+    public GameObject expPrefab;
+    public int expValue = 1; // 적의 경험치 값
     public Rigidbody2D target;
 
     bool isLive;
@@ -93,7 +93,6 @@ public class Enemy : MonoBehaviour // 적 하나에 적용, 애니메이터 추�
             // spriter.sortingOrder = 1; // 죽었을 때 다른 오브젝트 가리지 않게 레이어 낮추기 (원래 2)
             anim.SetBool("Dead", true);
             Dead();
-
         }
 
         IEnumerator KnockBack()
@@ -107,10 +106,19 @@ public class Enemy : MonoBehaviour // 적 하나에 적용, 애니메이터 추�
 
 
         void Dead()
-        {
+        {   
+            if (expPrefab != null){
+                GameObject orb = Instantiate(expPrefab, transform.position, Quaternion.identity);
+                ExpOrb expOrb = orb.GetComponent<ExpOrb>();
+                
+                if (expOrb != null){
+                    expOrb.Init(expValue);
+                }
+            }
+
             gameObject.SetActive(false);
             GameManager.instance.kill++;
-            GameManager.instance.GetExp();
+            //GameManager.instance.GetExp(expValue);
         }
     }
 }

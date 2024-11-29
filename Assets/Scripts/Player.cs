@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
     private float x = 0f;
     private float y = 0f;
     public Scanner scanner; // 스크립트도 컴포넌트로 가질 수 있어
-    //public Hand[] hands;
 
     Rigidbody2D rigid;
     SpriteRenderer spriter;
@@ -26,7 +25,6 @@ public class Player : MonoBehaviour
         spriter = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         scanner = GetComponent<Scanner>(); // Weapon -> Scanner 바로 접근 못하니 플레이어에 Scanner 속성 추가
-        //hands = GetComponent<Rigidbody2D>();
     }
     void FixedUpdate()
     {
@@ -53,7 +51,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionStay2D(Collision2D collision)
     {
         if (!GameManager.instance.isLive)
             return;
@@ -69,10 +67,39 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            GameManager.instance.health -= 10f;
+            GameManager.instance.health -= Time.deltaTime * 10f;
+            
+            // health가 0보다 작을 때 사망
+            if (GameManager.instance.health <= 0)
+            {
+                /* 플레이어 자식 오브젝트 모두 비활성화
+                for(int index=2; index < transform.childCount; index++){
+                    transform.GetChild(index).gameObject.SetActive(false);
+                }
+                */
+
+                // 프로젝트 내 자식 오브젝트 하나만 존재 -> for 문 작성 필요 x
+                transform.GetChild(0).gameObject.SetActive(false);
+
+                GameManager.instance.health = 0;
+                // 사망 구현 anim.SetTrigger("Dead");
+
+                GameManager.instance.GameOver(); // 플레이어 사망할 때 게임오버 함수 호출 !
+            }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision) // collider는 충돌하는 동안 trigger는 중돌시 *****
+    {
+        if (!GameManager.instance.isLive)
+            return;
+
+        if (collision.CompareTag("Projectile")){
+            GameManager.instance.health -= 10f; // 덜에 맞을때마다 플레잉어체력 10씩 감소함
 
             if (GameManager.instance.health <= 0)
             {
+                transform.GetChild(0).gameObject.SetActive(false);
                 GameManager.instance.health = 0;
                 GameManager.instance.GameOver();
             }
