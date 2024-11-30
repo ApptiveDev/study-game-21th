@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer spriter;
     Animator anim;
-    Transform position;
+    public Transform position;
 
     void Awake()
     {

@@ -3217,6 +3217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   scanner: {fileID: 0}
+  position: {fileID: 0}
 --- !u!114 &879286645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4339,7 +4340,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 4776220743290906524, guid: 12889d287f36bff49afb7260c2a04dc2, type: 3}
-  - {fileID: 4776220743290906524, guid: 3dff23ac878a28b459bf1160b0d612e5, type: 3}
+  - {fileID: 4776220743290906524, guid: 2eb79d22688775542aa6a108f5a7d541, type: 3}
+  - {fileID: 4776220743290906524, guid: 5eba60553c731fd43a776ad2f7e2fc05, type: 3}
   - {fileID: 351991329546188418, guid: a21bda9f56d583f44af372129b26540e, type: 3}
   - {fileID: 3239894354454554982, guid: cc018599928791f49bec9bb00a052b57, type: 3}
 --- !u!4 &1590084391
@@ -5099,9 +5101,13 @@ MonoBehaviour:
     health: 10
     speed: 2
   - spriteType: 1
-    spawnTime: 2
+    spawnTime: 1
     health: 15
     speed: 1
+  - spriteType: 2
+    spawnTime: 1
+    health: 1500
+    speed: 0.5
 --- !u!1 &1860177167
 GameObject:
   m_ObjectHideFlags: 0
@@ -5133,7 +5139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLive: 1
   gameTime: 0
-  maxGameTime: 40
+  maxGameTime: 100
   health: 0
   maxHealth: 100
   level: 1

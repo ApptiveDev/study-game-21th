@@ -6,8 +6,9 @@ public class Spawner : MonoBehaviour
     public SpawnData[] spawnData; // 데이터 여러개니 배열..
     
     
-    int level; // 레벨에 따라 다르게 소환 구현
+    int level; // 레벨에 따라 다르게 소환 구현 -> level 0일때: 추적형 ai만 생성, level 1: 원거리 적 생성
     float timer;
+    bool bossSpawned = false;
 
     void Awake()
     {
@@ -28,16 +29,21 @@ public class Spawner : MonoBehaviour
 
         timer += Time.deltaTime;
         //Mathf.FloorToInt : 버려서 Int형으로 변환
-        level = Mathf.Min(Mathf.FloorToInt(GameManager.instance.gameTime / 10f), spawnData.Length - 1); // 게임타임이 10초씩 늘어나면 난이도 증가
-        
-        if (timer > spawnData[level].spawnTime)
-        {
-            timer = 0;
-            Spawn();
+        level = Mathf.FloorToInt(GameManager.instance.gameTime / 10f); // 게임타임이 10초씩 늘어나면 난이도 증가
+        if(level <= 1){ // 레벨 0, 1일 때 작은 enemy들 무한 생성
+            if (timer > spawnData[level].spawnTime)
+            {
+                timer = 0;
+                Spawn();
+            }
+        } else if (level >=2 && !bossSpawned){ // 30초 이상일 때 Boss 생성
+                Debug.Log("Attempting to spawn Boss...");
+                SpawnBoss();
+                bossSpawned = true;
         }
     }
 
-    void Spawn() // 수정
+    void Spawn() 
     {
         if (spawnPoint.Length <= 1) 
         {
@@ -49,20 +55,50 @@ public class Spawner : MonoBehaviour
         // 스폰 위치 랜덤 선택
         int randomIndex = Random.Range(1, spawnPoint.Length); 
 
-        int enemyIndex = spawnData[level].spriteType; // 추가코드
+        // int enemyIndex = spawnData[level].spriteType; // 추가코드 -> level에 따라 한 적만 생성
+        
+        // 랜덤 확률로 생성 적용 (level 1은 원거리적 + 기본적 생성)
+        int enemyIndex;
+        if(level == 1){
+            float randomValue = Random.Range(0f, 1f);
+            if( randomValue < 0.4f ){
+                enemyIndex = 0;
+            } else {
+                enemyIndex = 1;
+            }
+        } else{
+            enemyIndex = spawnData[level].spriteType;
+        } 
         GameObject enemy = GameManager.instance.pool.Get(enemyIndex); // Get(0)에서 변경 -> 0번째 이너미만 있었을때
-
-        if (enemy == null)
-        {
-            Debug.LogError("Failed to retrieve enemy from the pool!");
-            return;
-        }
         
         // 랜덤 위치로 적 배치
         enemy.transform.position = spawnPoint[randomIndex].position;
-        enemy.GetComponent<Enemy>().Init(spawnData[level]); // 이너미의 소환 데이터 가져오기
+        enemy.GetComponent<Enemy>().Init(spawnData[enemyIndex]);
         
-        Debug.Log($"Enemy spawned at: {enemy.transform.position}");
+        
+        //enemy.GetComponent<Enemy>().Init(spawnData[level]); // 이너미의 소환 데이터 가져오기
+        
+    }
+    void SpawnBoss() 
+    {
+        if (spawnPoint.Length <= 1) 
+        {
+            return;
+        }
+
+        int randomIndex = Random.Range(1, spawnPoint.Length);
+        GameObject boss = GameManager.instance.pool.Get(2);
+        
+        if (boss == null)
+        {
+            Debug.LogError("Boss prefab is not set in PoolManager!");
+            return;
+        }
+        
+        boss.transform.position = spawnPoint[randomIndex].position;
+        boss.GetComponent<Enemy>().Init(spawnData[2]);
+        Debug.Log($"Boss spawned at: {boss.transform.position}");
+        
     }
 }
 

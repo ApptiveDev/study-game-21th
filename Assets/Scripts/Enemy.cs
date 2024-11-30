@@ -5,23 +5,25 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour // 적 하나에 적용, 애니메이터 추가 -> 움직이지 않는 에러 발생 / 일단 주석 처리
 {
-    public float speed = 2f;
+    public float speed ;
     public float health;
     public float maxHealth;
     //public RuntimeAnimatorController[] animCon;
     public GameObject expPrefab;
-    public int expValue = 1; // 적의 경험치 값
+    public int expValue; // 적의 경험치 값
     public Rigidbody2D target;
 
-    bool isLive;
+    // Enemy 상속받은 rangerEnemy 에서 접근가능하게 public 제한자 추가
+    public bool isLive;
 
-    Rigidbody2D rigid;
+    public Rigidbody2D rigid;
     Collider2D coll;
     Animator anim;
-    SpriteRenderer spriter; 
+    public SpriteRenderer spriter; 
     WaitForFixedUpdate wait; // 코루틴을 위한 변수 -> 보통 기다리는 시간 변수로
 
-    void Start()
+
+    protected virtual void Start() // 외부 접근 x 상속받은 클래스에서는 접근 가능
     {
         rigid = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
@@ -44,7 +46,7 @@ public class Enemy : MonoBehaviour // 적 하나에 적용, 애니메이터 추�
         rigid.velocity = Vector2.zero;
     }
 
-    void LateUpdate()
+    protected virtual void LateUpdate()
     {
         if(!isLive)
             return;
@@ -64,6 +66,7 @@ public class Enemy : MonoBehaviour // 적 하나에 적용, 애니메이터 추�
         anim.SetBool("Dead", false);
 
         health = maxHealth;
+
     }
 
     public void Init(SpawnData data)
@@ -82,7 +85,7 @@ public class Enemy : MonoBehaviour // 적 하나에 적용, 애니메이터 추�
 
         health -= collision.GetComponent<Bullet>().damage;
         StartCoroutine(KnockBack());
-
+        Debug.Log($"Enemy hit by Bullet! Health after hit: {health}");
         if(health > 0) {
             anim.SetTrigger("Hit"); // 애니메이터의 SetTrigger 함수 호출해서 피격 때 상태 변경
         }
@@ -118,7 +121,6 @@ public class Enemy : MonoBehaviour // 적 하나에 적용, 애니메이터 추�
 
             gameObject.SetActive(false);
             GameManager.instance.kill++;
-            //GameManager.instance.GetExp(expValue);
         }
     }
 }

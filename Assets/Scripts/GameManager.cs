@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [Header("# Game Control")]
     public bool isLive;
     public float gameTime;
-    public float maxGameTime = 4 * 10f;
+    public float maxGameTime; // 유니티 상에서 지정
     [Header("# Player Info")]
     public float health;
     public float maxHealth = 100;

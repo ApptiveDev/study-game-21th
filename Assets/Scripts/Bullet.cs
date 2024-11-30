@@ -31,11 +31,14 @@ public class Bullet : MonoBehaviour
         if(!collision.CompareTag("Enemy") || per == -1) // 이너미에 닿지 않았거나 per가 -1이면 적용 X
             return;
 
-        per--;
+        if(collision.CompareTag("Enemy"))
+        {
+            per--;
 
-        if(per == -1){
-            rigid.velocity = Vector2.zero; // 속도 초기화
-            gameObject.SetActive(false);
+            if(per == -1){
+                rigid.velocity = Vector2.zero; // 속도 초기화
+                gameObject.SetActive(false);
+            }
         }
     }
 }
