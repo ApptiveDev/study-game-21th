@@ -1,0 +1,1 @@
+{"SavedShopPlusHp":110,"SavedShopPlusAttackSpeed":1.9000002145767213,"SavedShopPlusSpeed":1.3000000715255738}

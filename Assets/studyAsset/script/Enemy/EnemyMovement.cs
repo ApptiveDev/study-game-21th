@@ -38,7 +38,8 @@ public class EnemyMovement : MonoBehaviour
             Vector3 MyPosition = transform.position;
             // 만약 적에 따라 경험치를 달리해야 한다면, 게임오브젝트 받아오는 것도 나쁘지 않을 듯.
             GameObject ExperienceOrb =  Instantiate(experienceOrb, new Vector3(MyPosition.x, MyPosition.y, MyPosition.z), Quaternion.identity);
-            Destroy(this.gameObject);
+            EnemyObjectPool.Instance.ReturnObject(this.gameObject);
+            //Destroy(this.gameObject);
         }
     }
 
@@ -47,7 +48,8 @@ public class EnemyMovement : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             collision.GetComponent<PlayerHp>().SubtractHp(TackleDAMAGE);
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            EnemyObjectPool.Instance.ReturnObject(this.gameObject);
         }
     }
     // Update is called once per frame

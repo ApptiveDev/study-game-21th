@@ -40,7 +40,8 @@ public class WeaponMovement : MonoBehaviour
     IEnumerator Delete()
     {
         yield return new WaitForSeconds(range);
-        Destroy(gameObject);
+        // 작동 안할 거 같은데
+        WeaponObjPool.Instance.ReturnObject(gameObject);
     }
     //void Delete()
     //{
@@ -58,14 +59,19 @@ public class WeaponMovement : MonoBehaviour
        if (collision.tag == "Enemy")
         {
             collision.gameObject.GetComponent<EnemyMovement>().hp -= 50;
-            Destroy(gameObject);
+            WeaponObjPool.Instance.ReturnObject(gameObject);
         } 
+    }
+    public void StartAction()
+    {
+        SoundManager.Instance.PlaySound(SoundManager.Instance.BasicWeaponSound);
+        StartCoroutine(Delete()); 
     }
     // Start is called before the first frame update
     void Start()
     {
-        SoundManager.Instance.PlaySound(SoundManager.Instance.BasicWeaponSound);
-       StartCoroutine(Delete()); 
+        //SoundManager.Instance.PlaySound(SoundManager.Instance.BasicWeaponSound);
+        //StartCoroutine(Delete()); 
     }
 
     // Update is called once per frame

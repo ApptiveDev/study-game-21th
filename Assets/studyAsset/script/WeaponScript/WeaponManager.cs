@@ -95,9 +95,11 @@ public class WeaponManager : MonoBehaviour
         {
             yield return new WaitForSeconds(AttackSpeed);
             Vector3 MyPosition = player.transform.position;
-            GameObject weaponCreate = Instantiate(BasicWeapon, new Vector3(MyPosition.x, MyPosition.y, MyPosition.z), Quaternion.identity);
+            //GameObject weaponCreate = Instantiate(BasicWeapon, new Vector3(MyPosition.x, MyPosition.y, MyPosition.z), Quaternion.identity);
+            GameObject weaponCreate = WeaponObjPool.Instance.GetObject();
+            weaponCreate.transform.position = MyPosition;
             weaponCreate.GetComponent<WeaponMovement>().SetDefault(AttackFlySpeed, AttackRange, currentDir.ToString());
-
+            weaponCreate.GetComponent<WeaponMovement>().StartAction();
         }  
     }
 	public void AddAttackSpeed(float AttackSpeed)
@@ -192,7 +194,9 @@ public class WeaponManager : MonoBehaviour
             try
             {
                 Vector3 MyPosition = transform.position;
-                GameObject weaponCreate = Instantiate(Bomb, new Vector3(MyPosition.x, MyPosition.y, MyPosition.z), Quaternion.identity);
+                GameObject weaponCreate = WeaponObjPool.Instance.GetBombObject();
+                weaponCreate.transform.position = MyPosition;
+                weaponCreate.GetComponent<BombWeaponMovement>().StartAction();
             }
             catch (UnassignedReferenceException)
             {

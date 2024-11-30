@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2877051738980560688}
   - component: {fileID: 5778910607210979435}
   - component: {fileID: 474753306424190160}
+  - component: {fileID: 7595343680738763775}
   m_Layer: 3
   m_Name: CoinManager
   m_TagString: Untagged
@@ -97,4 +98,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91d5fdbf90af07a42a35dd74688bda05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShopPlusHp: 0
+  ShopPlusAttackSpeed: 0
+  ShopPlusSpeed: 0
   Coin: 0
+--- !u!114 &7595343680738763775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981511377677483830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43f2b60401614404e9ce994e0b2b395f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

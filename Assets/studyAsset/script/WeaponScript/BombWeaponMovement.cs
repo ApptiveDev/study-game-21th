@@ -32,20 +32,22 @@ public class BombWeaponMovement : MonoBehaviour
                 }
                 catch(NullReferenceException)
                 {
-                    Destroy(gameObject);
+                    WeaponObjPool.Instance.BombReturnObject(gameObject);
                 }
             } 
         }
         // 삭제한다.
         SoundManager.Instance.PlaySound(SoundManager.Instance.bombWeaponSound);
-        Destroy(gameObject);
-
+        WeaponObjPool.Instance.BombReturnObject(gameObject);
     }
-
+    public void StartAction()
+    {
+       StartCoroutine(BombAttack()); 
+    }
     // Start is called before the first frame update
     void Start()
     {
-       StartCoroutine(BombAttack()); 
+       //StartCoroutine(BombAttack()); 
     }
 
     // Update is called once per frame
