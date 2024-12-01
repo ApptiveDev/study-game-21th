@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class LobbySystem : MonoBehaviour
 {
-
     public void LoadStart()
     {
         SceneManager.LoadScene("InGame");

@@ -12,7 +12,7 @@ public class PlayerCollision : MonoBehaviour
 
     private void Awake()
     {
-        hpLevel = StoreSystem.Instance.hpLevel;
+        hpLevel = GameDataManager.Instance.GetHpLevel();
     }
 
     void Start()

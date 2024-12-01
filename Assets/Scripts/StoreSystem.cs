@@ -1,41 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StoreSystem : MonoBehaviour
 {
-    public static StoreSystem Instance;
-
     [SerializeField] private TMP_Text goldText;
     [SerializeField] private TMP_Text hpText;
     [SerializeField] private TMP_Text speedText;
+
     int gold;
     public int hpLevel;
     public int speedLevel;
+
     int hpUpgradeCost = 100;
     int speedUpgradeCost = 100;
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (Instance != this)
-        {
-            Destroy(gameObject);
-        }
-    }
-
     private void Start()
     {
-        gold = PlayerPrefs.GetInt("Gold", 10000);
-        hpLevel = PlayerPrefs.GetInt("hpLevel", 1);
-        speedLevel = PlayerPrefs.GetInt("speedLevel", 1);
+        GameDataManager.Instance.LoadData(out gold, out hpLevel, out speedLevel);
         UpdateUI();
     }
 
@@ -45,7 +29,7 @@ public class StoreSystem : MonoBehaviour
         {
             gold -= hpUpgradeCost;
             hpLevel++;
-            SaveData();
+            GameDataManager.Instance.SaveData(gold, hpLevel, speedLevel);
             UpdateUI();
         }
     }
@@ -56,17 +40,9 @@ public class StoreSystem : MonoBehaviour
         {
             gold -= speedUpgradeCost;
             speedLevel++;
-            SaveData();
+            GameDataManager.Instance.SaveData(gold, hpLevel, speedLevel);
             UpdateUI();
         }
-    }
-
-    private void SaveData()
-    {
-        PlayerPrefs.SetInt("Gold", gold);
-        PlayerPrefs.SetInt("hpLevel", hpLevel);
-        PlayerPrefs.SetInt("speedLevel", speedLevel);
-        PlayerPrefs.Save();
     }
 
     private void UpdateUI()
@@ -78,11 +54,10 @@ public class StoreSystem : MonoBehaviour
 
     public void ResetData()
     {
-        PlayerPrefs.DeleteAll();
         gold = 10000;
         hpLevel = 1;
         speedLevel = 1;
-        SaveData();
+        GameDataManager.Instance.SaveData(gold, hpLevel, speedLevel);
         UpdateUI();
     }
 

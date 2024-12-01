@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        speedLevel = StoreSystem.Instance.speedLevel;
+        speedLevel = GameDataManager.Instance.GetSpeedLevel();
     }
 
     private void Start()

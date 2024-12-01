@@ -8,7 +8,6 @@ public class EnemyBulletSystem : MonoBehaviour
     Vector3 direction;
     float Speed = 10f;
 
-
     void Update()
     {
         BulletMove();
@@ -26,8 +25,11 @@ public class EnemyBulletSystem : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-            PlayerCollision playerCollision = player.GetComponent<PlayerCollision>();
+        if (collision.CompareTag("Player"))
+        {
+            PlayerCollision playerCollision = collision.GetComponent<PlayerCollision>();
             playerCollision.TakeDamage(1);
             Destroy(gameObject);
+        }
     }
 }

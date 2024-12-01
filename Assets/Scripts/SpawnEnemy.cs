@@ -4,68 +4,62 @@ using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
 {
-    [SerializeField] GameObject EnemyMob;
-    [SerializeField] GameObject EnemyBoss;
-    [SerializeField] GameObject RealBoss;
-    float curTimeMob = 0;
-    float curTimeBoss = 0;
-    float curTimeRealBoss = 0;
+    [SerializeField] private ObjectPool mobPool;
+    [SerializeField] private ObjectPool bossPool;
+    [SerializeField] private GameObject enemyBoss;
+    [SerializeField] private GameObject RealBoss;
+
+    float curTimeMob = 0f;
+    float curTimeBoss = 0f;
+    float curTimeRealBoss = 0f;
+
     GameObject player;
+
     void Start()
     {
         player = GameObject.Find("Player");
-        for (int i = 0; i < 10; i++)
-        {
-            Instantiate(EnemyMob);
-            EnemyMob.transform.position = RandomPosition();
-        }
 
         StartCoroutine(SpawnRealBoss());
+        StartCoroutine(SpawnBoss());
     }
 
     void Update()
     {
         curTimeMob += Time.deltaTime;
         curTimeBoss += Time.deltaTime;
-        curTimeRealBoss += Time.deltaTime;
 
-        if (curTimeMob >= 1)
+        if (curTimeMob >= 1f)
         {
             SpawnMob();
-            curTimeMob = 0;
+            curTimeMob = 0f;
         }
-        if (curTimeBoss >= 4) 
-        {
-            SpawnBoss();
-            curTimeBoss = 0;
-        }
-    }
-    void SpawnMob()
-    {
-        Instantiate(EnemyMob);
-        EnemyMob.transform.position = RandomPosition();
     }
 
-    void SpawnBoss()
+    void SpawnMob()
     {
-        Instantiate(EnemyBoss);
-        EnemyBoss.transform.position = RandomPosition();
+        GameObject mob = mobPool.GetObject();
+        mob.transform.position = RandomPosition();
     }
-  
+
+    public IEnumerator SpawnBoss()
+    {
+        yield return new WaitForSeconds(4f);
+        Instantiate(enemyBoss).transform.position = RandomPosition();
+    }
+
     public IEnumerator SpawnRealBoss()
     {
-        while(curTimeRealBoss <= 60)
-        {
-            yield return new WaitForSeconds(60);
-            Instantiate(RealBoss);
-            RealBoss.transform.position = RandomPosition();
-        }
+        yield return new WaitForSeconds(60f);
+        Instantiate(RealBoss).transform.position = RandomPosition();
     }
+
     Vector3 RandomPosition()
     {
         float x = Random.Range(-20f, 20f);
         float y = Random.Range(-20f, 20f);
-        if (x <= player.transform.position.x + 3 && x >= player.transform.position.x - 3 && y <= player.transform.position.y + 3 && y >= player.transform.position.y - 3)
+
+        if (x <= player.transform.position.x + 3 && x >= player.transform.position.x - 3 &&
+            y <= player.transform.position.y + 3 && y >= player.transform.position.y - 3)
         {
             x += 3;
             y += 3;
