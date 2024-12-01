@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Collection : MonoBehaviour
-{
+{   /*
     // 싱글톤 패턴 구현
     public static Collection Instance;
     void Awake()
@@ -36,6 +36,9 @@ public class Collection : MonoBehaviour
 
     [SerializeField] Image CurrentAvatar;
     
+
+
+    [SerializeField] GameObject ShopPanel;
     void Start()
     {
         GetAvailableAvatars();
@@ -85,16 +88,16 @@ public class Collection : MonoBehaviour
 		CurrentAvatar.sprite = AvatarsList [newSelectedIndex].Image;
 	}
 
-	// public void OpenCollection ()
-	// {
-	// 	ShopPanel.SetActive (true);
-	// }
+	public void OpenCollection ()
+	{
+	 	ShopPanel.SetActive (true);
+	}
 
-	// public void CloseCollection ()
-	// {
-	// 	ShopPanel.SetActive (false);
-	// }
+	public void CloseCollection ()
+	{
+	 	ShopPanel.SetActive (false);
+	}
 
 
-
+*/
 }

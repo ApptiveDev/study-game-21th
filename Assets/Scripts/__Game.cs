@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Game : MonoBehaviour
-{
+{   /*
     // 싱글톤 패턴 구현
     public static Game Instance;
     void Awake()
@@ -43,4 +43,5 @@ public class Game : MonoBehaviour
             allCoinsUIText[i].text = Coins.ToString();
         }
     }
+    */
 }

@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public float gameTime;
     public float maxGameTime; // 유니티 상에서 지정
     [Header("# Player Info")]
+    public int coins;
+    public float speed = 3f; 
     public float health;
     public float maxHealth = 100;
     public int level;
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    
     // 에러 해결! 씬 로딩 순서 문제 -> 시작할 때 OnEnable() 순서 바로잡아주면서? 해결
     void OnEnable()
     {
@@ -55,10 +58,31 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "InGame") // "InGame" 씬이 로드되었을 때
+        if (scene.name == "InGame"){ // "InGame" 씬이 로드되었을 때
+            maxHealth = DataManager.instance.maxHealth;
+            speed = DataManager.instance.speed;
+            
+
+            // 적용한 speed 값을 player 클래스 speed에 전달
+            FindPlayer();
+            if (player != null)
+            {
+                player.UpdateSpeed(speed);
+            } 
             GameStart(); // GameStart 함수 호출
+        }
     }
-   
+    
+    void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "InGame")
+        {
+            maxHealth = DataManager.instance.maxHealth;
+            speed = DataManager.instance.speed;
+            
+        }
+    }
+
     public void GameStart()
     {
         health = maxHealth; // 시작할 때 현재 체력 초기화
@@ -130,22 +154,6 @@ public class GameManager : MonoBehaviour
             uiLevelUp.Show(); // 레벨업 UI 표시
         }
     }
-    /*
-    public void GetExp()
-    {
-        if(!isLive)
-            return;
-            
-        exp++;
-
-        // 최대 레벨 초과 시 인덱스 넘치는 오류 방지 레벨 10 12 일케되도 최대 레벨만 적용
-        if(exp == nextExp[Mathf.Min(level, nextExp.Length-1)]){
-            level++;
-            exp = 0;
-            uiLevelUp.Show();
-        }
-    }
-    */
     public void Stop() // 게임 시간 관련 함수 -> 멈춤
     {
         isLive = false;
@@ -168,6 +176,29 @@ public class GameManager : MonoBehaviour
         gameTime = 0;
         Resume();
     }
+
+    // 저장, 로드 구현
+    private void FindPlayer()
+    {
+        // InGame 씬에서 Player 오브젝트 찾기
+        if (player == null)
+        {
+            Debug.LogError("Player object not found in the scene!");
+        }
+         else
+        {
+            Debug.Log("Player object successfully found.");
+        }
+    }
+ 
+    /*
+    public void AddCoins
+    {
+        // 플레이 1 2 3 판 시 코인획득 or 코인 프리팹 생성 -> DataManager에 조장
+    }
+
+    */
+
 }
 
 

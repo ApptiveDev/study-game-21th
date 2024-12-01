@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class RangerEnemy : Enemy // 적 하나에 적용, 애니메이터 추가 -> 움직이지 않는 에러 발생 / 일단 주석 처리
-{
+{   // 코루틴 쓰니 MOVE / ATTACK 상태 변화 인지못함 -> 코루틴 안쓰고 구현
     public enum EnemyState { MOVE, ATTACK }
     public EnemyState state = EnemyState.MOVE;
 
@@ -13,6 +13,7 @@ public class RangerEnemy : Enemy // 적 하나에 적용, 애니메이터 추가
     public float attackRange;
     public float attackCooldown; // 모두 유니티 상에서만 조정가능하게 수정
 
+    // 업데이트에서 필요한 변수 -> 마지막 공격시간, MOVE 상태 스피드
     private float lastAttackTime;
     private float originSpeed;
 

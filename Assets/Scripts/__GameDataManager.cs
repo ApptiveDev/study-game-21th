@@ -1,11 +1,13 @@
 // Load, Save 기능 숨김
 
+using UnityEngine;
+
 [System.Serializable] public class PlayerData
 {
     public int coins = 0;
 }
 public class GameDataManager
-{
+{   /*
     static PlayerData playerData = new PlayerData();
 
     // static GameDataManager()
@@ -46,4 +48,6 @@ public class GameDataManager
     //     playerData = BinarySerializer.Load<PlayerData>();
     //     UnityEngine.Debug.Log("<color=magenta>[PlayerData] Saved.</color");
     // }
+
+*/
 }

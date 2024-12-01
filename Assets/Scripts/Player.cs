@@ -35,7 +35,8 @@ public class Player : MonoBehaviour
         y = Input.GetAxisRaw("Vertical");
 
         moveDirection = new Vector2(x, y);
-
+        Debug.Log($"Move Direction: {moveDirection}, Speed: {speed}");
+        
         rigid.position += moveDirection * speed * Time.fixedDeltaTime;
     
         
@@ -57,13 +58,6 @@ public class Player : MonoBehaviour
             return;
 
         // string tag = collision.collider.tag;
-
-        if (collision.collider.CompareTag("Coin"))
-        {
-            GameDataManager.AddCoins(1);
-
-            Destroy(collision.gameObject);
-        }
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -104,5 +98,11 @@ public class Player : MonoBehaviour
                 GameManager.instance.GameOver();
             }
         }
+    }
+
+    public void UpdateSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+        Debug.Log($"Player speed updated to {speed}"); 
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ShopUI : MonoBehaviour
 {
+    /*
     [Header ("Shop Events")]
     [SerializeField] GameObject shopUI;
     [SerializeField] Button closeShopButton;
@@ -19,5 +20,5 @@ public class ShopUI : MonoBehaviour
     {
         shopUI.SetActive(false);
     }
-
+    */
 }

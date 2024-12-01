@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
-{
+{	
+	/*
     // 싱글톤 패턴 구현
     public static Shop Instance;
     void Awake()
@@ -26,7 +27,6 @@ public class Shop : MonoBehaviour
     }
 
     public List<ShopItem> ShopItemsList;
-    // 애니메이션 생략 [SerializeField] Animator NoCoinsAnim;
 
     [SerializeField] GameObject ItemTemplate;
     GameObject g;
@@ -84,4 +84,5 @@ public class Shop : MonoBehaviour
 	{
 		ShopPanel.SetActive (false);
 	}
+	*/
 }

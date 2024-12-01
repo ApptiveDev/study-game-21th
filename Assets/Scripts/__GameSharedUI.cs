@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameSharedUI : MonoBehaviour
 {
+    /*
     // #region Singleton class: GameSharedUI
 
     // public static GameSharedUI instance;
@@ -64,4 +65,5 @@ public class GameSharedUI : MonoBehaviour
     {
         return int.Parse (num.ToString()[0].ToString());
     }
+    */
 }
