@@ -14,17 +14,19 @@ public class LoobyManager : MonoBehaviour
 
     public void ToShop()
     {
-        button[0].SetActive(false);
-        button[1].SetActive(false);
-        button[2].SetActive(false);
+        foreach(GameObject gameObject in button) {
+            gameObject.SetActive(false);
+        }
+
         shop.gameObject.SetActive(true);
     }
 
     public void ToLobby()
     {
-        button[0].SetActive(true);
-        button[1].SetActive(true);
-        button[2].SetActive(true);
+        foreach(GameObject gameObject in button) {
+            gameObject.SetActive(true);
+        }
+        
         shop.gameObject.SetActive(false);
     }
 }

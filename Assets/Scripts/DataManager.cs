@@ -8,7 +8,7 @@ public class PlayerData
 {
     public int coin;
     public int maxHealth;
-    public int speed;
+    public float speed;
 }
 
 public class DataManager : MonoBehaviour
@@ -42,7 +42,7 @@ public class DataManager : MonoBehaviour
         // startingPlayer 변수 초기화 필요
         startingPlayer = new PlayerData()
         {
-            coin = 0,
+            coin = 9999,
             maxHealth = 100,
             speed = 3
         };
@@ -75,5 +75,10 @@ public class DataManager : MonoBehaviour
             nowPlayer = startingPlayer;
             SaveData();
         }
+    }
+
+    public void Reset()
+    {
+        nowPlayer = startingPlayer;
     }
 }
