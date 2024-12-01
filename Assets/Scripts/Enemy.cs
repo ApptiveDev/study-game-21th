@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour // 적 하나에 적용, 애니메이터 추가 -> 움직이지 않는 에러 발생 / 일단 주석 처리

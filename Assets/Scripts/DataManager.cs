@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DataManager : MonoBehaviour
@@ -38,7 +36,7 @@ public class DataManager : MonoBehaviour
     {
         coins = PlayerPrefs.GetInt("Coins", 50); // 저장된 데이터가 없으면 1000을 불러오기
         maxHealth = PlayerPrefs.GetFloat("MaxHealth", 100f);
-        speed = PlayerPrefs.GetFloat("Speed", 3f);
+        speed = PlayerPrefs.GetFloat("Speed", 2f);
         Debug.Log("Player data loaded!");
     }
 }

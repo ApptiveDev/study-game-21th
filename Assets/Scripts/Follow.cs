@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Follow : MonoBehaviour // 플레이어 위치 고정 x -> UI 체력바가 플레이어에 고정되도록

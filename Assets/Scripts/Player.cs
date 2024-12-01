@@ -1,10 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.Scripting.APIUpdating;
-using UnityEngine.XR;
 
 public class Player : MonoBehaviour
 {
