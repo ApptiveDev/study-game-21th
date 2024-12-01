@@ -166,9 +166,12 @@ public class Enemy : MonoBehaviour
 
     IEnumerator Freeze()
     {
+        Color temp = spriter.color;
+        spriter.color = new Color(0, 0, 1);
         yield return wait;
         yield return wait;
         yield return wait;
+        spriter.color = temp;
     }
 
     IEnumerator Attack()

@@ -137,7 +137,7 @@ public class Weapon : MonoBehaviour
         dir = dir.normalized; // normalized = 현재 벡터의 방향은 우지하고 크기를 1로 변환한 속성, dir은 크기를 가지고 있는 방향이기에 normalized필요
 
         Transform bullet = GameManager.instance.pool.Get(prefabId).transform; // 오브젝트 풀링에서 총알 생성
-        bullet.position = transform.position; // 기존 생성로직을 그대로 활용하면서 위치는 플레이어 위치로 지정
+        bullet.position = transform.position - PickRandomPosition(); // 기존 생성로직을 그대로 활용하면서 위치 지정
 
         bullet.rotation = Quaternion.Euler(0, 0, 45);
         bullet.rotation *= Quaternion.FromToRotation(Vector3.up, dir); // FromToRatation = 지정된 축을 중심으로 목표를 향해 회전하는 함수
@@ -145,5 +145,13 @@ public class Weapon : MonoBehaviour
 
         bullet.GetComponent<Bullet>().Init(damage, count, id, dir); // 원거리 공격에 맞게 초기화 함수 호출하기, 원거리 공격에서는 Count가 관통변수이고 dir이 속도이다
 
+    }
+
+    Vector3 PickRandomPosition() // 랜덤한 위치(벡터3)을 반환한다.
+    {
+        float x = Random.Range(-1f, 1f);
+        float y = Random.Range(-1f, 1f);
+
+        return new Vector3(x, y, 0);
     }
 }

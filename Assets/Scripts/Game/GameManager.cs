@@ -92,8 +92,13 @@ public class GameManager : MonoBehaviour
 
     public void GameRetry() // 게임재시작 함수
     {
-        SceneManager.LoadScene(0); 
+        SceneManager.LoadScene("gameScene"); 
         // LoadScene = 이름 혹은 인덱스로 장면을 새롭게 부르는 함수, ()안에 Scene의 이름이나 순서를 배치, 현재의 SampleScene은 0번으로 되어있다    
+    }
+
+    public void GameGiveUp()
+    {
+        SceneManager.LoadScene("lobbyScene");
     }
 
     public void GetExp()

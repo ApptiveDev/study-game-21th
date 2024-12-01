@@ -1,5 +1,16 @@
 using UnityEngine;
 
+// 하나의 스크립트 내에 여러 클래스를 선언할 수 있다.
+// 직렬화 (Serialization) = 개체를 저장 혹은 전송하기 위해 변환
+[System.Serializable]
+public class SpawnData
+{
+    public float spawnTime;
+    public int spriteType;
+    public int health;
+    public float speed;
+}
+
 public class Spawner : MonoBehaviour
 {
     public Transform spawnPoint; // 자식 오브젝트의 트랜스폼을 담을 배열 변수 선언 
@@ -39,13 +50,3 @@ public class Spawner : MonoBehaviour
     }
 }
 
-// 하나의 스크립트 내에 여러 클래스를 선언할 수 있다.
-// 직렬화 (Serialization) = 개체를 저장 혹은 전송하기 위해 변환
-[System.Serializable]
-public class SpawnData
-{
-    public float spawnTime;
-    public int spriteType;
-    public int health;
-    public float speed;
-}
