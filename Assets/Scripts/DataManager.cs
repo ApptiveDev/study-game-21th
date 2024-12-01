@@ -7,9 +7,9 @@ public class DataManager : MonoBehaviour
     public static DataManager instance;
 
     // Player Info -> 1. 코인 2. 체력 3. 스피드
-    public int coins = 1000;
-    public float maxHealth = 100f;
-    public float speed = 3f;
+    public int coins;
+    public float maxHealth;
+    public float speed;
 
     void Awake()
     {
@@ -36,7 +36,7 @@ public class DataManager : MonoBehaviour
 
     public void LoadData()
     {
-        coins = PlayerPrefs.GetInt("Coins", 1000); // 저장된 데이터가 없으면 1000을 불러오기
+        coins = PlayerPrefs.GetInt("Coins", 50); // 저장된 데이터가 없으면 1000을 불러오기
         maxHealth = PlayerPrefs.GetFloat("MaxHealth", 100f);
         speed = PlayerPrefs.GetFloat("Speed", 3f);
         Debug.Log("Player data loaded!");

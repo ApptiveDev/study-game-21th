@@ -1042,7 +1042,7 @@ GameObject:
   - component: {fileID: 1937268006}
   - component: {fileID: 1937268007}
   m_Layer: 0
-  m_Name: "\uFF34\uFF45\uFF58\uFF54 \uFF35\uFF50\uFF44\uFF41\uFF54\uFF45"
+  m_Name: TextUpdate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
