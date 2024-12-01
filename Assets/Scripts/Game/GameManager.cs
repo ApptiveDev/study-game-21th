@@ -15,11 +15,11 @@ public class GameManager : MonoBehaviour
     [Header("# Player Info")]
     public bool isLive; // 시간 정지 여부를 알려주는 bool 변수 선언
     public float health; // 생명력 관련 변수는 float로 설정
-    public float maxHealth = 100;
+    public float maxHealth;
     public int level;
     public int kill;
     public int exp;
-    public int[] nextExp = {3, 5, 10, 100, 150, 210, 280, 360, 450, 600}; // 각 레벨의 필요경험치를 보관한 배열변수 선언 및 초기화
+    public int[] nextExp; // 각 레벨의 필요경험치를 보관한 배열변수 선언 및 초기화
 
     [Header("# GameObject")]
     public Player player;
@@ -31,6 +31,11 @@ public class GameManager : MonoBehaviour
     void Awake() 
     {
         instance = this;
+    }
+
+    void Start()
+    {
+        maxHealth = DataManager.instance.nowPlayer.maxHealth;
     }
 
     void Update()
@@ -70,6 +75,7 @@ public class GameManager : MonoBehaviour
 
         UIResult.gameObject.SetActive(true); // 게임결과 UI오브젝트 활성화
         UIResult.Lose();
+        DataManager.instance.nowPlayer.coin += kill;
         Stop(); // 시간을 멈춤
     }
 
@@ -87,6 +93,7 @@ public class GameManager : MonoBehaviour
 
         UIResult.gameObject.SetActive(true); // 게임결과 UI오브젝트 활성화
         UIResult.Win();
+        DataManager.instance.nowPlayer.coin += kill;
         Stop(); // 시간을 멈춤
     }
 
@@ -96,7 +103,7 @@ public class GameManager : MonoBehaviour
         // LoadScene = 이름 혹은 인덱스로 장면을 새롭게 부르는 함수, ()안에 Scene의 이름이나 순서를 배치, 현재의 SampleScene은 0번으로 되어있다    
     }
 
-    public void GameGiveUp()
+    public void ToLobby()
     {
         SceneManager.LoadScene("lobbyScene");
     }

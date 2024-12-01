@@ -22,6 +22,12 @@ public class Player : MonoBehaviour
       spriter = GetComponent<SpriteRenderer>();
       scanner = GetComponent<Scanner>();
    }
+
+   void Start()
+   {
+      speed = DataManager.instance.nowPlayer.speed;
+   }
+
    void Update() // 매 프레임마다 동작을 한다. 컴퓨터나 동작하는 환경의 성능에 따라서 1초당 몇 프레임인지가 달라짐.
    {
       if (!GameManager.instance.isLive) {
@@ -55,7 +61,6 @@ public class Player : MonoBehaviour
    void Move()
    {
       moveVec = new Vector3(inputVec.x, inputVec.y, 0).normalized;
-
       if (!isWall && !isObstacle)
          transform.position += moveVec * speed * Time.deltaTime;
    }

@@ -4,21 +4,20 @@ using UnityEngine;
 using System.IO;
 using System.Security;
 
-[System.Serializable]
 public class PlayerData
 {
+    public int coin;
     public int maxHealth;
     public int speed;
-    public int[] Level;
 }
 
 public class DataManager : MonoBehaviour
 {
     public static DataManager instance;
 
-    public PlayerData startingPlayer;
+    public PlayerData nowPlayer;
 
-    public PlayerData nowPlayer = new PlayerData();
+    PlayerData startingPlayer;
 
     string path;
     string filename = "save";
@@ -38,6 +37,21 @@ public class DataManager : MonoBehaviour
         LoadData();
     }
 
+    void Start()
+    {
+        // startingPlayer 변수 초기화 필요
+        startingPlayer = new PlayerData()
+        {
+            coin = 0,
+            maxHealth = 100,
+            speed = 3
+        };
+
+        if (nowPlayer == null) {
+            nowPlayer = startingPlayer;
+        }
+    }
+
     public void SaveData()
     {
         string data = JsonUtility.ToJson(nowPlayer);
@@ -47,15 +61,19 @@ public class DataManager : MonoBehaviour
 
     public void LoadData()
     {
-        string data = File.ReadAllText(path + filename);
+        string filePath = path + filename;
 
-        if (data == null) {
-            data = JsonUtility.ToJson(startingPlayer);
-
-            File.WriteAllText(path + filename, data);
+        // 파일이 존재하는지 확인
+        if (File.Exists(filePath))
+        {
+            string data = File.ReadAllText(filePath);
+            nowPlayer = JsonUtility.FromJson<PlayerData>(data);
         }
-
-        nowPlayer = JsonUtility.FromJson<PlayerData>(data);
-        
+        else
+        {
+            // 파일이 없으면 초기 데이터로 저장
+            nowPlayer = startingPlayer;
+            SaveData();
+        }
     }
 }
