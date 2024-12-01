@@ -98,3 +98,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BlackHole2: {fileID: 7743614982485920394, guid: 94c35e51b51f6d4408d66a11950dcc1d, type: 3}
+  bigBlackHole2: {fileID: 6220416141815179864, guid: c7c975e1043e2de488137aa76e63b82b, type: 3}

@@ -7,10 +7,12 @@ public class EnemySystem : MonoBehaviour
 {
     [SerializeField] GameObject Exp;
     GameObject player;
+    ObjectPool mobPool;
     void Start()
     {
         player = GameObject.Find("Player");
-        
+        mobPool = GameObject.Find("MobObjectPool").GetComponent<ObjectPool>();
+
     }
 
     float speed = 3f;
@@ -24,16 +26,22 @@ public class EnemySystem : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Weapon"))
         {
-            Destroy(gameObject);
+            MobDeath(gameObject);
             GameObject ExpInstance = Instantiate(Exp);
             ExpInstance.transform.position = transform.position;
         }
         if (collision.gameObject.CompareTag("LastingWeapon"))
         {
-            Destroy(gameObject);
+            MobDeath(gameObject);
             GameObject ExpInstance = Instantiate(Exp);
             ExpInstance.transform.position = transform.position;
         }
         if (collision.gameObject.CompareTag("Stop")) speed = 0;
     }
+
+    public void MobDeath(GameObject mob)
+    {
+        mobPool.ReturnObject(mob);
+    }
+
 }
